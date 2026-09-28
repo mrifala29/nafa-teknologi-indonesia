@@ -38,7 +38,49 @@ const CanvasModule = (function () {
     });
   }
 
+  function alignCircuits() {
+    const container = document.getElementById('hero-canvas-container');
+    const svg = document.getElementById('canvas-circuits');
+    if (!container || !svg) return;
+
+    const containerWidth = container.clientWidth;
+    if (containerWidth < 960) return;
+
+    const sampleNode = document.querySelector('.canvas-node');
+    if (!sampleNode) return;
+
+    const nodeWidth = sampleNode.offsetWidth;
+    if (!nodeWidth) return;
+
+    // Node is at left: 3%, dot center is at card border
+    const leftDotX = ((containerWidth * 0.03 + nodeWidth) / containerWidth) * 100;
+    const rightDotX = 100 - leftDotX;
+    const trunkOffset = 3.0;
+    const leftTrunkX = leftDotX + trunkOffset;
+    const rightTrunkX = rightDotX - trunkOffset;
+
+    const paths = svg.querySelectorAll('path');
+    if (paths.length >= 10) {
+      // 4 left stubs
+      paths[0].setAttribute('d', `M ${leftDotX.toFixed(2)} 16.5 L ${leftTrunkX.toFixed(2)} 16.5`);
+      paths[1].setAttribute('d', `M ${leftDotX.toFixed(2)} 38.0 L ${leftTrunkX.toFixed(2)} 38.0`);
+      paths[2].setAttribute('d', `M ${leftDotX.toFixed(2)} 59.5 L ${leftTrunkX.toFixed(2)} 59.5`);
+      paths[3].setAttribute('d', `M ${leftDotX.toFixed(2)} 81.0 L ${leftTrunkX.toFixed(2)} 81.0`);
+      // 1 left vertical trunk
+      paths[4].setAttribute('d', `M ${leftTrunkX.toFixed(2)} 16.5 L ${leftTrunkX.toFixed(2)} 81.0`);
+
+      // 4 right stubs
+      paths[5].setAttribute('d', `M ${rightDotX.toFixed(2)} 16.5 L ${rightTrunkX.toFixed(2)} 16.5`);
+      paths[6].setAttribute('d', `M ${rightDotX.toFixed(2)} 38.0 L ${rightTrunkX.toFixed(2)} 38.0`);
+      paths[7].setAttribute('d', `M ${rightDotX.toFixed(2)} 59.5 L ${rightTrunkX.toFixed(2)} 59.5`);
+      paths[8].setAttribute('d', `M ${rightDotX.toFixed(2)} 81.0 L ${rightTrunkX.toFixed(2)} 81.0`);
+      // 1 right vertical trunk
+      paths[9].setAttribute('d', `M ${rightTrunkX.toFixed(2)} 16.5 L ${rightTrunkX.toFixed(2)} 81.0`);
+    }
+  }
+
   function staggerNodes() {
+    alignCircuits();
     const circuits = document.getElementById('canvas-circuits');
     if (circuits) circuits.classList.add('is-visible');
 
@@ -124,6 +166,10 @@ const CanvasModule = (function () {
         }
       });
     });
+
+    // Auto-align SVG circuit lines to dots
+    alignCircuits();
+    window.addEventListener('resize', alignCircuits);
 
     // Auto-start intro or skip if deep linking
     if (window.location.hash && window.location.hash !== '#canvas') {
