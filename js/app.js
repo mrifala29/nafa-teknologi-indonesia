@@ -21,12 +21,22 @@ document.addEventListener('DOMContentLoaded', () => {
     window.CanvasModule.init();
   }
 
-  // 4. Initialize Pricing Slider (Touch & navigation controls)
+  // 4. Initialize Portfolio Showcase (Filters & architecture drawer)
+  if (window.PortfolioModule) {
+    window.PortfolioModule.init();
+  }
+
+  // 5. Initialize Pricing Slider (Touch & navigation controls)
   if (window.PricingSliderModule) {
     window.PricingSliderModule.init();
   }
 
-  // 5. Initialize Consultation & Contact Form Validation
+  // 6. Initialize Engineering Team Showcase & Category Filters
+  if (window.TeamModule) {
+    window.TeamModule.init();
+  }
+
+  // 7. Initialize Consultation & Contact Form Validation
   if (window.ContactModule) {
     window.ContactModule.init();
   }
