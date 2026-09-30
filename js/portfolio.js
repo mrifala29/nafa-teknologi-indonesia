@@ -99,8 +99,8 @@ const PortfolioModule = (function () {
 
         // Filter cards in slider
         cards.forEach(card => {
-          const category = card.getAttribute('data-category');
-          if (filter === 'all' || category === filter) {
+          const categories = (card.getAttribute('data-category') || '').split(' ');
+          if (filter === 'all' || categories.includes(filter)) {
             card.style.display = 'flex';
           } else {
             card.style.display = 'none';
