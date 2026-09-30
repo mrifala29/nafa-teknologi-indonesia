@@ -21,8 +21,8 @@ const CanvasModule = (function () {
     }
     if (circuits) circuits.classList.remove('is-visible');
 
-    // Reflow intro word animation
-    const words = document.querySelectorAll('.intro-word');
+    // Reflow intro word and logo animation
+    const words = document.querySelectorAll('.intro-word, .intro-logo');
     words.forEach(el => {
       el.style.animation = 'none';
       void el.offsetWidth;
