@@ -22,11 +22,11 @@
   <link rel="apple-touch-icon" href="assets/logo.png">
 
   <!-- Modular Stylesheets -->
-  <link rel="stylesheet" href="css/variables.css?v=4">
-  <link rel="stylesheet" href="css/base.css?v=4">
-  <link rel="stylesheet" href="css/components.css?v=4">
-  <link rel="stylesheet" href="css/animations.css?v=4">
-  <link rel="stylesheet" href="css/sections.css?v=6">
+  <link rel="stylesheet" href="css/variables.css?v=7">
+  <link rel="stylesheet" href="css/base.css?v=7">
+  <link rel="stylesheet" href="css/components.css?v=7">
+  <link rel="stylesheet" href="css/animations.css?v=7">
+  <link rel="stylesheet" href="css/sections.css?v=7">
 </head>
 
 <body>
@@ -52,6 +52,7 @@
         <a href="#portofolio" class="nav-link">Portofolio</a>
         <a href="#biaya" class="nav-link">Biaya</a>
         <a href="#tim" class="nav-link">Tim</a>
+        <a href="#karir" class="nav-link">Karir</a>
         <a href="#kontak" class="nav-link">Kontak</a>
       </nav>
 
@@ -85,7 +86,8 @@
       <a href="#layanan" class="mobile-nav-link">Layanan</a>
       <a href="#portofolio" class="mobile-nav-link">Portofolio</a>
       <a href="#biaya" class="mobile-nav-link">Biaya Solusi</a>
-      <a href="#tim" class="mobile-nav-link">Tim &amp; Karir</a>
+      <a href="#tim" class="mobile-nav-link">Tim</a>
+      <a href="#karir" class="mobile-nav-link">Karir</a>
       <a href="#kontak" class="mobile-nav-link">Kontak &amp; Konsultasi</a>
     </nav>
     <div style="margin-top:auto; padding-top:1.5rem; border-top:1px solid var(--color-border);">
@@ -546,11 +548,18 @@
          4. PORTOFOLIO (#portofolio)
          ========================================================================== -->
     <section id="portofolio" class="section-portofolio">
+      <!-- Architectural Precision Blueprint Grid Background -->
+      <div class="portofolio-blueprint-grid" aria-hidden="true"></div>
+
       <div class="container">
 
         <!-- Section Header -->
         <div class="portofolio-header">
           <h2 class="section-title" style="margin-bottom:0.75rem;">Portofolio</h2>
+          <p class="portofolio-subtitle">
+            Kami merancang dan membangun setiap sistem dengan dedikasi untuk memudahkan dan memberikan manfaat yang
+            nyata.
+          </p>
         </div>
 
         <!-- 5 Category Tabs (Aligned with Section Layanan) -->
@@ -621,15 +630,11 @@
                   Platform web katalog dan penjualan gadget bekas terpercaya di Sidoarjo dengan navigasi responsif,
                   verifikasi stok, dan integrasi WhatsApp.
                 </p>
-                <div class="portofolio-highlight-chip">
-                  <span class="material-symbols-outlined">devices</span>
-                  <span>Katalog Produk • Integrasi WhatsApp CTA</span>
-                </div>
               </div>
 
               <div>
                 <a href="https://gadgetbekassidoarjo.web.id/" target="_blank" rel="noopener noreferrer"
-                  class="btn btn-secondary btn-block portofolio-demo-btn" data-service="web-profile">
+                  class="btn btn-primary btn-block portofolio-demo-btn" data-service="web-profile">
                   <span>Demo</span>
                   <span class="material-symbols-outlined" style="font-size:16px;">open_in_new</span>
                 </a>
@@ -650,21 +655,17 @@
                   Website korporasi modern dengan performa tinggi, navigasi intuitif, arsitektur SEO terstruktur, dan
                   Core Web Vitals optimal.
                 </p>
-                <div class="portofolio-highlight-chip">
-                  <span class="material-symbols-outlined">speed</span>
-                  <span>99 Core Web Vitals • 0.6s LCP Speed</span>
-                </div>
               </div>
 
               <div>
-                <a href="#kontak" class="btn btn-secondary btn-block portofolio-demo-btn" data-service="web-profile">
+                <a href="#kontak" class="btn btn-primary btn-block portofolio-demo-btn" data-service="web-profile">
                   <span>Demo</span>
                   <span class="material-symbols-outlined" style="font-size:16px;">arrow_forward</span>
                 </a>
               </div>
             </div>
 
-            <!-- Card 2: Sistem Informasi AI -->
+            <!-- Card 3: Sistem Informasi AI -->
             <div class="portofolio-card" data-category="sistem-informasi-ai">
               <div>
                 <div class="portofolio-img-wrap">
@@ -678,14 +679,10 @@
                   Platform manajemen gudang terpadu dengan pemindaian barcode real-time, kontrol inventaris
                   multi-cabang, dan otomatisasi alur stok.
                 </p>
-                <div class="portofolio-highlight-chip">
-                  <span class="material-symbols-outlined">inventory_2</span>
-                  <span>Efisiensi Kerja 96% • Akurasi Stok 99.9%</span>
-                </div>
               </div>
 
               <div>
-                <a href="#kontak" class="btn btn-secondary btn-block portofolio-demo-btn"
+                <a href="#kontak" class="btn btn-primary btn-block portofolio-demo-btn"
                   data-service="sistem-informasi-ai">
                   <span>Demo</span>
                   <span class="material-symbols-outlined" style="font-size:16px;">arrow_forward</span>
@@ -693,7 +690,7 @@
               </div>
             </div>
 
-            <!-- Card 3: Data Analytics -->
+            <!-- Card 4: Data Analytics -->
             <div class="portofolio-card" data-category="data-analytics">
               <div>
                 <div class="portofolio-img-wrap">
@@ -707,21 +704,17 @@
                   Pipa data analitik terpusat untuk memproses jutaan transaksi POS, visualisasi margin per SKU, dan
                   deteksi tren bisnis harian.
                 </p>
-                <div class="portofolio-highlight-chip">
-                  <span class="material-symbols-outlined">insights</span>
-                  <span>1.2M+ Transaksi / Hari • Telemetri Real-Time</span>
-                </div>
               </div>
 
               <div>
-                <a href="#kontak" class="btn btn-secondary btn-block portofolio-demo-btn" data-service="data-analytics">
+                <a href="#kontak" class="btn btn-primary btn-block portofolio-demo-btn" data-service="data-analytics">
                   <span>Demo</span>
                   <span class="material-symbols-outlined" style="font-size:16px;">arrow_forward</span>
                 </a>
               </div>
             </div>
 
-            <!-- Card 4: Cloud & Server -->
+            <!-- Card 5: Cloud & Server -->
             <div class="portofolio-card" data-category="cloud-server">
               <div>
                 <div class="portofolio-img-wrap">
@@ -735,21 +728,17 @@
                   Arsitektur cloud tangguh multi-node dengan failover otomatis, pemantauan metrik server kontinu, dan
                   snapshot backup terenkripsi.
                 </p>
-                <div class="portofolio-highlight-chip">
-                  <span class="material-symbols-outlined">cloud_done</span>
-                  <span>99.98% Uptime SLA • Auto-Scaling Multi-Node</span>
-                </div>
               </div>
 
               <div>
-                <a href="#kontak" class="btn btn-secondary btn-block portofolio-demo-btn" data-service="cloud-server">
+                <a href="#kontak" class="btn btn-primary btn-block portofolio-demo-btn" data-service="cloud-server">
                   <span>Demo</span>
                   <span class="material-symbols-outlined" style="font-size:16px;">arrow_forward</span>
                 </a>
               </div>
             </div>
 
-            <!-- Card 5: Chatbot AI -->
+            <!-- Card 6: Chatbot AI -->
             <div class="portofolio-card" data-category="chatbot-ai">
               <div>
                 <div class="portofolio-img-wrap">
@@ -762,14 +751,10 @@
                   Agen cerdas kecerdasan artifisial terintegrasi WhatsApp untuk melayani katalog produk, pengecekan
                   pesanan, dan reservasi otomatis 24/7.
                 </p>
-                <div class="portofolio-highlight-chip">
-                  <span class="material-symbols-outlined">smart_toy</span>
-                  <span>Respons &lt; 2 Detik • 85% Otomatisasi Tiket</span>
-                </div>
               </div>
 
               <div>
-                <a href="#kontak" class="btn btn-secondary btn-block portofolio-demo-btn" data-service="chatbot-ai">
+                <a href="#kontak" class="btn btn-primary btn-block portofolio-demo-btn" data-service="chatbot-ai">
                   <span>Demo</span>
                   <span class="material-symbols-outlined" style="font-size:16px;">arrow_forward</span>
                 </a>
@@ -1035,136 +1020,141 @@
 
             <!-- Card 1: Founder -->
             <div class="team-card">
-              <div class="team-avatar-box tint-amber">
-                <div class="team-avatar-icon-wrap">
-                  <span class="material-symbols-outlined">architecture</span>
-                </div>
+              <div class="team-avatar-box">
+                <img src="assets/team/rifal-founder.jpg" alt="Muhammad Rifal Alfarizy - Founder" class="team-photo-img"
+                  loading="lazy">
               </div>
               <div class="team-info">
                 <h3 class="team-name">Muhammad Rifal Alfarizy</h3>
-                <div class="team-role">Founder &amp; Lead Systems Architect</div>
+                <div class="team-role">Founder</div>
                 <p class="team-bio">
-                  Merancang arsitektur sistem terdistribusi, tata kelola teknologi enterprise, dan standar rekayasa
-                  presisi di NAFA.
+                  Arsitektur sistem enterprise, rekayasa perangkat lunak, dan standar teknologi NAFA.
                 </p>
               </div>
             </div>
 
-            <!-- Card 2: Fullstack Engineer -->
+            <!-- Card 2: Project Manager -->
             <div class="team-card">
-              <div class="team-avatar-box tint-indigo">
-                <div class="team-avatar-icon-wrap">
-                  <span class="material-symbols-outlined">terminal</span>
-                </div>
+              <div class="team-avatar-box avatar-placeholder">
+                <svg class="team-human-silhouette" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="32" cy="22" r="11" stroke="currentColor" stroke-width="2.5" fill="none" />
+                  <path d="M14 54C14 42 22 38 32 38C42 38 50 42 50 54" stroke="currentColor" stroke-width="2.5"
+                    stroke-linecap="round" />
+                </svg>
               </div>
               <div class="team-info">
-                <h3 class="team-name">Senior Fullstack Engineer</h3>
-                <div class="team-role">Web &amp; API Architecture</div>
+                <h3 class="team-name">Segera</h3>
+                <div class="team-role">Project Manager</div>
                 <p class="team-bio">
-                  Membangun aplikasi web modular performa tinggi, REST/GraphQL API terukur, dan optimalisasi query
-                  database.
+                  Tata kelola sprint agile, manajemen timeline, dan orkestrasi delivery sistem.
                 </p>
               </div>
             </div>
 
-            <!-- Card 3: DevOps & Cloud -->
+            <!-- Card 3: Fullstack Engineer (1) -->
             <div class="team-card">
-              <div class="team-avatar-box tint-sky">
-                <div class="team-avatar-icon-wrap">
-                  <span class="material-symbols-outlined">dns</span>
-                </div>
+              <div class="team-avatar-box avatar-placeholder">
+                <svg class="team-human-silhouette" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="32" cy="22" r="11" stroke="currentColor" stroke-width="2.5" fill="none" />
+                  <path d="M14 54C14 42 22 38 32 38C42 38 50 42 50 54" stroke="currentColor" stroke-width="2.5"
+                    stroke-linecap="round" />
+                </svg>
               </div>
               <div class="team-info">
-                <h3 class="team-name">DevOps &amp; Cloud Engineer</h3>
-                <div class="team-role">Infrastructure &amp; CI/CD Lead</div>
+                <h3 class="team-name">Segera</h3>
+                <div class="team-role">Fullstack Engineer</div>
                 <p class="team-bio">
-                  Mengorkestrasikan arsitektur cloud AWS/VPS, pipeline CI/CD terotomasi, serta provisioning Terraform
-                  &amp; Ansible.
+                  Rekayasa backend scalable, arsitektur database, dan integrasi API performa tinggi.
                 </p>
               </div>
             </div>
 
-            <!-- Card 4: Technical Project Manager -->
+            <!-- Card 4: Fullstack Engineer (2) -->
             <div class="team-card">
-              <div class="team-avatar-box tint-emerald">
-                <div class="team-avatar-icon-wrap">
-                  <span class="material-symbols-outlined">manage_accounts</span>
-                </div>
+              <div class="team-avatar-box avatar-placeholder">
+                <svg class="team-human-silhouette" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="32" cy="22" r="11" stroke="currentColor" stroke-width="2.5" fill="none" />
+                  <path d="M14 54C14 42 22 38 32 38C42 38 50 42 50 54" stroke="currentColor" stroke-width="2.5"
+                    stroke-linecap="round" />
+                </svg>
               </div>
               <div class="team-info">
-                <h3 class="team-name">Technical Project Manager</h3>
-                <div class="team-role">Agile Delivery &amp; Sprint Lead</div>
+                <h3 class="team-name">Segera</h3>
+                <div class="team-role">Fullstack Engineer</div>
                 <p class="team-bio">
-                  Memimpin tata kelola sprint agile, mitigasi risiko teknis, dan translasi kebutuhan bisnis menjadi
-                  backlog rekayasa.
+                  Pengembangan antarmuka web modern, interaktivitas dinamis, dan sistem desain modular.
                 </p>
               </div>
             </div>
 
             <!-- Card 5: AI Engineer -->
             <div class="team-card">
-              <div class="team-avatar-box tint-purple">
-                <div class="team-avatar-icon-wrap">
-                  <span class="material-symbols-outlined">smart_toy</span>
-                </div>
+              <div class="team-avatar-box avatar-placeholder">
+                <svg class="team-human-silhouette" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="32" cy="22" r="11" stroke="currentColor" stroke-width="2.5" fill="none" />
+                  <path d="M14 54C14 42 22 38 32 38C42 38 50 42 50 54" stroke="currentColor" stroke-width="2.5"
+                    stroke-linecap="round" />
+                </svg>
               </div>
               <div class="team-info">
-                <h3 class="team-name">AI &amp; Machine Learning Engineer</h3>
-                <div class="team-role">LangChain &amp; Intelligent Automation</div>
+                <h3 class="team-name">Segera</h3>
+                <div class="team-role">AI Engineer</div>
                 <p class="team-bio">
-                  Mengembangkan integrasi LangChain, agen LLM otonom berbasis RAG, dan automasi pemrosesan dokumen
-                  cerdas.
+                  Implementasi model LLM, alur kerja LangChain, dan solusi RAG terintegrasi.
                 </p>
               </div>
             </div>
 
-            <!-- Card 6: Data Analyst -->
+            <!-- Card 6: Infrastructure Engineer -->
             <div class="team-card">
-              <div class="team-avatar-box tint-rose">
-                <div class="team-avatar-icon-wrap">
-                  <span class="material-symbols-outlined">query_stats</span>
-                </div>
+              <div class="team-avatar-box avatar-placeholder">
+                <svg class="team-human-silhouette" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="32" cy="22" r="11" stroke="currentColor" stroke-width="2.5" fill="none" />
+                  <path d="M14 54C14 42 22 38 32 38C42 38 50 42 50 54" stroke="currentColor" stroke-width="2.5"
+                    stroke-linecap="round" />
+                </svg>
               </div>
               <div class="team-info">
-                <h3 class="team-name">Data Analytics Specialist</h3>
-                <div class="team-role">BI &amp; Business Insights</div>
+                <h3 class="team-name">Segera</h3>
+                <div class="team-role">Infrastructure Engineer</div>
                 <p class="team-bio">
-                  Menyusun pipeline ETL data terintegrasi, visualisasi Tableau interaktif, dan pemodelan prediktif
-                  bisnis.
+                  Orkestrasi cloud AWS/VPS, pipeline CI/CD otomatis, dan konfigurasi server.
                 </p>
               </div>
             </div>
 
-            <!-- Card 7: UI/UX Product Designer -->
+            <!-- Card 7: Data Analyst -->
             <div class="team-card">
-              <div class="team-avatar-box tint-teal">
-                <div class="team-avatar-icon-wrap">
-                  <span class="material-symbols-outlined">design_services</span>
-                </div>
+              <div class="team-avatar-box avatar-placeholder">
+                <svg class="team-human-silhouette" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="32" cy="22" r="11" stroke="currentColor" stroke-width="2.5" fill="none" />
+                  <path d="M14 54C14 42 22 38 32 38C42 38 50 42 50 54" stroke="currentColor" stroke-width="2.5"
+                    stroke-linecap="round" />
+                </svg>
               </div>
               <div class="team-info">
-                <h3 class="team-name">UI/UX Product Designer</h3>
-                <div class="team-role">Design Systems &amp; User Experience</div>
+                <h3 class="team-name">Segera</h3>
+                <div class="team-role">Data Analyst</div>
                 <p class="team-bio">
-                  Merancang sistem desain modular, alur pengguna intuitif, dan prototipe presisi tinggi untuk aplikasi
-                  enterprise.
+                  Pemodelan pipeline data, analitik bisnis prediktif, dan visualisasi dasbor Tableau.
                 </p>
               </div>
             </div>
 
-            <!-- Card 8: QA & Security Engineer -->
+            <!-- Card 8: Software Quality Analyst -->
             <div class="team-card">
-              <div class="team-avatar-box tint-slate">
-                <div class="team-avatar-icon-wrap">
-                  <span class="material-symbols-outlined">verified_user</span>
-                </div>
+              <div class="team-avatar-box avatar-placeholder">
+                <svg class="team-human-silhouette" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="32" cy="22" r="11" stroke="currentColor" stroke-width="2.5" fill="none" />
+                  <path d="M14 54C14 42 22 38 32 38C42 38 50 42 50 54" stroke="currentColor" stroke-width="2.5"
+                    stroke-linecap="round" />
+                </svg>
               </div>
               <div class="team-info">
-                <h3 class="team-name">QA &amp; Security Specialist</h3>
-                <div class="team-role">System Reliability &amp; Testing</div>
+                <h3 class="team-name">Segera</h3>
+                <div class="team-role">Software Quality Analyst</div>
                 <p class="team-bio">
-                  Mengawal pengujian otomatis end-to-end, audit keamanan kode, dan pengujian beban performa sistem
-                  digital.
+                  Otomatisasi pengujian end-to-end, verifikasi performa beban, dan audit mutu sistem.
                 </p>
               </div>
             </div>
@@ -1172,31 +1162,101 @@
           </div>
         </div>
 
-        <!-- Divider Line -->
-        <hr class="team-divider">
+      </div>
+    </section>
 
-        <!-- Career Callout (We're looking for talented people) -->
-        <div id="karir-callout" class="team-career-section">
-          <div class="team-career-icon-wrap">
-            <svg class="team-sunburst-icon" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path
-                d="M18 2V8M18 28V34M2 18H8M28 18H34M6.69 6.69L10.93 10.93M25.07 25.07L29.31 29.31M6.69 29.31L10.93 25.07M25.07 10.93L29.31 6.69"
-                stroke="#0f172a" stroke-width="2.6" stroke-linecap="round" />
-            </svg>
-          </div>
-          <h3 class="team-career-title">Kami Mencari Talenta Rekayasa Terbaik</h3>
-          <p class="team-career-subtitle">
-            NAFA Teknologi terus berkembang. Kami selalu membuka ruang bagi rekayasawan berdedikasi tinggi, mahasiswa
-            berprestasi, dan inovator sistem digital untuk bergabung dan berkarya bersama.
+    <!-- ==========================================================================
+         7. KARIR & REKRUTMEN (#karir)
+         ========================================================================== -->
+    <section id="karir" class="section-karir">
+      <div class="container">
+
+        <div class="karir-header">
+          <h2 class="section-title">Peluang Karir &amp; Magang</h2>
+          <p class="karir-header-subtitle">
+            Bergabunglah bersama kami dengan tim yang terus bertumbuh dalam membangun ekosistem perangkat lunak yang
+            tangguh dan memiliki dampak nyata.
           </p>
-          <div class="team-career-actions">
-            <a href="https://wa.me/6288805626297?text=Halo%20NAFA%20Teknologi,%20saya%20tertarik%20dengan%20peluang%20karir%20dan%20kolaborasi%20engineering."
-              target="_blank" rel="noopener noreferrer" class="btn btn-primary"
-              style="padding: 0.75rem 1.75rem; border-radius: 9999px;">
-              <span>Konsultasi Karir &amp; Magang</span>
-              <span class="material-symbols-outlined" style="font-size:18px;">arrow_forward</span>
-            </a>
+        </div>
+
+        <div class="karir-list">
+
+          <!-- Position 1: Intern Fullstack Engineer (Remote) -->
+          <div class="karir-card">
+            <div class="karir-card-header">
+              <h3 class="karir-role-title">Intern Fullstack Engineer (Remote)</h3>
+              <a href="https://wa.me/6288805626297?text=Halo%20NAFA%20Teknologi,%20saya%20tertarik%20melamar%20posisi%20Intern%20Fullstack%20Engineer%20(Remote)."
+                target="_blank" rel="noopener noreferrer" class="karir-apply-link">
+                <span>Apply</span>
+                <span class="material-symbols-outlined" style="font-size:16px;">north_east</span>
+              </a>
+            </div>
+            <p class="karir-card-desc">
+              Membangun fitur antarmuka modern, integrasi API, serta optimasi performa aplikasi web end-to-end.
+            </p>
           </div>
+
+          <!-- Position 2: Intern AI Engineer (Remote) -->
+          <div class="karir-card">
+            <div class="karir-card-header">
+              <h3 class="karir-role-title">Intern AI Engineer (Remote)</h3>
+              <a href="https://wa.me/6288805626297?text=Halo%20NAFA%20Teknologi,%20saya%20tertarik%20melamar%20posisi%20Intern%20AI%20Engineer%20(Remote)."
+                target="_blank" rel="noopener noreferrer" class="karir-apply-link">
+                <span>Apply</span>
+                <span class="material-symbols-outlined" style="font-size:16px;">north_east</span>
+              </a>
+            </div>
+            <p class="karir-card-desc">
+              Mengeksplorasi integrasi model LLM, alur kerja LangChain, dan optimasi retrieval pada sistem RAG.
+            </p>
+          </div>
+
+          <!-- Position 3: Intern Infrastructure Engineer (Remote) -->
+          <div class="karir-card">
+            <div class="karir-card-header">
+              <h3 class="karir-role-title">Intern Infrastructure Engineer (Remote)</h3>
+              <a href="https://wa.me/6288805626297?text=Halo%20NAFA%20Teknologi,%20saya%20tertarik%20melamar%20posisi%20Intern%20Infrastructure%20Engineer%20(Remote)."
+                target="_blank" rel="noopener noreferrer" class="karir-apply-link">
+                <span>Apply</span>
+                <span class="material-symbols-outlined" style="font-size:16px;">north_east</span>
+              </a>
+            </div>
+            <p class="karir-card-desc">
+              Membantu otomatisasi pipeline CI/CD, deployment container Docker, dan pemeliharaan server cloud.
+            </p>
+          </div>
+
+          <!-- Position 4: Data Analyst (Remote) -->
+          <div class="karir-card">
+            <div class="karir-card-header">
+              <h3 class="karir-role-title">Data Analyst (Remote)</h3>
+              <a href="https://wa.me/6288805626297?text=Halo%20NAFA%20Teknologi,%20saya%20tertarik%20melamar%20posisi%20Data%20Analyst%20(Remote)."
+                target="_blank" rel="noopener noreferrer" class="karir-apply-link">
+                <span>Apply</span>
+                <span class="material-symbols-outlined" style="font-size:16px;">north_east</span>
+              </a>
+            </div>
+            <p class="karir-card-desc">
+              Merancang pipeline data analitik, visualisasi dasbor interaktif, serta interpretasi metrik bisnis
+              strategis.
+            </p>
+          </div>
+
+          <!-- Position 5: Software Quality Analyst (Remote) -->
+          <div class="karir-card">
+            <div class="karir-card-header">
+              <h3 class="karir-role-title">Software Quality Analyst (Remote)</h3>
+              <a href="https://wa.me/6288805626297?text=Halo%20NAFA%20Teknologi,%20saya%20tertarik%20melamar%20posisi%20Software%20Quality%20Analyst%20(Remote)."
+                target="_blank" rel="noopener noreferrer" class="karir-apply-link">
+                <span>Apply</span>
+                <span class="material-symbols-outlined" style="font-size:16px;">north_east</span>
+              </a>
+            </div>
+            <p class="karir-card-desc">
+              Menyusun skenario automated testing end-to-end, uji performa beban, dan audit mutu perangkat lunak.
+            </p>
+          </div>
+
         </div>
 
       </div>
@@ -1490,8 +1550,8 @@
                 <li><a href="#layanan" class="footer-nav-link">Rencana Inovasi</a></li>
                 <li><a href="#portofolio" class="footer-nav-link">Portofolio Sistem</a></li>
                 <li><a href="#biaya" class="footer-nav-link">Biaya Solusi</a></li>
-                <li><a href="#canvas" class="footer-nav-link">Standar Mutu</a></li>
-                <li><a href="#kontak" class="footer-nav-link">Karir &amp; Talenta</a></li>
+                <li><a href="#tim" class="footer-nav-link">Tim Rekayasa</a></li>
+                <li><a href="#karir" class="footer-nav-link">Karir &amp; Talenta</a></li>
               </ul>
             </div>
 

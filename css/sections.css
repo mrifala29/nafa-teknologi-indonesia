@@ -219,7 +219,7 @@
   width: 100%;
   border-radius: var(--radius-2xl);
   border: 1px solid rgba(203, 213, 225, 0.85);
-  background-color: var(--color-surface-canvas);
+  background-color: var(--color-surface-alt);
   box-shadow: var(--shadow-sm);
   min-height: auto;
   overflow: hidden;
@@ -255,7 +255,7 @@
   position: absolute;
   inset: 0;
   z-index: 40;
-  background-color: var(--color-surface-canvas);
+  background-color: var(--color-surface-alt);
   border-radius: inherit;
   display: flex;
   align-items: center;
@@ -710,7 +710,7 @@
 .section-layanan {
   width: 100%;
   padding: 3.5rem 0;
-  background-color: #fafcff;
+  background-color: var(--color-surface-alt);
 }
 
 @media (min-width: 768px) {
@@ -978,18 +978,31 @@
   background-color: #ffffff;
   border-top: 1px solid var(--color-border);
   border-bottom: 1px solid var(--color-border);
+  overflow: hidden;
 }
 
 @media (min-width: 768px) {
   .section-portofolio {
-    padding: 5rem 0;
+    padding: 5.5rem 0;
   }
 }
 
 .portofolio-header {
+  position: relative;
+  z-index: 1;
   text-align: center;
-  max-width: 780px;
-  margin: 0 auto 2.25rem auto;
+  max-width: 820px;
+  margin: 0 auto 2.5rem auto;
+  padding: 0 1rem;
+}
+
+.portofolio-subtitle {
+  font-family: var(--font-body);
+  font-size: clamp(0.975rem, 2vw, 1.075rem);
+  color: var(--color-text-body);
+  line-height: 1.65;
+  margin: 0.75rem auto 0 auto;
+  max-width: 680px;
 }
 
 .portofolio-tabs-wrapper {
@@ -1055,8 +1068,8 @@
   scroll-snap-align: center;
   background-color: #ffffff;
   border-radius: var(--radius-xl);
-  border: 1px solid var(--color-border);
-  box-shadow: var(--shadow-2xs);
+  border: 2px solid var(--color-primary);
+  box-shadow: var(--shadow-sm);
   padding: 1.25rem;
   display: flex;
   flex-direction: column;
@@ -1080,8 +1093,8 @@
 }
 
 .portofolio-card:hover {
-  border-color: var(--color-primary);
-  box-shadow: 0 12px 28px -6px rgba(4, 120, 87, 0.12);
+  border-color: var(--color-primary-dark);
+  box-shadow: var(--shadow-md);
   transform: translateY(-3px);
 }
 
@@ -1164,7 +1177,7 @@
   flex-shrink: 0;
 }
 
-/* Demo Button */
+/* Demo Button matching Konsultasi button in Biaya Jasa */
 .portofolio-demo-btn {
   display: flex;
   align-items: center;
@@ -1172,10 +1185,27 @@
   gap: 0.5rem;
   width: 100%;
   padding: 0.625rem 1rem;
+  border-radius: var(--radius-md);
+  background-color: var(--color-primary);
+  color: var(--color-on-primary);
+  border: 1px solid transparent;
+  font-family: var(--font-headline);
   font-size: 0.875rem;
   font-weight: 600;
   text-decoration: none;
+  box-shadow: var(--shadow-2xs);
   transition: all var(--transition-fast);
+}
+
+.portofolio-demo-btn:hover {
+  background-color: var(--color-primary-dark);
+  color: var(--color-on-primary);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm);
+}
+
+.portofolio-demo-btn:active {
+  transform: translateY(0);
 }
 
 
@@ -1796,7 +1826,8 @@
 }
 
 /* Precision Blueprint Grid Background Squares */
-.team-blueprint-grid {
+.team-blueprint-grid,
+.portofolio-blueprint-grid {
   position: absolute;
   top: 0;
   left: 50%;
@@ -1884,7 +1915,7 @@
   transform: translateY(-4px);
 }
 
-/* Square Avatar Box with Soft Tint & Center Icon Placeholder */
+/* Square Avatar Box */
 .team-avatar-box {
   width: 100%;
   aspect-ratio: 1 / 1;
@@ -1902,97 +1933,71 @@
   box-shadow: 0 12px 24px -6px rgba(15, 23, 42, 0.08);
 }
 
-.team-avatar-icon-wrap {
-  width: 64px;
-  height: 64px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.9);
-  backdrop-filter: blur(4px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.95);
-  transition: transform 0.25s ease;
+/* Real Photo for Founder */
+.team-photo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
 }
 
-.team-card:hover .team-avatar-icon-wrap {
+/* Transparent Embossed Placeholder with Raised 3D Border */
+.team-avatar-box.avatar-placeholder {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.65) 0%, rgba(241, 245, 249, 0.35) 100%);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 2px solid rgba(255, 255, 255, 0.95);
+  box-shadow: 
+    inset 1px 1px 3px rgba(255, 255, 255, 0.95),
+    inset -1px -1px 3px rgba(15, 23, 42, 0.05),
+    0 8px 20px -4px rgba(15, 23, 42, 0.06),
+    0 2px 4px rgba(0, 0, 0, 0.03);
+}
+
+.team-card:hover .team-avatar-box.avatar-placeholder {
+  border-color: rgba(255, 255, 255, 1);
+  box-shadow: 
+    inset 1px 1px 4px rgba(255, 255, 255, 1),
+    inset -1px -1px 4px rgba(15, 23, 42, 0.07),
+    0 12px 24px -6px rgba(15, 23, 42, 0.1);
+}
+
+/* Stickman / Human Silhouette (Head + Body) */
+.team-human-silhouette {
+  width: 68px;
+  height: 68px;
+  color: #64748b;
+  opacity: 0.75;
+  transition: transform 0.25s ease, opacity 0.25s ease, color 0.25s ease;
+}
+
+.team-card:hover .team-human-silhouette {
   transform: scale(1.08);
+  opacity: 1;
+  color: var(--color-primary);
 }
 
-.team-avatar-box .material-symbols-outlined {
-  font-size: 32px;
-}
-
-/* Palette Tints matching reference */
-.tint-amber {
-  background-color: #fef7ee;
-  border: 1px solid #fed7aa;
-}
-.tint-amber .material-symbols-outlined {
-  color: #ea580c;
-}
-
-.tint-emerald {
+/* Subtle TBA Badge */
+.team-tba-badge {
+  display: inline-block;
+  font-family: var(--font-code);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  color: #047857;
   background-color: #ecfdf5;
   border: 1px solid #a7f3d0;
-}
-.tint-emerald .material-symbols-outlined {
-  color: #059669;
-}
-
-.tint-indigo {
-  background-color: #f5f3ff;
-  border: 1px solid #ddd6fe;
-}
-.tint-indigo .material-symbols-outlined {
-  color: #6366f1;
-}
-
-.tint-sky {
-  background-color: #f0f9ff;
-  border: 1px solid #bae6fd;
-}
-.tint-sky .material-symbols-outlined {
-  color: #0284c7;
-}
-
-.tint-purple {
-  background-color: #faf5ff;
-  border: 1px solid #e9d5ff;
-}
-.tint-purple .material-symbols-outlined {
-  color: #9333ea;
-}
-
-.tint-rose {
-  background-color: #fff1f2;
-  border: 1px solid #fecdd3;
-}
-.tint-rose .material-symbols-outlined {
-  color: #e11d48;
-}
-
-.tint-teal {
-  background-color: #f0fdfa;
-  border: 1px solid #99f6e4;
-}
-.tint-teal .material-symbols-outlined {
-  color: #0d9488;
-}
-
-.tint-slate {
-  background-color: #f8fafc;
-  border: 1px solid #cbd5e1;
-}
-.tint-slate .material-symbols-outlined {
-  color: #475569;
+  padding: 1px 6px;
+  border-radius: 4px;
+  letter-spacing: 0.02em;
+  margin-left: 4px;
+  vertical-align: middle;
 }
 
 /* Info below the avatar box */
 .team-info {
   padding-top: 0.875rem;
-  text-align: left;
+  text-align: center;
 }
 
 .team-name {
@@ -2002,6 +2007,7 @@
   color: #0f172a;
   margin: 0 0 3px 0;
   line-height: 1.3;
+  text-align: center;
 }
 
 .team-role {
@@ -2011,6 +2017,7 @@
   color: var(--color-primary);
   margin: 0 0 6px 0;
   line-height: 1.3;
+  text-align: center;
 }
 
 .team-bio {
@@ -2019,64 +2026,151 @@
   color: var(--color-text-body);
   line-height: 1.5;
   margin: 0;
-}
-
-/* Divider & Karir Callout (We're looking for talented people) */
-.team-divider {
-  border: 0;
-  border-top: 1px solid var(--color-border);
-  margin: 4.5rem 0 3.5rem 0;
-  width: 100%;
-}
-
-.team-career-section {
-  position: relative;
-  z-index: 1;
   text-align: center;
-  max-width: 680px;
-  margin: 0 auto;
+}
+
+/* ==========================================================================
+   7. KARIR & REKRUTMEN (#karir)
+   Background matching Biaya Jasa (var(--color-surface-alt))
+   Cards inspired by brutalist outline pill style reference
+   ========================================================================== */
+
+.section-karir {
+  position: relative;
+  width: 100%;
+  padding: 4.5rem 0 5.5rem 0;
+  background-color: var(--color-surface-alt);
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+}
+
+@media (min-width: 768px) {
+  .section-karir {
+    padding: 6rem 0 7rem 0;
+  }
+}
+
+.karir-header {
+  text-align: center;
+  max-width: 740px;
+  margin: 0 auto 3.25rem auto;
   padding: 0 1rem;
 }
 
-.team-career-icon-wrap {
+.karir-header .section-title {
+  font-family: var(--font-headline);
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  font-weight: 700;
+  color: #0f172a;
+  letter-spacing: -0.025em;
+  margin-bottom: 0.75rem;
+}
+
+.karir-header-subtitle {
+  font-family: var(--font-body);
+  font-size: clamp(0.975rem, 1.8vw, 1.075rem);
+  color: var(--color-text-body);
+  line-height: 1.65;
+  margin: 0 auto;
+}
+
+/* Career Grid Layout (2 columns: kanan-kiri) */
+.karir-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  max-width: 1040px;
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  .karir-list {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.75rem;
+  }
+
+  /* Center the 5th card nicely when odd count */
+  .karir-card:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+    max-width: calc(50% - 0.875rem);
+    margin: 0 auto;
+    width: 100%;
+  }
+}
+
+/* Career Card with green border and shadow matching Biaya Jasa */
+.karir-card {
+  background-color: #ffffff;
+  border: 2px solid var(--color-primary);
+  border-radius: var(--radius-xl);
+  box-shadow: 4px 4px 0 var(--color-primary);
+  padding: 1.5rem 1.625rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.karir-card:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 var(--color-primary-dark);
+}
+
+.karir-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.875rem;
+}
+
+.karir-role-title {
+  font-family: var(--font-headline);
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0;
+  line-height: 1.35;
+}
+
+/* Apply button matching Konsultasi button in Biaya Jasa */
+.karir-apply-link {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 48px;
-  height: 48px;
-  margin-bottom: 1.25rem;
-}
-
-.team-sunburst-icon {
-  width: 40px;
-  height: 40px;
-  stroke: #0f172a;
-}
-
-.team-career-title {
+  gap: 0.35rem;
+  padding: 0.45rem 1.15rem;
+  border-radius: var(--radius-md);
+  background-color: var(--color-primary);
+  color: var(--color-on-primary);
   font-family: var(--font-headline);
-  font-size: clamp(1.5rem, 3.5vw, 2.125rem);
-  font-weight: 700;
-  color: #0f172a;
-  margin: 0 0 0.75rem 0;
-  letter-spacing: -0.02em;
-  line-height: 1.25;
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+  flex-shrink: 0;
+  box-shadow: var(--shadow-2xs);
+  transition: all var(--transition-fast);
 }
 
-.team-career-subtitle {
+.karir-apply-link:hover {
+  background-color: var(--color-primary-dark);
+  color: var(--color-on-primary);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm);
+}
+
+.karir-apply-link:active {
+  transform: translateY(0);
+}
+
+.karir-card-desc {
   font-family: var(--font-body);
-  font-size: clamp(0.9375rem, 1.8vw, 1.05rem);
-  color: var(--color-text-body);
-  line-height: 1.65;
-  margin: 0 auto 1.75rem auto;
+  font-size: 0.875rem;
+  color: #475569;
+  line-height: 1.6;
+  margin: 0;
 }
 
-.team-career-actions {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  flex-wrap: wrap;
-}
 
 
