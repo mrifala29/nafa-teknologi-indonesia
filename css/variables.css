@@ -19,8 +19,8 @@
   --color-surface: #ffffff;
   --color-surface-dim: #f1f5f9;
   --color-surface-card: #ffffff;
-  --color-surface-canvas: #f8fbf9;
-  --color-surface-alt: #f8fbf9;
+  --color-surface-canvas: #fafcff;
+  --color-surface-alt: #fafcff;
 
   /* Typography / Slate Neutrals */
   --color-text-headline: #0f172a; /* Slate 900 */
