@@ -308,9 +308,17 @@
 }
 
 .browser-body {
-  padding: 0.75rem;
+  padding: 0.5rem;
   background-color: #f8fafc;
   overflow-x: hidden;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+@media (min-width: 480px) {
+  .browser-body {
+    padding: 0.75rem;
+  }
 }
 
 @media (min-width: 640px) {
@@ -322,12 +330,20 @@
 /* Service Mockup Inside Classes */
 .mockup-inner-card {
   background: #ffffff;
-  border-radius: 12px;
+  border-radius: 10px;
   border: 1px solid #e2e8f0;
-  padding: 0.875rem 0.75rem;
+  padding: 0.625rem 0.5rem;
   box-shadow: 0 1px 2px rgba(0,0,0,0.04);
   width: 100%;
   box-sizing: border-box;
+  min-width: 0;
+}
+
+@media (min-width: 480px) {
+  .mockup-inner-card {
+    border-radius: 12px;
+    padding: 0.875rem 0.75rem;
+  }
 }
 
 @media (min-width: 640px) {

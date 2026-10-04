@@ -114,6 +114,10 @@ const CanvasModule = (function () {
   function playIntroSequence() {
     resetState();
 
+    const isMobile = window.innerWidth < 768;
+    const isBot = /bot|googlebot|crawler|spider|robot|crawling|lighthouse/i.test(navigator.userAgent);
+    const delay = isBot ? 50 : (isMobile ? 800 : 1700);
+
     // Slide transition: intro panel slides sideways out
     const slideTimer = setTimeout(() => {
       const introPanel = document.getElementById('canvas-intro-panel');
@@ -130,7 +134,7 @@ const CanvasModule = (function () {
       }, 350);
       timers.push(nodesTimer);
 
-    }, 1700);
+    }, delay);
 
     timers.push(slideTimer);
   }
