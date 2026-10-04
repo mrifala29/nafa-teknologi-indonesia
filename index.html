@@ -20,12 +20,12 @@
   <script>
     (function () {
       var legacy = {
-        '#tim': '/karir/#tim',
-        '#karir': '/karir/',
-        '#biaya': '/biaya/',
-        '#faq': '/faq/',
-        '#kontak': '/kontak/',
-        '#portofolio': '/portofolio/'
+        '#filosofi': '/tentang-kami/',
+        '#tim': '/tentang-kami/#tim',
+        '#karir': '/tentang-kami/#karir',
+        '#biaya': '/layanan/#biaya',
+        '#faq': '/kontak/#faq',
+        '#kontak': '/kontak/'
       };
       var dest = legacy[(window.location.hash || '').toLowerCase()];
       if (!dest) return;
@@ -147,7 +147,7 @@
         <a href="/" class="nav-link active" aria-current="page">Beranda</a>
         <a href="/layanan/" class="nav-link">Layanan</a>
         <a href="/portofolio/" class="nav-link">Portofolio</a>
-        <a href="/karir/" class="nav-link">Karir</a>
+        <a href="/tentang-kami/" class="nav-link">Tentang Kami</a>
         <a href="/kontak/" class="nav-link">Kontak</a>
       </nav>
 
@@ -181,7 +181,7 @@
       <a href="/" class="mobile-nav-link text-primary" aria-current="page">Beranda</a>
       <a href="/layanan/" class="mobile-nav-link">Layanan</a>
       <a href="/portofolio/" class="mobile-nav-link">Portofolio</a>
-      <a href="/karir/" class="mobile-nav-link">Karir</a>
+      <a href="/tentang-kami/" class="mobile-nav-link">Tentang Kami</a>
       <a href="/kontak/" class="mobile-nav-link">Kontak &amp; Konsultasi</a>
     </nav>
     <div style="margin-top:auto; padding-top:1.5rem; border-top:1px solid var(--color-border);">
@@ -430,48 +430,7 @@
     </section>
 
     <!-- ==========================================================================
-         2. FILOSOFI BRAND (#filosofi)
-         ========================================================================== -->
-    <section id="filosofi" class="section-filosofi">
-      <div class="container">
-
-        <div class="filosofi-header">
-          <div class="filosofi-title-wrap">
-            <h2 class="filosofi-title-main">Nafa'a</h2>
-            <span class="filosofi-separator">—</span>
-            <span class="filosofi-italic">Memberi Manfaat</span>
-          </div>
-          <p class="filosofi-quote">
-            “Teknologi terbaik bukan yang paling rumit, melainkan yang paling presisi menjawab masalah dan memberi
-            dampak nyata.”
-          </p>
-        </div>
-
-        <div class="filosofi-grid">
-          <!-- Card 1 -->
-          <div class="filosofi-card float-filosofi-1">
-            <h3 class="filosofi-card-title">Bagi Ekosistem Bisnis</h3>
-            <p>
-              Mengembangkan infrastruktur perangkat lunak yang andal, aman, dan tepat sasaran untuk meningkatkan
-              efisiensi operasional skala industri secara berkelanjutan.
-            </p>
-          </div>
-
-          <!-- Card 2 -->
-          <div class="filosofi-card float-filosofi-2">
-            <h3 class="filosofi-card-title">Bagi Talenta IT &amp; Sosial</h3>
-            <p>
-              Membangun ruang kolaborasi inklusif bagi siswa, mahasiswa, freshgraduate, hingga
-              profesional untuk mengasah kompetensi dan
-              karakter di industri digital.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ==========================================================================
-         3. SOLUSI REKAYASA DIGITAL + RENCANA INOVASI (#layanan)
+         2. OVERVIEW LAYANAN (#layanan)
          ========================================================================== -->
     <section id="layanan" class="section-layanan">
       <div class="container">
@@ -572,74 +531,124 @@
           </a>
         </div>
 
-        <!-- Rencana Inovasi (R&D Roadmap) -->
-        <div id="inovasi" style="margin-top:2rem;">
-          <div class="section-title-wrap" style="margin-bottom:1.5rem;">
-            <h2 class="section-title" style="font-size:1.75rem;">
-              Rencana Inovasi
-            </h2>
-          </div>
-          <div class="inovasi-grid">
-            <!-- Inovasi 1 -->
-            <div class="inovasi-card">
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         3. PORTOFOLIO PILIHAN (#portofolio)
+         ========================================================================== -->
+    <section id="portofolio" class="section-portofolio">
+      <!-- Architectural Precision Blueprint Grid Background -->
+      <div class="portofolio-blueprint-grid" aria-hidden="true"></div>
+
+      <div class="container">
+
+        <!-- Section Header -->
+        <div class="portofolio-header">
+          <h2 class="section-title" style="margin-bottom:0.75rem;">Portofolio Pilihan</h2>
+          <p class="portofolio-subtitle">
+            Tiga proyek yang paling mewakili cara kami bekerja: katalog web, produk berbasis AI, dan dasbor analitik
+            data. Seluruhnya sudah live dan bisa Anda coba langsung.
+          </p>
+        </div>
+
+        <!-- Horizontal Slider Wrap with Prev/Next Navigation -->
+        <div class="portofolio-slider-wrap">
+          <button id="portofolio-prev-btn" class="slider-nav-btn slider-prev-btn" aria-label="Geser Portofolio ke Kiri">
+            <span class="material-symbols-outlined" style="font-size:20px;">chevron_left</span>
+          </button>
+          <button id="portofolio-next-btn" class="slider-nav-btn slider-next-btn"
+            aria-label="Geser Portofolio ke Kanan">
+            <span class="material-symbols-outlined" style="font-size:20px;">chevron_right</span>
+          </button>
+
+          <!-- Horizontal Portfolio Slider Track -->
+          <div id="portofolio-slider" class="portofolio-slider">
+
+            <!-- Card 1: Web Profile - Gadget Bekas Sidoarjo (Live) -->
+            <div class="portofolio-card" data-category="web-profile">
               <div>
-                <div class="inovasi-header">
-                  <div class="node-icon-box">
-                    <span class="material-symbols-outlined" style="font-size:20px;">visibility</span>
-                  </div>
-                  <span class="badge badge-neutral">Dalam Riset</span>
+                <div class="portofolio-img-wrap">
+                  <img src="assets/portfolio/gadget-bekas-sidoarjo.webp"
+                    alt="Preview Web Profile - Gadget Bekas Sidoarjo (GBS)" class="portofolio-card-img" loading="lazy"
+                    decoding="async">
                 </div>
-                <h3 class="inovasi-title">Computer Vision &amp; Pengolahan Citra</h3>
-                <p class="inovasi-desc">
-                  Deteksi objek otomatis, inspeksi visual proses industri, dan OCR pengenalan dokumen.
+                <span class="portofolio-cat-tag">Web Profile</span>
+                <h3 class="portofolio-title">Gadget Bekas Sidoarjo (GBS)</h3>
+                <p class="portofolio-desc">
+                  Platform web katalog dan penjualan gadget bekas terpercaya di Sidoarjo dengan navigasi responsif,
+                  verifikasi stok, dan integrasi WhatsApp.
                 </p>
               </div>
-              <div class="inovasi-footer">
-                <span>Fase Eksplorasi</span>
-                <span style="color:var(--color-primary); font-weight:600;">Pipeline QC &amp; OCR</span>
+
+              <div>
+                <a href="https://gadgetbekassidoarjo.web.id/" target="_blank" rel="noopener noreferrer"
+                  class="btn btn-primary btn-block portofolio-demo-btn" data-service="web-profile">
+                  <span>Demo</span>
+                  <span class="material-symbols-outlined" style="font-size:16px;">open_in_new</span>
+                </a>
               </div>
             </div>
 
-            <!-- Inovasi 2 -->
-            <div class="inovasi-card">
+            <!-- Card 2: AI Solution - TemanSkripsi (Live) -->
+            <div class="portofolio-card" data-category="chatbot-ai sistem-informasi-ai">
               <div>
-                <div class="inovasi-header">
-                  <div class="node-icon-box">
-                    <span class="material-symbols-outlined" style="font-size:20px;">search_insights</span>
-                  </div>
-                  <span class="badge badge-neutral">Dalam Riset</span>
+                <div class="portofolio-img-wrap">
+                  <img src="assets/portfolio/teman-skripsi-ai.webp" alt="Preview TemanSkripsi - Simulator Sidang AI"
+                    class="portofolio-card-img" loading="lazy" decoding="async">
                 </div>
-                <h3 class="inovasi-title">SEO Engine &amp; Optimasi Visibilitas</h3>
-                <p class="inovasi-desc">
-                  Riset algoritma perayapan mesin pencari dan otomatisasi struktur data indexing.
+                <span class="portofolio-cat-tag">Chatbot AI</span>
+                <h3 class="portofolio-title">TemanSkripsi — Simulator Sidang AI</h3>
+                <p class="portofolio-desc">
+                  Platform cerdas berbasis Google Gemini AI untuk simulasi dan persiapan sidang skripsi mahasiswa,
+                  mencakup latihan tanya-jawab dinamis, evaluasi mendalam, dan telaah dokumen.
                 </p>
               </div>
-              <div class="inovasi-footer">
-                <span>Fase Eksplorasi</span>
-                <span style="color:var(--color-primary); font-weight:600;">Crawl &amp; Structured Data</span>
+
+              <div>
+                <a href="https://teman-skripsi-plum.vercel.app/" target="_blank" rel="noopener noreferrer"
+                  class="btn btn-primary btn-block portofolio-demo-btn" data-service="chatbot-ai">
+                  <span>Demo</span>
+                  <span class="material-symbols-outlined" style="font-size:16px;">open_in_new</span>
+                </a>
               </div>
             </div>
 
-            <!-- Inovasi 3 -->
-            <div class="inovasi-card">
+            <!-- Card 4: Data Analytics - Warmindo (Live Tableau) -->
+            <div class="portofolio-card" data-category="data-analytics">
               <div>
-                <div class="inovasi-header">
-                  <div class="node-icon-box">
-                    <span class="material-symbols-outlined" style="font-size:20px;">flowsheet</span>
-                  </div>
-                  <span class="badge badge-emerald">R&amp;D</span>
+                <div class="portofolio-img-wrap">
+                  <img src="assets/portfolio/warmindo-analytics.webp"
+                    alt="Preview Data Analytics - Data Penjualan Warmindo by Muhammad Rifal Alfarizy"
+                    class="portofolio-card-img" loading="lazy" decoding="async">
                 </div>
-                <h3 class="inovasi-title">AI Agent &amp; Automation</h3>
-                <p class="inovasi-desc">
-                  Orkestrasi alur kerja tanpa hambatan antar-aplikasi bisnis dengan pipeline pemrosesan otomatis.
+                <span class="portofolio-cat-tag">Data Analytics</span>
+                <h3 class="portofolio-title">Data Penjualan Warmindo</h3>
+                <p class="portofolio-desc">
+                  Dasbor analitik interaktif Tableau Public untuk pemantauan omzet penjualan, analisis produk terlaris,
+                  tren akumulasi harian, dan preferensi metode pembayaran Warmindo.
                 </p>
               </div>
-              <div class="inovasi-footer">
-                <span>Fase Eksplorasi</span>
-                <span style="color:var(--color-primary); font-weight:600;">Event-Driven Automation</span>
+
+              <div>
+                <a href="https://public.tableau.com/app/profile/muhammad.rifal.alfarizy/viz/DataPenjualanWarmindo/WarmindoDashboard"
+                  target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-block portofolio-demo-btn"
+                  data-service="data-analytics">
+                  <span>Demo</span>
+                  <span class="material-symbols-outlined" style="font-size:16px;">open_in_new</span>
+                </a>
               </div>
             </div>
+
           </div>
+        </div>
+
+        <!-- CTA ke halaman portofolio lengkap -->
+        <div class="text-center" style="margin-top:2rem;">
+          <a href="/portofolio/" class="btn btn-secondary btn-lg">
+            <span>Lihat Semua Portofolio</span>
+            <span class="material-symbols-outlined" style="font-size:20px;">arrow_forward</span>
+          </a>
         </div>
 
       </div>
@@ -666,7 +675,7 @@
           </a>
           <a href="https://wa.me/6289630096698?text=Halo%20Nafa%20Teknologi,%20saya%20ingin%20berkonsultasi%20mengenai%20kebutuhan%20perangkat%20lunak%20kami." target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-lg">
             <span class="material-symbols-outlined" style="font-size:20px;">chat</span>
-            <span>Konsultasi via WhatsApp (Gratis)</span>
+            <span>WhatsApp Langsung</span>
           </a>
         </div>
 
@@ -762,13 +771,13 @@
             <div>
               <h4 class="footer-nav-heading">Perusahaan</h4>
               <ul class="footer-nav-list">
-                <li><a href="/#filosofi" class="footer-nav-link">Akar Filosofi</a></li>
-                <li><a href="/#inovasi" class="footer-nav-link">Rencana Inovasi</a></li>
+                <li><a href="/tentang-kami/" class="footer-nav-link">Akar Filosofi</a></li>
+                <li><a href="/layanan/#inovasi" class="footer-nav-link">Rencana Inovasi</a></li>
                 <li><a href="/portofolio/" class="footer-nav-link">Portofolio Sistem</a></li>
-                <li><a href="/biaya/" class="footer-nav-link">Biaya Solusi</a></li>
-                <li><a href="/karir/#tim" class="footer-nav-link">Tim Rekayasa</a></li>
-                <li><a href="/karir/" class="footer-nav-link">Karir &amp; Talenta</a></li>
-                <li><a href="/faq/" class="footer-nav-link">Pertanyaan Umum (FAQ)</a></li>
+                <li><a href="/layanan/#biaya" class="footer-nav-link">Biaya Solusi</a></li>
+                <li><a href="/tentang-kami/#tim" class="footer-nav-link">Tim Rekayasa</a></li>
+                <li><a href="/tentang-kami/#karir" class="footer-nav-link">Karir &amp; Talenta</a></li>
+                <li><a href="/kontak/#faq" class="footer-nav-link">Pertanyaan Umum (FAQ)</a></li>
               </ul>
             </div>
 

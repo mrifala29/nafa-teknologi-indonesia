@@ -36,27 +36,44 @@
   <meta name="twitter:image" content="https://nafateknologi.web.id/assets/og-banner.png">
   <meta name="twitter:image:alt" content="Layanan Software House Nafa Teknologi Indonesia">
 
-  <!-- Structured Data (JSON-LD): WebPage -->
+  <!-- Structured Data (JSON-LD): WebPage + Breadcrumb -->
   <script type="application/ld+json">
   {
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "WebPage",
-      "@id": "https://nafateknologi.web.id/layanan/",
-      "url": "https://nafateknologi.web.id/layanan/",
-      "name": "Layanan Jasa Pembuatan Website & Sistem Informasi AI | Nafa Teknologi",
-      "description": "Layanan rekayasa digital Nafa Teknologi: jasa pembuatan website, sistem informasi AI & ERP, dashboard analytics, cloud server, dan chatbot AI di Sidoarjo.",
-      "inLanguage": "id-ID",
-      "isPartOf": {
-        "@type": "WebSite",
-        "@id": "https://nafateknologi.web.id/",
-        "name": "Nafa Teknologi Indonesia",
-        "url": "https://nafateknologi.web.id/"
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "@id": "https://nafateknologi.web.id/layanan/",
+        "url": "https://nafateknologi.web.id/layanan/",
+        "name": "Layanan Jasa Pembuatan Website & Sistem Informasi AI | Nafa Teknologi",
+        "description": "Layanan rekayasa digital Nafa Teknologi: jasa pembuatan website, sistem informasi AI & ERP, dashboard analytics, cloud server, dan chatbot AI di Sidoarjo.",
+        "inLanguage": "id-ID",
+        "isPartOf": {
+          "@type": "WebSite",
+          "@id": "https://nafateknologi.web.id/",
+          "name": "Nafa Teknologi Indonesia",
+          "url": "https://nafateknologi.web.id/"
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Beranda",
+            "item": "https://nafateknologi.web.id/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Layanan",
+            "item": "https://nafateknologi.web.id/layanan/"
+          }
+        ]
       }
-    }
-  ]
-}
+    ]
+  }
   </script>
 
   <!-- Preconnect & High-Performance Async Google Fonts -->
@@ -113,7 +130,7 @@
         <a href="../index.html" class="nav-link">Beranda</a>
         <a href="../layanan/" class="nav-link active" aria-current="page">Layanan</a>
         <a href="../portofolio/" class="nav-link">Portofolio</a>
-        <a href="../karir/" class="nav-link">Karir</a>
+        <a href="../tentang-kami/" class="nav-link">Tentang Kami</a>
         <a href="../kontak/" class="nav-link">Kontak</a>
       </nav>
 
@@ -147,7 +164,7 @@
       <a href="../index.html" class="mobile-nav-link">Beranda</a>
       <a href="../layanan/" class="mobile-nav-link text-primary" aria-current="page">Layanan</a>
       <a href="../portofolio/" class="mobile-nav-link">Portofolio</a>
-      <a href="../karir/" class="mobile-nav-link">Karir</a>
+      <a href="../tentang-kami/" class="mobile-nav-link">Tentang Kami</a>
       <a href="../kontak/" class="mobile-nav-link">Kontak &amp; Konsultasi</a>
     </nav>
     <div style="margin-top:auto; padding-top:1.5rem; border-top:1px solid var(--color-border);">
@@ -159,10 +176,18 @@
   <main style="padding-top: var(--header-height);">
 
     <!-- ==========================================================================
-         1. LAYANAN INTI (#layanan)
+         1. LAYANAN INTI & RENCANA INOVASI (#layanan)
          ========================================================================== -->
     <section id="layanan" class="section-layanan">
       <div class="container">
+
+        <!-- Breadcrumb -->
+        <nav class="font-mono" aria-label="Breadcrumb"
+          style="font-size:11px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:var(--color-text-muted); margin-bottom:0.75rem;">
+          <a href="../index.html" style="color:inherit;">Beranda</a>
+          <span aria-hidden="true" style="opacity:0.5;">/</span>
+          <span style="color:var(--color-primary);">Layanan</span>
+        </nav>
 
         <!-- Section Header -->
         <div class="section-title-wrap">
@@ -257,6 +282,305 @@
           </div>
         </div>
 
+        <!-- Rencana Inovasi (R&D Roadmap) -->
+        <div id="inovasi" style="margin-top:2rem;">
+          <div class="section-title-wrap" style="margin-bottom:1.5rem;">
+            <h2 class="section-title" style="font-size:1.75rem;">
+              Rencana Inovasi
+            </h2>
+          </div>
+          <div class="inovasi-grid">
+            <!-- Inovasi 1 -->
+            <div class="inovasi-card">
+              <div>
+                <div class="inovasi-header">
+                  <div class="node-icon-box">
+                    <span class="material-symbols-outlined" style="font-size:20px;">visibility</span>
+                  </div>
+                  <span class="badge badge-neutral">Dalam Riset</span>
+                </div>
+                <h3 class="inovasi-title">Computer Vision &amp; Pengolahan Citra</h3>
+                <p class="inovasi-desc">
+                  Deteksi objek otomatis, inspeksi visual proses industri, dan OCR pengenalan dokumen.
+                </p>
+              </div>
+              <div class="inovasi-footer">
+                <span>Fase Eksplorasi</span>
+                <span style="color:var(--color-primary); font-weight:600;">Pipeline QC &amp; OCR</span>
+              </div>
+            </div>
+
+            <!-- Inovasi 2 -->
+            <div class="inovasi-card">
+              <div>
+                <div class="inovasi-header">
+                  <div class="node-icon-box">
+                    <span class="material-symbols-outlined" style="font-size:20px;">search_insights</span>
+                  </div>
+                  <span class="badge badge-neutral">Dalam Riset</span>
+                </div>
+                <h3 class="inovasi-title">SEO Engine &amp; Optimasi Visibilitas</h3>
+                <p class="inovasi-desc">
+                  Riset algoritma perayapan mesin pencari dan otomatisasi struktur data indexing.
+                </p>
+              </div>
+              <div class="inovasi-footer">
+                <span>Fase Eksplorasi</span>
+                <span style="color:var(--color-primary); font-weight:600;">Crawl &amp; Structured Data</span>
+              </div>
+            </div>
+
+            <!-- Inovasi 3 -->
+            <div class="inovasi-card">
+              <div>
+                <div class="inovasi-header">
+                  <div class="node-icon-box">
+                    <span class="material-symbols-outlined" style="font-size:20px;">flowsheet</span>
+                  </div>
+                  <span class="badge badge-emerald">R&amp;D</span>
+                </div>
+                <h3 class="inovasi-title">AI Agent &amp; Automation</h3>
+                <p class="inovasi-desc">
+                  Orkestrasi alur kerja tanpa hambatan antar-aplikasi bisnis dengan pipeline pemrosesan otomatis.
+                </p>
+              </div>
+              <div class="inovasi-footer">
+                <span>Fase Eksplorasi</span>
+                <span style="color:var(--color-primary); font-weight:600;">Event-Driven Automation</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         2. RINCIAN BIAYA SOLUSI (#biaya)
+         ========================================================================== -->
+    <section id="biaya" class="section-biaya">
+      <div class="container">
+
+        <div class="biaya-header">
+          <h2 class="section-title" style="margin-bottom:0.75rem;">Rincian Biaya Solusi</h2>
+          <p style="font-size:1.0625rem; color:var(--color-text-body); max-width:620px; margin:0 auto;">
+            Struktur biaya transparan dan terukur, dirancang sesuai ruang lingkup kebutuhan serta target pengembangan
+            sistem bisnis Anda. Angka di bawah merupakan harga mulai; penawaran final mengikuti hasil analisis
+            kebutuhan.
+          </p>
+        </div>
+
+        <div class="biaya-slider-wrap">
+          <!-- Slider Navigation Arrows -->
+          <button id="pricing-prev-btn" class="slider-nav-btn slider-prev-btn" aria-label="Geser Kiri">
+            <span class="material-symbols-outlined" style="font-size:20px;">chevron_left</span>
+          </button>
+          <button id="pricing-next-btn" class="slider-nav-btn slider-next-btn" aria-label="Geser Kanan">
+            <span class="material-symbols-outlined" style="font-size:20px;">chevron_right</span>
+          </button>
+
+          <!-- Horizontal Pricing Slider -->
+          <div id="pricing-slider" class="pricing-slider">
+
+            <!-- Tier 1: Web Profile -->
+            <div class="pricing-card">
+              <div>
+                <h3 class="pricing-card-title">Web Profile</h3>
+                <p class="pricing-card-desc">
+                  Pembuatan website company profile, landing page promosi, atau katalog produk yang responsif dan cepat.
+                </p>
+                <span class="pricing-specs-heading">Spesifikasi Layanan</span>
+                <ul class="pricing-specs-list">
+                  <li class="pricing-spec-item">
+                    <span class="material-symbols-outlined check-icon">check</span>
+                    <span>Desain modern &amp; responsif semua perangkat</span>
+                  </li>
+                  <li class="pricing-spec-item">
+                    <span class="material-symbols-outlined check-icon">check</span>
+                    <span>Audit Core Web Vitals tinggi &amp; SEO Google</span>
+                  </li>
+                  <li class="pricing-spec-item">
+                    <span class="material-symbols-outlined check-icon">check</span>
+                    <span>Integrasi formulir pesan &amp; CTA WhatsApp</span>
+                  </li>
+                  <li class="pricing-spec-item">
+                    <span class="material-symbols-outlined check-icon">check</span>
+                    <span>Setup panel kelola konten (CMS) mandiri</span>
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <div class="pricing-price-wrap">
+                  <div class="pricing-amount">Mulai Rp800.000</div>
+                  <p class="pricing-footnote">* Belum termasuk domain dan hosting tahunan</p>
+                </div>
+                <a href="../kontak/?paket=web-profile" class="btn btn-primary btn-block pricing-consult-btn"
+                  data-package="web-profile">Konsultasi</a>
+              </div>
+            </div>
+
+            <!-- Tier 2: Sistem Informasi AI -->
+            <div class="pricing-card">
+              <div>
+                <h3 class="pricing-card-title">Sistem Informasi AI</h3>
+                <p class="pricing-card-desc">
+                  Digitalisasi operasional bisnis kustom seperti sistem inventaris, kasir POS, dan administrasi
+                  internal.
+                </p>
+                <span class="pricing-specs-heading">Spesifikasi Layanan</span>
+                <ul class="pricing-specs-list">
+                  <li class="pricing-spec-item">
+                    <span class="material-symbols-outlined check-icon">check</span>
+                    <span>Modul kustom sesuai standar alur kerja (SOP)</span>
+                  </li>
+                  <li class="pricing-spec-item">
+                    <span class="material-symbols-outlined check-icon">check</span>
+                    <span>Manajemen hak akses bertingkat multi-peran</span>
+                  </li>
+                  <li class="pricing-spec-item">
+                    <span class="material-symbols-outlined check-icon">check</span>
+                    <span>Otomasi kalkulasi data &amp; rekap laporan instan</span>
+                  </li>
+                  <li class="pricing-spec-item">
+                    <span class="material-symbols-outlined check-icon">check</span>
+                    <span>Penyerahan full source code &amp; training tim</span>
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <div class="pricing-price-wrap">
+                  <div class="pricing-amount">Mulai Rp5.000.000</div>
+                  <p class="pricing-footnote">* Belum termasuk biaya server dan API pihak ketiga</p>
+                </div>
+                <a href="../kontak/?paket=sistem-informasi-ai" class="btn btn-primary btn-block pricing-consult-btn"
+                  data-package="sistem-informasi-ai">Konsultasi</a>
+              </div>
+            </div>
+
+            <!-- Tier 3: Data Analytics -->
+            <div class="pricing-card">
+              <div>
+                <h3 class="pricing-card-title">Data Analytics</h3>
+                <p class="pricing-card-desc">
+                  Transformasi data bisnis menjadi dasbor visual interaktif untuk memantau performa penjualan dan
+                  operasional.
+                </p>
+                <span class="pricing-specs-heading">Spesifikasi Layanan</span>
+                <ul class="pricing-specs-list">
+                  <li class="pricing-spec-item">
+                    <span class="material-symbols-outlined check-icon">check</span>
+                    <span>Pilihan Tableau atau Custom Web Dashboard</span>
+                  </li>
+                  <li class="pricing-spec-item">
+                    <span class="material-symbols-outlined check-icon">check</span>
+                    <span>Pembersihan &amp; pemodelan data (Excel/CSV/SQL)</span>
+                  </li>
+                  <li class="pricing-spec-item">
+                    <span class="material-symbols-outlined check-icon">check</span>
+                    <span>Visualisasi grafik tren &amp; performa KPI bisnis</span>
+                  </li>
+                  <li class="pricing-spec-item">
+                    <span class="material-symbols-outlined check-icon">check</span>
+                    <span>Fitur filter dinamis &amp; ekspor laporan PDF/Excel</span>
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <div class="pricing-price-wrap">
+                  <div class="pricing-amount">Mulai Rp1.500.000</div>
+                  <p class="pricing-footnote">* Belum termasuk lisensi berbayar software Tableau</p>
+                </div>
+                <a href="../kontak/?paket=data-analytics" class="btn btn-primary btn-block pricing-consult-btn"
+                  data-package="data-analytics">Konsultasi</a>
+              </div>
+            </div>
+
+            <!-- Tier 4: Cloud & Server -->
+            <div class="pricing-card">
+              <div>
+                <h3 class="pricing-card-title">Cloud &amp; Server</h3>
+                <p class="pricing-card-desc">
+                  Infrastruktur cloud AWS, otomatisasi konfigurasi berbasis kode, serta shared hosting tugas mahasiswa.
+                </p>
+                <span class="pricing-specs-heading">Spesifikasi Layanan</span>
+                <ul class="pricing-specs-list">
+                  <li class="pricing-spec-item">
+                    <span class="material-symbols-outlined check-icon">check</span>
+                    <span>Perancangan solusi arsitektur AWS &amp; audit server</span>
+                  </li>
+                  <li class="pricing-spec-item">
+                    <span class="material-symbols-outlined check-icon">check</span>
+                    <span>Otomatisasi IaC (Terraform) &amp; Ansible config</span>
+                  </li>
+                  <li class="pricing-spec-item">
+                    <span class="material-symbols-outlined check-icon">check</span>
+                    <span>Setup CI/CD pipeline &amp; kontainerisasi Docker</span>
+                  </li>
+                  <li class="pricing-spec-item">
+                    <span class="material-symbols-outlined check-icon">check</span>
+                    <span>Deploy tugas kuliah &amp; shared hosting server Nafa</span>
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <div class="pricing-price-wrap">
+                  <div class="pricing-amount">Mulai Rp50.000</div>
+                  <p class="pricing-footnote">* Belum termasuk domain (tarif 30rb untuk hosting tugas)</p>
+                </div>
+                <a href="../kontak/?paket=cloud-server" class="btn btn-primary btn-block pricing-consult-btn"
+                  data-package="cloud-server">Konsultasi</a>
+              </div>
+            </div>
+
+            <!-- Tier 5: Chatbot AI -->
+            <div class="pricing-card">
+              <div>
+                <h3 class="pricing-card-title">Chatbot AI</h3>
+                <p class="pricing-card-desc">
+                  Asisten AI cerdas berbasis LangChain untuk layanan tanya jawab pelanggan 24/7 di WhatsApp maupun
+                  website.
+                </p>
+                <span class="pricing-specs-heading">Spesifikasi Layanan</span>
+                <ul class="pricing-specs-list">
+                  <li class="pricing-spec-item">
+                    <span class="material-symbols-outlined check-icon">check</span>
+                    <span>Engine cerdas berbasis framework LangChain</span>
+                  </li>
+                  <li class="pricing-spec-item">
+                    <span class="material-symbols-outlined check-icon">check</span>
+                    <span>Integrasi Web Chat Widget atau WhatsApp resmi</span>
+                  </li>
+                  <li class="pricing-spec-item">
+                    <span class="material-symbols-outlined check-icon">check</span>
+                    <span>Pelatihan data dokumen PDF, FAQ, &amp; SOP bisnis</span>
+                  </li>
+                  <li class="pricing-spec-item">
+                    <span class="material-symbols-outlined check-icon">check</span>
+                    <span>Fitur serah terima (handoff) otomatis ke CS</span>
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <div class="pricing-price-wrap">
+                  <div class="pricing-amount">Mulai Rp2.000.000</div>
+                  <p class="pricing-footnote">* Belum termasuk token API AI dan nomor WhatsApp Meta</p>
+                </div>
+                <a href="../kontak/?paket=chatbot-ai" class="btn btn-primary btn-block pricing-consult-btn"
+                  data-package="chatbot-ai">Konsultasi</a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Closing CTA -->
+        <div class="text-center" style="margin-top:3rem;">
+          <a href="../kontak/" class="btn btn-primary btn-lg">
+            <span class="material-symbols-outlined" style="font-size:20px;">chat</span>
+            <span>Konsultasikan Kebutuhan Anda</span>
+          </a>
+        </div>
+
       </div>
     </section>
 
@@ -349,13 +673,13 @@
             <div>
               <h4 class="footer-nav-heading">Perusahaan</h4>
               <ul class="footer-nav-list">
-                <li><a href="../index.html#filosofi" class="footer-nav-link">Akar Filosofi</a></li>
-                <li><a href="../index.html#inovasi" class="footer-nav-link">Rencana Inovasi</a></li>
+                <li><a href="../tentang-kami/" class="footer-nav-link">Akar Filosofi</a></li>
+                <li><a href="../layanan/#inovasi" class="footer-nav-link">Rencana Inovasi</a></li>
                 <li><a href="../portofolio/" class="footer-nav-link">Portofolio Sistem</a></li>
-                <li><a href="../biaya/" class="footer-nav-link">Biaya Solusi</a></li>
-                <li><a href="../karir/#tim" class="footer-nav-link">Tim Rekayasa</a></li>
-                <li><a href="../karir/" class="footer-nav-link">Karir &amp; Talenta</a></li>
-                <li><a href="../faq/" class="footer-nav-link">Pertanyaan Umum (FAQ)</a></li>
+                <li><a href="../layanan/#biaya" class="footer-nav-link">Biaya Solusi</a></li>
+                <li><a href="../tentang-kami/#tim" class="footer-nav-link">Tim Rekayasa</a></li>
+                <li><a href="../tentang-kami/#karir" class="footer-nav-link">Karir &amp; Talenta</a></li>
+                <li><a href="../kontak/#faq" class="footer-nav-link">Pertanyaan Umum (FAQ)</a></li>
               </ul>
             </div>
 
