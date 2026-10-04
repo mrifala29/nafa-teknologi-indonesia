@@ -62,6 +62,72 @@
   }
   </script>
 
+  <!-- Structured Data: FAQPage (Google Rich Results) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Layanan apa saja yang disediakan oleh Nafa Teknologi Indonesia?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Nafa Teknologi Indonesia menyediakan solusi rekayasa perangkat lunak end-to-end dengan standar industri, meliputi Jasa Pembuatan Website Company Profile & Portal Korporat modern berbasis SEO, Pengembangan Sistem Informasi Kustom (ERP, CRM, POS, HRIS), Data Analytics & Dashboard Business Intelligence terintegrasi, Chatbot AI & Otomasi Alur Kerja, serta Cloud Infrastructure & Server Deployment (VPS, CI/CD, dan hardening sistem)."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Berapa estimasi biaya investasi pembuatan website atau software custom?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Biaya investasi dirancang transparan berdasarkan ruang lingkup kerja (Scope of Work) tanpa biaya tersembunyi. Website Company Profile mulai dari Rp800.000 hingga Rp2.500.000 (Paket Bisnis Bertumbuh dengan SEO & fitur interaktif), Chatbot AI mulai Rp2.000.000, serta Sistem Informasi Kustom mulai Rp4.000.000 hingga Rp12.000.000+. Kami menerapkan skema pembayaran bertahap (DP, progres milestone/UAT, dan pelunasan pasca rilis)."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Berapa lama estimasi pengerjaan proyek dari tahap awal hingga rilis produksi?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Durasi pengerjaan bergantung pada skala proyek: Landing Page & Website Company Profile berkisar 7 hingga 14 hari kerja; Web App MVP & Portal Bisnis berkisar 3 hingga 6 minggu kerja; sedangkan Sistem Informasi Enterprise, AI, & Data Pipeline berkisar 6 hingga 12 minggu kerja dalam sprint Agile berkala dengan staging link aktif dan laporan progres mingguan."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Apakah klien mendapatkan kepemilikan penuh dan akses 100% atas Source Code?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Ya, mutlak 100%. Kami menjunjung tinggi prinsip zero vendor lock-in. Setelah tahap serah terima tuntas, seluruh source code, repositori Git, dokumentasi arsitektur, dan kredensial server diserahkan sepenuhnya kepada klien. Bisnis Anda bebas mengelola atau mengembangkannya secara mandiri di masa depan."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Bagaimana dengan garansi sistem, perbaikan bug, dan layanan maintenance?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Setiap proyek yang kami rilis disertai Garansi Bebas Bug (Free Bug Fixing Guarantee) selama 1 hingga 3 bulan masa retensi paska rilis tanpa biaya tambahan. Kami juga menyediakan opsi paket Maintenance & Cloud Monitoring berkala untuk pemantauan uptime server 24/7, auto-backup database rutin, dan pembaruan patch keamanan sistem."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Apakah Nafa Teknologi melayani klien di luar wilayah Sidoarjo dan Surabaya?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Tentu saja. Nafa Teknologi melayani klien dari seluruh Indonesia maupun mancanegara secara remote melalui Google Meet, Zoom, WhatsApp bisnis terdedikasi, dan project board terpusat. Untuk wilayah Sidoarjo, Surabaya, dan sekitarnya, kami juga terbuka untuk pertemuan koordinasi tatap muka (on-site)."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Bagaimana langkah awal untuk memulai konsultasi proyek perangkat lunak kami?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Anda dapat memulai sesi Konsultasi Awal Gratis (Free Initial Consultation) melalui formulir kontak di situs ini atau menghubungi tim kami melalui WhatsApp di +62 896-3009-6698. Tim kami akan membedah alur operasional bisnis Anda dan memberikan rekomendasi arsitektur beserta estimasi anggaran dalam 1x24 jam kerja."
+        }
+      }
+    ]
+  }
+  </script>
+
   <!-- Preconnect & Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -81,7 +147,7 @@
   <link rel="stylesheet" href="css/base.css?v=11">
   <link rel="stylesheet" href="css/components.css?v=11">
   <link rel="stylesheet" href="css/animations.css?v=11">
-  <link rel="stylesheet" href="css/sections.css?v=11">
+  <link rel="stylesheet" href="css/sections.css?v=12">
 </head>
 
 <body>
@@ -109,6 +175,7 @@
         <a href="#biaya" class="nav-link">Biaya</a>
         <a href="#tim" class="nav-link">Tim</a>
         <a href="#karir" class="nav-link">Karir</a>
+        <a href="#faq" class="nav-link">FAQ</a>
         <a href="#kontak" class="nav-link">Kontak</a>
       </nav>
 
@@ -145,6 +212,7 @@
       <a href="#biaya" class="mobile-nav-link">Biaya Solusi</a>
       <a href="#tim" class="mobile-nav-link">Tim</a>
       <a href="#karir" class="mobile-nav-link">Karir</a>
+      <a href="#faq" class="mobile-nav-link">FAQ</a>
       <a href="#kontak" class="mobile-nav-link">Kontak &amp; Konsultasi</a>
     </nav>
     <div style="margin-top:auto; padding-top:1.5rem; border-top:1px solid var(--color-border);">
@@ -1362,7 +1430,276 @@
     </section>
 
     <!-- ==========================================================================
-         7. KONTAK & KONSULTASI (#kontak)
+         8. PERTANYAAN UMUM / FAQ (#faq)
+         Precision Engineering Accordion & Knowledge Base
+         ========================================================================== -->
+    <section id="faq" class="section-faq">
+      <div class="container">
+
+        <!-- FAQ Header -->
+        <div class="faq-header">
+          <div class="badge badge-emerald">
+            <span class="badge-dot"></span>
+            FAQ // TANYA JAWAB
+          </div>
+          <h2 class="section-title">Pertanyaan yang Sering Diajukan</h2>
+          <p class="faq-subtitle">
+            Informasi transparan seputar proses rekayasa sistem, skema biaya investasi, estimasi waktu, garansi, hingga kepemilikan 100% source code.
+          </p>
+        </div>
+
+        <!-- FAQ Accordion List -->
+        <div class="faq-container">
+
+          <!-- FAQ Item 1 -->
+          <div class="faq-item active">
+            <button class="faq-trigger" aria-expanded="true">
+              <div class="faq-question-wrap">
+                <span class="faq-number">01</span>
+                <h3 class="faq-question-text">Layanan apa saja yang disediakan oleh Nafa Teknologi Indonesia?</h3>
+              </div>
+              <div class="faq-icon-box">
+                <span class="material-symbols-outlined">expand_more</span>
+              </div>
+            </button>
+            <div class="faq-content">
+              <div class="faq-body">
+                <p>
+                  Nafa Teknologi Indonesia berfokus pada rekayasa solusi perangkat lunak end-to-end dengan standar industri, meliputi:
+                </p>
+                <ul class="faq-feature-list">
+                  <li class="faq-feature-item">
+                    <span class="material-symbols-outlined">check_circle</span>
+                    <span><strong>Jasa Pembuatan Website &amp; Portal Korporat:</strong> Desain arsitektur modern, mobile-first, ultra-cepat, dan teroptimasi SEO mesin pencari.</span>
+                  </li>
+                  <li class="faq-feature-item">
+                    <span class="material-symbols-outlined">check_circle</span>
+                    <span><strong>Sistem Informasi Kustom (Web Apps):</strong> Solusi terintegrasi ERP, CRM, POS, sistem inventaris, dan HRIS sesuai alur kerja unik bisnis Anda.</span>
+                  </li>
+                  <li class="faq-feature-item">
+                    <span class="material-symbols-outlined">check_circle</span>
+                    <span><strong>Data Analytics &amp; Dashboard BI:</strong> Integrasi pipeline basis data, visualisasi metrik performa, dan analitik bisnis real-time.</span>
+                  </li>
+                  <li class="faq-feature-item">
+                    <span class="material-symbols-outlined">check_circle</span>
+                    <span><strong>Chatbot AI &amp; Otomasi Alur Kerja:</strong> Asisten pintar berbasis LLM untuk customer service 24/7 dan automasi operasional bisnis.</span>
+                  </li>
+                  <li class="faq-feature-item">
+                    <span class="material-symbols-outlined">check_circle</span>
+                    <span><strong>Cloud Infrastructure &amp; DevOps:</strong> Desain arsitektur VPS, container Docker, pipeline CI/CD, SSL, serta penguatan keamanan server.</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ Item 2 -->
+          <div class="faq-item">
+            <button class="faq-trigger" aria-expanded="false">
+              <div class="faq-question-wrap">
+                <span class="faq-number">02</span>
+                <h3 class="faq-question-text">Berapa estimasi biaya investasi pembuatan website atau software custom?</h3>
+              </div>
+              <div class="faq-icon-box">
+                <span class="material-symbols-outlined">expand_more</span>
+              </div>
+            </button>
+            <div class="faq-content">
+              <div class="faq-body">
+                <p>
+                  Biaya investasi dirancang transparan berdasarkan ruang lingkup kerja (Scope of Work) tanpa biaya tersembunyi:
+                </p>
+                <ul class="faq-feature-list">
+                  <li class="faq-feature-item">
+                    <span class="material-symbols-outlined">check_circle</span>
+                    <span><strong>Website Company Profile:</strong> Mulai dari Rp800.000 (Paket Web Profile) hingga Rp2.500.000 (Paket Bisnis Bertumbuh dengan SEO &amp; interaktif).</span>
+                  </li>
+                  <li class="faq-feature-item">
+                    <span class="material-symbols-outlined">check_circle</span>
+                    <span><strong>Chatbot AI &amp; Otomasi WhatsApp:</strong> Mulai dari Rp2.000.000 (integrasi SOP, FAQ, &amp; handoff live agent).</span>
+                  </li>
+                  <li class="faq-feature-item">
+                    <span class="material-symbols-outlined">check_circle</span>
+                    <span><strong>Sistem Informasi Kustom &amp; Web Apps:</strong> Mulai dari Rp4.000.000 hingga Rp12.000.000+ tergantung skala modul database dan hak akses pengguna.</span>
+                  </li>
+                </ul>
+                <p>
+                  Kami menerapkan skema termin pembayaran bertahap (Down Payment, progres milestone/UAT, dan pelunasan pasca rilis produksi).
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ Item 3 -->
+          <div class="faq-item">
+            <button class="faq-trigger" aria-expanded="false">
+              <div class="faq-question-wrap">
+                <span class="faq-number">03</span>
+                <h3 class="faq-question-text">Berapa lama estimasi pengerjaan proyek dari tahap awal hingga rilis produksi?</h3>
+              </div>
+              <div class="faq-icon-box">
+                <span class="material-symbols-outlined">expand_more</span>
+              </div>
+            </button>
+            <div class="faq-content">
+              <div class="faq-body">
+                <p>
+                  Waktu penyelesaian disesuaikan dengan skala dan kesiapan materi proyek:
+                </p>
+                <ul class="faq-feature-list">
+                  <li class="faq-feature-item">
+                    <span class="material-symbols-outlined">schedule</span>
+                    <span><strong>Landing Page &amp; Company Profile:</strong> 7 hingga 14 hari kerja.</span>
+                  </li>
+                  <li class="faq-feature-item">
+                    <span class="material-symbols-outlined">schedule</span>
+                    <span><strong>Web App MVP &amp; Portal Bisnis:</strong> 3 hingga 6 minggu kerja.</span>
+                  </li>
+                  <li class="faq-feature-item">
+                    <span class="material-symbols-outlined">schedule</span>
+                    <span><strong>Sistem Informasi Kustom Skala Enterprise:</strong> 6 hingga 12 minggu kerja dalam beberapa sprint Agile berkala.</span>
+                  </li>
+                </ul>
+                <p>
+                  Anda akan mendapatkan staging URL aktif untuk memantau progres pengembangan secara langsung setiap minggunya.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ Item 4 -->
+          <div class="faq-item">
+            <button class="faq-trigger" aria-expanded="false">
+              <div class="faq-question-wrap">
+                <span class="faq-number">04</span>
+                <h3 class="faq-question-text">Apakah klien mendapatkan kepemilikan penuh dan akses 100% atas Source Code?</h3>
+              </div>
+              <div class="faq-icon-box">
+                <span class="material-symbols-outlined">expand_more</span>
+              </div>
+            </button>
+            <div class="faq-content">
+              <div class="faq-body">
+                <p>
+                  <strong>Ya, mutlak 100%.</strong> Kami menjunjung tinggi integritas engineering dengan prinsip <em>zero vendor lock-in</em>.
+                </p>
+                <p>
+                  Setelah tahap serah terima dan administrasi tuntas, seluruh hak cipta source code, repositori Git (GitHub/GitLab), dokumentasi teknis sistem, kredensial server, serta domain dan DNS diserahkan seutuhnya kepada Anda. Bisnis Anda bebas mengelola atau mengembangkannya secara mandiri di masa depan.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ Item 5 -->
+          <div class="faq-item">
+            <button class="faq-trigger" aria-expanded="false">
+              <div class="faq-question-wrap">
+                <span class="faq-number">05</span>
+                <h3 class="faq-question-text">Bagaimana dengan garansi sistem, perbaikan bug, dan layanan maintenance?</h3>
+              </div>
+              <div class="faq-icon-box">
+                <span class="material-symbols-outlined">expand_more</span>
+              </div>
+            </button>
+            <div class="faq-content">
+              <div class="faq-body">
+                <p>
+                  Kami menjamin stabilitas setiap baris kode yang dirilis:
+                </p>
+                <ul class="faq-feature-list">
+                  <li class="faq-feature-item">
+                    <span class="material-symbols-outlined">verified</span>
+                    <span><strong>Garansi Bebas Bug (Free Bug Fixing):</strong> 1 hingga 3 bulan masa retensi paska rilis tanpa biaya tambahan untuk setiap kendala teknis yang timbul di luar perubahan spesifikasi.</span>
+                  </li>
+                  <li class="faq-feature-item">
+                    <span class="material-symbols-outlined">verified</span>
+                    <span><strong>Opsi Paket Maintenance Rutin:</strong> Pemantauan uptime server 24/7, pencadangan otomatis (auto-backup database), pembaruan sistem operasi dan patch keamanan berkala.</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ Item 6 -->
+          <div class="faq-item">
+            <button class="faq-trigger" aria-expanded="false">
+              <div class="faq-question-wrap">
+                <span class="faq-number">06</span>
+                <h3 class="faq-question-text">Apakah Nafa Teknologi melayani klien di luar wilayah Sidoarjo dan Surabaya?</h3>
+              </div>
+              <div class="faq-icon-box">
+                <span class="material-symbols-outlined">expand_more</span>
+              </div>
+            </button>
+            <div class="faq-content">
+              <div class="faq-body">
+                <p>
+                  <strong>Tentu saja.</strong> Nafa Teknologi melayani berbagai institusi, UMKM, dan korporasi dari seluruh Indonesia maupun mancanegara secara remote.
+                </p>
+                <p>
+                  Kami memanfaatkan ekosistem kolaborasi modern (Google Meet, Zoom, WhatsApp bisnis terdedikasi, GitHub, dan board kanban) untuk memastikan koordinasi berjalan tangkas dan efisien tanpa batasan geografis. Untuk wilayah Sidoarjo, Surabaya, dan sekitarnya, kami juga terbuka untuk pertemuan koordinasi tatap muka (on-site).
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ Item 7 -->
+          <div class="faq-item">
+            <button class="faq-trigger" aria-expanded="false">
+              <div class="faq-question-wrap">
+                <span class="faq-number">07</span>
+                <h3 class="faq-question-text">Bagaimana langkah awal untuk memulai konsultasi proyek perangkat lunak kami?</h3>
+              </div>
+              <div class="faq-icon-box">
+                <span class="material-symbols-outlined">expand_more</span>
+              </div>
+            </button>
+            <div class="faq-content">
+              <div class="faq-body">
+                <p>
+                  Sangat mudah. Anda dapat memulai dengan <strong>Konsultasi Awal Gratis (Free Initial Consultation)</strong> tanpa komitmen apa pun:
+                </p>
+                <ul class="faq-feature-list">
+                  <li class="faq-feature-item">
+                    <span class="material-symbols-outlined">arrow_forward</span>
+                    <span>Kirimkan ringkasan kebutuhan Anda melalui formulir kontak di bawah atau hubungi WhatsApp rekayasa kami.</span>
+                  </li>
+                  <li class="faq-feature-item">
+                    <span class="material-symbols-outlined">arrow_forward</span>
+                    <span>Tim kami akan meninjau proses bisnis Anda dan menyiapkan blueprint rekomendasi arsitektur serta estimasi anggaran dalam 1x24 jam kerja.</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- FAQ CTA Box -->
+        <div class="faq-cta-box">
+          <div>
+            <h3 class="faq-cta-title">Masih Memiliki Pertanyaan Teknis Seputar Sistem Anda?</h3>
+            <p class="faq-cta-desc">
+              Tim rekayasa kami siap membedah rancangan arsitektur, pemilihan teknologi, serta efisiensi anggaran untuk bisnis Anda.
+            </p>
+          </div>
+          <div class="faq-cta-actions">
+            <a href="https://wa.me/6289630096698?text=Halo%20NAFA%20Teknologi,%20saya%20ingin%20konsultasi%20mengenai%20proyek%20perangkat%20lunak%20kami."
+              target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+              <span class="material-symbols-outlined" style="font-size:18px;">chat</span>
+              <span>Tanya via WhatsApp</span>
+            </a>
+            <a href="#kontak" class="btn btn-secondary">
+              <span>Isi Form Konsultasi</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         9. KONTAK & KONSULTASI (#kontak)
          ========================================================================== -->
     <section id="kontak" class="section-kontak">
       <div class="container">
@@ -1652,6 +1989,7 @@
                 <li><a href="#biaya" class="footer-nav-link">Biaya Solusi</a></li>
                 <li><a href="#tim" class="footer-nav-link">Tim Rekayasa</a></li>
                 <li><a href="#karir" class="footer-nav-link">Karir &amp; Talenta</a></li>
+                <li><a href="#faq" class="footer-nav-link">Pertanyaan Umum (FAQ)</a></li>
               </ul>
             </div>
 
@@ -1699,7 +2037,8 @@
   <script defer src="js/slider.js?v=2"></script>
   <script defer src="js/contact.js?v=2"></script>
   <script defer src="js/team.js?v=2"></script>
-  <script defer src="js/app.js?v=2"></script>
+  <script defer src="js/faq.js?v=1"></script>
+  <script defer src="js/app.js?v=3"></script>
 
 </body>
 

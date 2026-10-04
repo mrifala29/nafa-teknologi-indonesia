@@ -41,5 +41,10 @@ document.addEventListener('DOMContentLoaded', () => {
     window.ContactModule.init();
   }
 
+  // 8. Initialize FAQ Accordion Module
+  if (window.FAQModule) {
+    window.FAQModule.init();
+  }
+
   console.log('✅ PT Nafa Teknologi Indonesia web application initialized successfully.');
 });
