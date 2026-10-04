@@ -1,0 +1,41 @@
+# Docs
+docs/
+
+# OS
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+.antigravity/
+.agents/
+
+# Env & secrets
+.env
+.env.*
+*.pem
+*.key
+id_rsa*
+deploy_key*
+
+# Deps & build
+node_modules/
+dist/
+build/
+.cache/
+
+# Logs & temp
+*.log
+npm-debug.log*
+*.tmp
+*.bak
+
+# Source assets
+*.psd
+*.ai
+*.fig
+*.sketch
