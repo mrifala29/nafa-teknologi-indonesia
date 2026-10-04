@@ -147,7 +147,7 @@
   <link rel="stylesheet" href="css/base.css?v=11">
   <link rel="stylesheet" href="css/components.css?v=11">
   <link rel="stylesheet" href="css/animations.css?v=11">
-  <link rel="stylesheet" href="css/sections.css?v=12">
+  <link rel="stylesheet" href="css/sections.css?v=13">
 </head>
 
 <body>
@@ -1431,58 +1431,60 @@
 
     <!-- ==========================================================================
          8. PERTANYAAN UMUM / FAQ (#faq)
-         Precision Engineering Accordion & Knowledge Base
+         Untitled UI Clean Engineering Accordion with Blueprint Grid Squares
          ========================================================================== -->
     <section id="faq" class="section-faq">
+      <!-- Blueprint Grid Background Squares -->
+      <div class="faq-blueprint-grid" aria-hidden="true"></div>
+
       <div class="container">
 
-        <!-- FAQ Header -->
+        <!-- Header matching Untitled UI reference -->
         <div class="faq-header">
-          <div class="badge badge-emerald">
-            <span class="badge-dot"></span>
-            FAQ // TANYA JAWAB
+          <div class="faq-star-icon" aria-hidden="true">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 1L14.8 9.2L23 12L14.8 14.8L12 23L9.2 14.8L1 12L9.2 9.2L12 1Z" />
+            </svg>
           </div>
-          <h2 class="section-title">Pertanyaan yang Sering Diajukan</h2>
+          <h2 class="faq-headline">Pertanyaan yang Sering Diajukan</h2>
           <p class="faq-subtitle">
-            Informasi transparan seputar proses rekayasa sistem, skema biaya investasi, estimasi waktu, garansi, hingga kepemilikan 100% source code.
+            Semua hal yang perlu Anda ketahui seputar layanan, estimasi biaya, dan sistem kerja kami. Belum menemukan jawaban yang dicari? <a href="#kontak" class="faq-inline-link">Konsultasikan dengan tim kami</a>.
           </p>
         </div>
 
-        <!-- FAQ Accordion List -->
+        <!-- FAQ Items List -->
         <div class="faq-container">
 
-          <!-- FAQ Item 1 -->
+          <!-- FAQ Item 1: Layanan -->
           <div class="faq-item active">
             <button class="faq-trigger" aria-expanded="true">
-              <div class="faq-question-wrap">
-                <span class="faq-number">01</span>
-                <h3 class="faq-question-text">Layanan apa saja yang disediakan oleh Nafa Teknologi Indonesia?</h3>
-              </div>
               <div class="faq-icon-box">
-                <span class="material-symbols-outlined">expand_more</span>
+                <span class="material-symbols-outlined">sentiment_satisfied</span>
               </div>
+              <h3 class="faq-question-text">Layanan apa saja yang disediakan oleh Nafa Teknologi Indonesia?</h3>
+              <span class="material-symbols-outlined faq-chevron">keyboard_arrow_down</span>
             </button>
             <div class="faq-content">
               <div class="faq-body">
                 <p>
-                  Nafa Teknologi Indonesia berfokus pada rekayasa solusi perangkat lunak end-to-end dengan standar industri, meliputi:
+                  Nafa Teknologi Indonesia berfokus pada rekayasa solusi perangkat lunak end-to-end dengan standar industri modern:
                 </p>
                 <ul class="faq-feature-list">
                   <li class="faq-feature-item">
                     <span class="material-symbols-outlined">check_circle</span>
-                    <span><strong>Jasa Pembuatan Website &amp; Portal Korporat:</strong> Desain arsitektur modern, mobile-first, ultra-cepat, dan teroptimasi SEO mesin pencari.</span>
+                    <span><strong>Jasa Pembuatan Website &amp; Portal Korporat:</strong> Desain modern, mobile-first, performa tinggi, dan teroptimasi SEO mesin pencari.</span>
                   </li>
                   <li class="faq-feature-item">
                     <span class="material-symbols-outlined">check_circle</span>
-                    <span><strong>Sistem Informasi Kustom (Web Apps):</strong> Solusi terintegrasi ERP, CRM, POS, sistem inventaris, dan HRIS sesuai alur kerja unik bisnis Anda.</span>
+                    <span><strong>Sistem Informasi Kustom (Web Apps):</strong> Solusi terintegrasi ERP, CRM, POS, sistem inventaris, dan HRIS sesuai alur kerja unik Anda.</span>
                   </li>
                   <li class="faq-feature-item">
                     <span class="material-symbols-outlined">check_circle</span>
-                    <span><strong>Data Analytics &amp; Dashboard BI:</strong> Integrasi pipeline basis data, visualisasi metrik performa, dan analitik bisnis real-time.</span>
+                    <span><strong>Data Analytics &amp; Dashboard BI:</strong> Integrasi pipeline data, visualisasi metrik performa, dan analitik bisnis real-time.</span>
                   </li>
                   <li class="faq-feature-item">
                     <span class="material-symbols-outlined">check_circle</span>
-                    <span><strong>Chatbot AI &amp; Otomasi Alur Kerja:</strong> Asisten pintar berbasis LLM untuk customer service 24/7 dan automasi operasional bisnis.</span>
+                    <span><strong>Chatbot AI &amp; Otomasi Alur Kerja:</strong> Asisten pintar berbasis LLM untuk customer service 24/7 dan automasi via WhatsApp.</span>
                   </li>
                   <li class="faq-feature-item">
                     <span class="material-symbols-outlined">check_circle</span>
@@ -1493,16 +1495,14 @@
             </div>
           </div>
 
-          <!-- FAQ Item 2 -->
+          <!-- FAQ Item 2: Biaya & Pembayaran -->
           <div class="faq-item">
             <button class="faq-trigger" aria-expanded="false">
-              <div class="faq-question-wrap">
-                <span class="faq-number">02</span>
-                <h3 class="faq-question-text">Berapa estimasi biaya investasi pembuatan website atau software custom?</h3>
-              </div>
               <div class="faq-icon-box">
-                <span class="material-symbols-outlined">expand_more</span>
+                <span class="material-symbols-outlined">credit_card</span>
               </div>
+              <h3 class="faq-question-text">Berapa estimasi biaya investasi pembuatan website atau software custom?</h3>
+              <span class="material-symbols-outlined faq-chevron">keyboard_arrow_down</span>
             </button>
             <div class="faq-content">
               <div class="faq-body">
@@ -1520,7 +1520,7 @@
                   </li>
                   <li class="faq-feature-item">
                     <span class="material-symbols-outlined">check_circle</span>
-                    <span><strong>Sistem Informasi Kustom &amp; Web Apps:</strong> Mulai dari Rp4.000.000 hingga Rp12.000.000+ tergantung skala modul database dan hak akses pengguna.</span>
+                    <span><strong>Sistem Informasi Kustom &amp; Web Apps:</strong> Mulai dari Rp4.000.000 hingga Rp12.000.000+ tergantung skala modul database dan pengguna.</span>
                   </li>
                 </ul>
                 <p>
@@ -1530,16 +1530,14 @@
             </div>
           </div>
 
-          <!-- FAQ Item 3 -->
+          <!-- FAQ Item 3: Waktu Pengerjaan -->
           <div class="faq-item">
             <button class="faq-trigger" aria-expanded="false">
-              <div class="faq-question-wrap">
-                <span class="faq-number">03</span>
-                <h3 class="faq-question-text">Berapa lama estimasi pengerjaan proyek dari tahap awal hingga rilis produksi?</h3>
-              </div>
               <div class="faq-icon-box">
-                <span class="material-symbols-outlined">expand_more</span>
+                <span class="material-symbols-outlined">schedule</span>
               </div>
+              <h3 class="faq-question-text">Berapa lama estimasi pengerjaan proyek dari tahap awal hingga rilis produksi?</h3>
+              <span class="material-symbols-outlined faq-chevron">keyboard_arrow_down</span>
             </button>
             <div class="faq-content">
               <div class="faq-body">
@@ -1567,16 +1565,14 @@
             </div>
           </div>
 
-          <!-- FAQ Item 4 -->
+          <!-- FAQ Item 4: Kepemilikan Source Code -->
           <div class="faq-item">
             <button class="faq-trigger" aria-expanded="false">
-              <div class="faq-question-wrap">
-                <span class="faq-number">04</span>
-                <h3 class="faq-question-text">Apakah klien mendapatkan kepemilikan penuh dan akses 100% atas Source Code?</h3>
-              </div>
               <div class="faq-icon-box">
-                <span class="material-symbols-outlined">expand_more</span>
+                <span class="material-symbols-outlined">code</span>
               </div>
+              <h3 class="faq-question-text">Apakah klien mendapatkan kepemilikan penuh dan akses 100% atas Source Code?</h3>
+              <span class="material-symbols-outlined faq-chevron">keyboard_arrow_down</span>
             </button>
             <div class="faq-content">
               <div class="faq-body">
@@ -1590,16 +1586,14 @@
             </div>
           </div>
 
-          <!-- FAQ Item 5 -->
+          <!-- FAQ Item 5: Garansi & Maintenance -->
           <div class="faq-item">
             <button class="faq-trigger" aria-expanded="false">
-              <div class="faq-question-wrap">
-                <span class="faq-number">05</span>
-                <h3 class="faq-question-text">Bagaimana dengan garansi sistem, perbaikan bug, dan layanan maintenance?</h3>
-              </div>
               <div class="faq-icon-box">
-                <span class="material-symbols-outlined">expand_more</span>
+                <span class="material-symbols-outlined">verified_user</span>
               </div>
+              <h3 class="faq-question-text">Bagaimana dengan garansi sistem, perbaikan bug, dan layanan maintenance?</h3>
+              <span class="material-symbols-outlined faq-chevron">keyboard_arrow_down</span>
             </button>
             <div class="faq-content">
               <div class="faq-body">
@@ -1620,16 +1614,14 @@
             </div>
           </div>
 
-          <!-- FAQ Item 6 -->
+          <!-- FAQ Item 6: Klien Remote & Luar Kota -->
           <div class="faq-item">
             <button class="faq-trigger" aria-expanded="false">
-              <div class="faq-question-wrap">
-                <span class="faq-number">06</span>
-                <h3 class="faq-question-text">Apakah Nafa Teknologi melayani klien di luar wilayah Sidoarjo dan Surabaya?</h3>
-              </div>
               <div class="faq-icon-box">
-                <span class="material-symbols-outlined">expand_more</span>
+                <span class="material-symbols-outlined">public</span>
               </div>
+              <h3 class="faq-question-text">Apakah Nafa Teknologi melayani klien di luar wilayah Sidoarjo dan Surabaya?</h3>
+              <span class="material-symbols-outlined faq-chevron">keyboard_arrow_down</span>
             </button>
             <div class="faq-content">
               <div class="faq-body">
@@ -1643,16 +1635,14 @@
             </div>
           </div>
 
-          <!-- FAQ Item 7 -->
+          <!-- FAQ Item 7: Memulai Konsultasi -->
           <div class="faq-item">
             <button class="faq-trigger" aria-expanded="false">
-              <div class="faq-question-wrap">
-                <span class="faq-number">07</span>
-                <h3 class="faq-question-text">Bagaimana langkah awal untuk memulai konsultasi proyek perangkat lunak kami?</h3>
-              </div>
               <div class="faq-icon-box">
-                <span class="material-symbols-outlined">expand_more</span>
+                <span class="material-symbols-outlined">chat</span>
               </div>
+              <h3 class="faq-question-text">Bagaimana langkah awal untuk memulai konsultasi proyek perangkat lunak kami?</h3>
+              <span class="material-symbols-outlined faq-chevron">keyboard_arrow_down</span>
             </button>
             <div class="faq-content">
               <div class="faq-body">
@@ -1675,24 +1665,12 @@
 
         </div>
 
-        <!-- FAQ CTA Box -->
-        <div class="faq-cta-box">
-          <div>
-            <h3 class="faq-cta-title">Masih Memiliki Pertanyaan Teknis Seputar Sistem Anda?</h3>
-            <p class="faq-cta-desc">
-              Tim rekayasa kami siap membedah rancangan arsitektur, pemilihan teknologi, serta efisiensi anggaran untuk bisnis Anda.
-            </p>
-          </div>
-          <div class="faq-cta-actions">
-            <a href="https://wa.me/6289630096698?text=Halo%20NAFA%20Teknologi,%20saya%20ingin%20konsultasi%20mengenai%20proyek%20perangkat%20lunak%20kami."
-              target="_blank" rel="noopener noreferrer" class="btn btn-primary">
-              <span class="material-symbols-outlined" style="font-size:18px;">chat</span>
-              <span>Tanya via WhatsApp</span>
-            </a>
-            <a href="#kontak" class="btn btn-secondary">
-              <span>Isi Form Konsultasi</span>
-            </a>
-          </div>
+        <!-- Footer note -->
+        <div class="faq-footer-note">
+          <p>
+            Masih memiliki pertanyaan seputar kebutuhan sistem bisnis Anda?
+            <a href="#kontak" class="faq-inline-link">Diskusikan gratis bersama tim rekayasa &rarr;</a>
+          </p>
         </div>
 
       </div>
