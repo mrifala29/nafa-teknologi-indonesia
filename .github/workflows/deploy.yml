@@ -28,3 +28,4 @@ jobs:
             --exclude '.DS_Store' \
             -e "ssh -i ~/.ssh/deploy_key -p 22 -o StrictHostKeyChecking=accept-new" \
             ./ ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/opt/app/nafateknoid/
+
