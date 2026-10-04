@@ -10,18 +10,24 @@ Proyek ini telah dipisahkan menjadi komponen-komponen terisolasi sesuai tanggung
 
 ```
 nafateknoid/
-├── index.html              # Beranda ringkas: Hero Canvas, Overview Layanan, Portofolio Pilihan, CTA
+├── index.html              # Beranda: Hero Canvas, Filosofi Nafa'a, Solusi Rekayasa Digital + Rencana Inovasi, CTA
 ├── layanan/
-│   └── index.html          # Halaman Layanan lengkap + Rincian Biaya Solusi
+│   └── index.html          # 5 tab layanan interaktif + browser mockup
 ├── portofolio/
 │   └── index.html          # 9 proyek portofolio + filter kategori
-├── tentang-kami/
-│   └── index.html          # Filosofi Nafa'a + Tim Nafa Teknologi + Karir & magang
+├── biaya/
+│   └── index.html          # Rincian Biaya Solusi (slider 5 paket)
+├── karir/
+│   └── index.html          # Peluang Karir & Magang + Tim Nafa Teknologi
 ├── kontak/
-│   └── index.html          # Formulir konsultasi + WhatsApp + peta + FAQ lengkap
+│   └── index.html          # Formulir konsultasi + WhatsApp + peta
+├── faq/
+│   └── index.html          # Pertanyaan Umum (schema FAQPage)
+├── tentang-kami/
+│   └── index.html          # STUB pengalih ke /karir/ (URL lama, jangan dihapus)
 ├── 404.html                # Halaman error kustom (butuh konfigurasi nginx, lihat di bawah)
 │
-├── sitemap.xml             # 5 URL halaman (di-submit ke Google Search Console)
+├── sitemap.xml             # 7 URL halaman (di-submit ke Google Search Console)
 ├── robots.txt              # Allow all + baris Sitemap
 │
 ├── css/                    # Modular Stylesheets (Vanilla CSS + Design Tokens)
@@ -48,17 +54,20 @@ nafateknoid/
 
 | Halaman | URL | Modul JS |
 |---|---|---|
-| Beranda | `/` | `navigation`, `canvas`, `portfolio` |
-| Layanan | `/layanan/` | `navigation`, `services`, `slider` |
+| Beranda | `/` | `navigation`, `canvas` |
+| Layanan | `/layanan/` | `navigation`, `services` |
 | Portofolio | `/portofolio/` | `navigation`, `portfolio` |
-| Tentang Kami | `/tentang-kami/` | `navigation`, `team` |
-| Kontak | `/kontak/` | `navigation`, `data`, `contact`, `faq` |
+| Biaya | `/biaya/` | `navigation`, `slider` |
+| Karir | `/karir/` | `navigation`, `team` |
+| Kontak | `/kontak/` | `navigation`, `data`, `contact` |
+| FAQ | `/faq/` | `navigation`, `faq` |
+| 404 | `/404.html` | `navigation` |
 
 ---
 
 ## 🧭 Konvensi Halaman Multi-Page
 
-Halaman yang berada di dalam subfolder (`layanan/`, `portofolio/`, `tentang-kami/`, `kontak/`) memakai **path relatif**:
+Halaman yang berada di dalam subfolder (`layanan/`, `portofolio/`, `biaya/`, `karir/`, `kontak/`, `faq/`) memakai **path relatif**:
 
 - CSS: `../css/variables.css`, `../css/base.css`, `../css/components.css`, `../css/animations.css`, `../css/sections.css`
 - JS: `../js/data.js`, `../js/navigation.js`, dan modul lain yang relevan saja
@@ -71,7 +80,7 @@ Setiap halaman hanya memuat script yang dipakai (lihat tabel peta URL di atas) s
 Dua query param dipakai untuk meneruskan konteks antar halaman:
 
 - `/layanan/?layanan=<key>` — membuka tab layanan tertentu (key: `web-profile`, `sistem-informasi-ai`, `data-analytics`, `cloud-server`, `chatbot-ai`). Dipakai oleh node/chip hero di beranda dan kartu overview layanan.
-- `/kontak/?paket=<key>` — memilih paket di dropdown formulir dan mengisi pesan otomatis. Dipakai oleh tombol konsultasi di halaman Layanan dan tombol demo proyek non-live di halaman Portofolio.
+- `/kontak/?paket=<key>` — memilih paket di dropdown formulir dan mengisi pesan otomatis. Dipakai oleh tombol konsultasi di `/biaya/` dan tombol demo proyek non-live di `/portofolio/`.
 
 ### Anchor lama dari era single-page
 
@@ -79,16 +88,16 @@ Fragmen (`#...`) **tidak pernah dikirim ke server**, jadi anchor lama tidak bisa
 
 | Anchor lama | Tujuan baru |
 |---|---|
-| `#filosofi` | `/tentang-kami/` |
-| `#tim` | `/tentang-kami/#tim` |
-| `#karir` | `/tentang-kami/#karir` |
-| `#biaya` | `/layanan/#biaya` |
-| `#faq` | `/kontak/#faq` |
+| `#tim` | `/karir/#tim` |
+| `#karir` | `/karir/` |
+| `#biaya` | `/biaya/` |
+| `#faq` | `/faq/` |
 | `#kontak` | `/kontak/` |
+| `#portofolio` | `/portofolio/` |
 
-Skrip sengaja **inline & blocking** (bukan file terpisah + `defer`) supaya berjalan sebelum halaman ter-render sehingga tidak ada kedipan beranda sebelum pindah. Query string tetap terbawa, dan `#canvas` / `#layanan` / `#portofolio` sengaja tidak dialihkan karena section-nya masih ada di beranda.
+Skrip sengaja **inline & blocking** (bukan file terpisah + `defer`) supaya berjalan sebelum halaman ter-render sehingga tidak ada kedipan beranda sebelum pindah. Query string tetap terbawa, dan `#canvas` / `#filosofi` / `#layanan` / `#inovasi` sengaja **tidak** dialihkan karena section-nya memang ada di beranda.
 
-### Halaman 404 kustom — butuh konfigurasi nginx
+### Halaman 404 kustom & 301 URL lama — butuh konfigurasi nginx
 
 Menaruh `404.html` saja **tidak cukup**: server harus disuruh memakainya. Tambahkan di blok `server` nginx VPS:
 
@@ -97,12 +106,17 @@ error_page 404 /404.html;
 location = /404.html {
     internal;
 }
+
+# URL lama /tentang-kami/ -> /karir/ (301 sungguhan, melengkapi stub HTML)
+rewrite ^/tentang-kami/?$ /karir/ permanent;
 ```
 
 Catatan penting:
 
 - **Jangan** menulis `error_page 404 =200 /404.html;`. Tanda `=200` membuat halaman error dibalas dengan status 200, dan Google akan menganggapnya halaman biasa yang bisa terindeks. Biarkan status tetap 404 — `404.html` sudah membawa `meta robots="noindex, follow"`.
 - Saat nginx menyajikan `404.html`, URL di address bar **tidak berubah** (mis. tetap `/layanan/halaman-salah`). Karena itu semua path di `404.html` memakai absolut dari domain (`/css/...`, `/js/...`, `/assets/...`) — kalau memakai path relatif, file CSS/JS-nya akan gagal dimuat.
+- `tentang-kami/index.html` tetap dipertahankan sebagai pengalih cadangan (JS + `<noscript>` meta refresh) agar URL lama tetap bekerja walau nginx belum diubah.
+- Sebelum `rewrite`, pastikan Cloudflare tidak mem-cache `/tentang-kami/`; setelah menerapkan, purge cache URL tersebut.
 - Setelah mengubah nginx: `nginx -t && systemctl reload nginx`.
 
 ---
