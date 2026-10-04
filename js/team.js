@@ -59,7 +59,8 @@ const TeamModule = (function () {
   function scrollSlider(direction) {
     if (!sliderEl) return;
     const card = sliderEl.querySelector('.team-card');
-    const scrollAmount = card ? card.offsetWidth + 24 : 260;
+    const gap = parseFloat(getComputedStyle(sliderEl).gap) || 20;
+    const scrollAmount = card ? card.offsetWidth + gap : 230;
     sliderEl.scrollBy({
       left: direction * scrollAmount,
       behavior: 'smooth'
