@@ -1,0 +1,30 @@
+name: Deploy to VPS
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          ssh-keyscan -H -p 22 ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
+
+      - name: Sync Files to VPS via rsync
+        run: |
+          rsync -avz --delete \
+            --exclude '.git*' \
+            --exclude '.github*' \
+            --exclude '.DS_Store' \
+            -e "ssh -i ~/.ssh/deploy_key -p 22 -o StrictHostKeyChecking=accept-new" \
+            ./ ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/opt/app/nafateknoid/
