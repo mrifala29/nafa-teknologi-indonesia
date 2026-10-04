@@ -150,28 +150,23 @@ const CanvasModule = (function () {
   }
 
   function init() {
-    // Node adalah tautan ke halaman Layanan. Interupsi klik hanya dilakukan bila
-    // showcase layanan tersedia di halaman ini, agar tab bisa berpindah tanpa reload.
-    const showcaseEl = document.getElementById('service-title');
+    // Node click handlers
     const nodes = document.querySelectorAll('.canvas-node, .mobile-node-chip');
     nodes.forEach(node => {
-      node.addEventListener('click', function (e) {
+      node.addEventListener('click', function () {
         const serviceKey = this.getAttribute('data-target-service');
-        if (!showcaseEl || !serviceKey || !window.ServicesModule) {
-          return; // biarkan tautan bawaan membawa pengunjung ke halaman Layanan
-        }
+        if (serviceKey && window.ServicesModule) {
+          window.ServicesModule.switchService(serviceKey);
 
-        e.preventDefault();
-        window.ServicesModule.switchService(serviceKey);
-
-        const servicesSection = document.getElementById('layanan');
-        if (servicesSection) {
-          const headerHeight = 80;
-          const targetPosition = servicesSection.getBoundingClientRect().top + window.scrollY - headerHeight;
-          window.scrollTo({
-            top: targetPosition,
-            behavior: 'smooth'
-          });
+          const servicesSection = document.getElementById('layanan');
+          if (servicesSection) {
+            const headerHeight = 80;
+            const targetPosition = servicesSection.getBoundingClientRect().top + window.scrollY - headerHeight;
+            window.scrollTo({
+              top: targetPosition,
+              behavior: 'smooth'
+            });
+          }
         }
       });
     });

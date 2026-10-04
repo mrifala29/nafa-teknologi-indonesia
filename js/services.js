@@ -19,9 +19,8 @@ const ServicesModule = (function () {
       });
     });
 
-    // Tab awal: dari query ?layanan=<key> saat pengunjung datang dari halaman lain.
-    const requestedService = new URLSearchParams(window.location.search).get('layanan');
-    switchService(requestedService || currentServiceKey);
+    // Initial render
+    switchService(currentServiceKey);
   }
 
   function switchService(serviceKey) {

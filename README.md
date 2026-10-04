@@ -10,19 +10,10 @@ Proyek ini telah dipisahkan menjadi komponen-komponen terisolasi sesuai tanggung
 
 ```
 nafateknoid/
-├── index.html              # Beranda ringkas: Hero Canvas, Overview Layanan, Portofolio Pilihan, CTA
-├── layanan/
-│   └── index.html          # Halaman Layanan lengkap + Rincian Biaya Solusi
-├── portofolio/
-│   └── index.html          # 9 proyek portofolio + filter kategori
-├── tentang-kami/
-│   └── index.html          # Filosofi Nafa'a + Tim Nafa Teknologi + Karir & magang
-├── kontak/
-│   └── index.html          # Formulir konsultasi + WhatsApp + peta + FAQ lengkap
-├── 404.html                # Halaman error kustom (butuh konfigurasi nginx, lihat di bawah)
-│
-├── sitemap.xml             # 5 URL halaman (di-submit ke Google Search Console)
-├── robots.txt              # Allow all + baris Sitemap
+├── index.html              # Struktur HTML semantik utama yang bersih & terorganisir
+├── DESIGN.md               # Dokumentasi Design System & token rancangan
+├── code.html               # File monolitik asli Stitch (disimpan sebagai arsip/backup)
+├── screen.png              # Cuplikan render visual desain Stitch
 │
 ├── css/                    # Modular Stylesheets (Vanilla CSS + Design Tokens)
 │   ├── variables.css       # Token warna (Deep Emerald), tipografi, spacing, radii, & shadows
@@ -33,77 +24,13 @@ nafateknoid/
 │
 └── js/                     # Modular JavaScript (Separation of Logic & Data)
     ├── data.js             # SUMBER DATA UTAMA: teks layanan, mockup, harga paket, kontak perusahaan
-    ├── navigation.js       # Sticky header, drawer menu ponsel, smooth scroll, & scroll-spy anchor
+    ├── navigation.js       # Sticky header, drawer menu ponsel, smooth scroll, & active scroll-spy
     ├── services.js         # Pengalih tab layanan interaktif & pembaruan dinamis browser mockup
-    ├── canvas.js           # Interaktivitas hero canvas (tautan node ke halaman layanan & animasi masuk)
-    ├── portfolio.js        # Filter kategori & penggeser portofolio (drag/touch)
+    ├── canvas.js           # Interaktivitas hero canvas (zoom, toolbar, klik node langsung lompat ke layanan)
     ├── slider.js           # Penggeser kartu harga (slider prev/next & touch gesture)
-    ├── team.js             # Penggeser kartu tim (slider prev/next & touch gesture)
-    ├── faq.js              # Akordeon FAQ (satu item terbuka)
     ├── contact.js          # Validasi formulir konsultasi & generator pesan instan WhatsApp
     └── app.js              # Entry point aplikasi (bootstrapping seluruh modul saat DOM siap)
 ```
-
-**Peta URL vs script yang dimuat** (`app.js` selalu ikut sebagai entry point):
-
-| Halaman | URL | Modul JS |
-|---|---|---|
-| Beranda | `/` | `navigation`, `canvas`, `portfolio` |
-| Layanan | `/layanan/` | `navigation`, `services`, `slider` |
-| Portofolio | `/portofolio/` | `navigation`, `portfolio` |
-| Tentang Kami | `/tentang-kami/` | `navigation`, `team` |
-| Kontak | `/kontak/` | `navigation`, `data`, `contact`, `faq` |
-
----
-
-## 🧭 Konvensi Halaman Multi-Page
-
-Halaman yang berada di dalam subfolder (`layanan/`, `portofolio/`, `tentang-kami/`, `kontak/`) memakai **path relatif**:
-
-- CSS: `../css/variables.css`, `../css/base.css`, `../css/components.css`, `../css/animations.css`, `../css/sections.css`
-- JS: `../js/data.js`, `../js/navigation.js`, dan modul lain yang relevan saja
-- Aset: `../assets/logo.webp`, `../assets/portfolio/...`
-
-Setiap halaman hanya memuat script yang dipakai (lihat tabel peta URL di atas) sehingga tidak ada modul yang gagal karena elemennya tidak ada. Setiap halaman juga wajib punya `<title>`, `meta description`, `link rel="canonical"`, Open Graph/Twitter Card unik, serta tepat satu `<h1>`.
-
-### Deep link antar halaman
-
-Dua query param dipakai untuk meneruskan konteks antar halaman:
-
-- `/layanan/?layanan=<key>` — membuka tab layanan tertentu (key: `web-profile`, `sistem-informasi-ai`, `data-analytics`, `cloud-server`, `chatbot-ai`). Dipakai oleh node/chip hero di beranda dan kartu overview layanan.
-- `/kontak/?paket=<key>` — memilih paket di dropdown formulir dan mengisi pesan otomatis. Dipakai oleh tombol konsultasi di halaman Layanan dan tombol demo proyek non-live di halaman Portofolio.
-
-### Anchor lama dari era single-page
-
-Fragmen (`#...`) **tidak pernah dikirim ke server**, jadi anchor lama tidak bisa di-301 lewat nginx/Cloudflare. Karena itu beranda punya skrip inline kecil di `<head>` yang memetakan anchor lama ke halaman barunya:
-
-| Anchor lama | Tujuan baru |
-|---|---|
-| `#filosofi` | `/tentang-kami/` |
-| `#tim` | `/tentang-kami/#tim` |
-| `#karir` | `/tentang-kami/#karir` |
-| `#biaya` | `/layanan/#biaya` |
-| `#faq` | `/kontak/#faq` |
-| `#kontak` | `/kontak/` |
-
-Skrip sengaja **inline & blocking** (bukan file terpisah + `defer`) supaya berjalan sebelum halaman ter-render sehingga tidak ada kedipan beranda sebelum pindah. Query string tetap terbawa, dan `#canvas` / `#layanan` / `#portofolio` sengaja tidak dialihkan karena section-nya masih ada di beranda.
-
-### Halaman 404 kustom — butuh konfigurasi nginx
-
-Menaruh `404.html` saja **tidak cukup**: server harus disuruh memakainya. Tambahkan di blok `server` nginx VPS:
-
-```nginx
-error_page 404 /404.html;
-location = /404.html {
-    internal;
-}
-```
-
-Catatan penting:
-
-- **Jangan** menulis `error_page 404 =200 /404.html;`. Tanda `=200` membuat halaman error dibalas dengan status 200, dan Google akan menganggapnya halaman biasa yang bisa terindeks. Biarkan status tetap 404 — `404.html` sudah membawa `meta robots="noindex, follow"`.
-- Saat nginx menyajikan `404.html`, URL di address bar **tidak berubah** (mis. tetap `/layanan/halaman-salah`). Karena itu semua path di `404.html` memakai absolut dari domain (`/css/...`, `/js/...`, `/assets/...`) — kalau memakai path relatif, file CSS/JS-nya akan gagal dimuat.
-- Setelah mengubah nginx: `nginx -t && systemctl reload nginx`.
 
 ---
 
@@ -129,7 +56,7 @@ Buka [`js/contact.js`](file:///Users/alfarizy/Desktop/Project/nafateknoid/js/con
 
 ## 🚀 Cara Menjalankan Website
 
-Cukup jalankan server lokal dari root repo (tautan antar halaman memakai path absolut dari domain, mis. `/layanan/`):
+Cukup buka file [`index.html`](file:///Users/alfarizy/Desktop/Project/nafateknoid/index.html) langsung di peramban (browser) favorit Anda, atau jalankan menggunakan server lokal:
 
 ```bash
 # Menggunakan Python built-in server:

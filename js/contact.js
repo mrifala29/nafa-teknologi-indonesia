@@ -16,12 +16,6 @@ const ContactModule = (function () {
     if (!formEl) return;
 
     formEl.addEventListener('submit', handleSubmit);
-
-    // Deep link dari halaman lain: ../kontak/?paket=web-profile
-    const requestedPackage = new URLSearchParams(window.location.search).get('paket');
-    if (requestedPackage) {
-      selectPackage(requestedPackage);
-    }
   }
 
   function handleSubmit(e) {
