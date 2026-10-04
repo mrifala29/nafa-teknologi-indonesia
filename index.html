@@ -77,11 +77,11 @@
   <link rel="apple-touch-icon" href="assets/logo.png">
 
   <!-- Modular Stylesheets -->
-  <link rel="stylesheet" href="css/variables.css?v=8">
-  <link rel="stylesheet" href="css/base.css?v=8">
-  <link rel="stylesheet" href="css/components.css?v=8">
-  <link rel="stylesheet" href="css/animations.css?v=8">
-  <link rel="stylesheet" href="css/sections.css?v=8">
+  <link rel="stylesheet" href="css/variables.css?v=9">
+  <link rel="stylesheet" href="css/base.css?v=9">
+  <link rel="stylesheet" href="css/components.css?v=9">
+  <link rel="stylesheet" href="css/animations.css?v=9">
+  <link rel="stylesheet" href="css/sections.css?v=9">
 </head>
 
 <body>
@@ -505,7 +505,7 @@
             <div>
               <div class="browser-mockup">
                 <div class="browser-bar">
-                  <div style="display:flex; align-items:center; gap:0.75rem;">
+                  <div class="browser-bar-left">
                     <div class="traffic-lights">
                       <span class="traffic-light traffic-red"></span>
                       <span class="traffic-light traffic-yellow"></span>
@@ -513,10 +513,9 @@
                     </div>
                     <span id="preview-browser-url" class="browser-url">https://company.nafateknologi.co.id</span>
                   </div>
-                  <div style="display:flex; align-items:center; gap:0.5rem;">
-                    <span class="material-symbols-outlined" style="font-size:16px; color:#94a3b8;">lock</span>
-                    <span id="preview-status-pill" class="badge badge-emerald" style="font-size:10px;">ACTIVE 200
-                      OK</span>
+                  <div class="browser-bar-right">
+                    <span class="material-symbols-outlined browser-lock-icon">lock</span>
+                    <span id="preview-status-pill" class="badge badge-emerald browser-status-badge">ACTIVE 200 OK</span>
                   </div>
                 </div>
                 <div class="browser-body" id="service-mockup-container">
@@ -1692,7 +1691,7 @@
   </footer>
 
   <!-- Modular Scripts -->
-  <script src="js/data.js"></script>
+  <script src="js/data.js?v=2"></script>
   <script src="js/navigation.js"></script>
   <script src="js/services.js"></script>
   <script src="js/canvas.js?v=4"></script>

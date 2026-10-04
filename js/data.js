@@ -33,41 +33,41 @@ const NafaData = {
       url: 'https://company.nafateknologi.co.id',
       status: 'ACTIVE 200 OK',
       mockup: `
-        <div style="display:flex; flex-direction:column; gap:1rem;">
-          <div style="background:#ffffff; border-radius:12px; border:1px solid #e2e8f0; padding:1.25rem; box-shadow:0 1px 2px rgba(0,0,0,0.04);">
-            <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:1rem;">
-              <div style="display:flex; align-items:center; gap:0.75rem;">
-                <div style="width:36px; height:36px; border-radius:8px; background:#ecfdf5; border:1px solid #a7f3d0; display:flex; align-items:center; justify-content:center; color:#047857;">
-                  <span class="material-symbols-outlined" style="font-size:20px;">speed</span>
+        <div style="display:flex; flex-direction:column; gap:0.75rem;">
+          <div class="mockup-inner-card">
+            <div class="mockup-header-row">
+              <div style="display:flex; align-items:center; gap:0.625rem; min-width:0;">
+                <div style="width:34px; height:34px; border-radius:8px; background:#ecfdf5; border:1px solid #a7f3d0; display:flex; align-items:center; justify-content:center; color:#047857; flex-shrink:0;">
+                  <span class="material-symbols-outlined" style="font-size:18px;">speed</span>
                 </div>
-                <div>
-                  <h4 style="font-family:'Hanken Grotesk',sans-serif; font-size:14px; font-weight:600; color:#0f172a; margin:0;">Core Web Vitals Preview</h4>
-                  <p style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#64748b; margin:2px 0 0 0;">Target Kecepatan & Skor Performa</p>
+                <div style="min-width:0;">
+                  <h4 class="mockup-header-title">Core Web Vitals Preview</h4>
+                  <p class="mockup-header-sub">Target Kecepatan &amp; Skor Performa</p>
                 </div>
               </div>
-              <span class="badge badge-emerald">Production Ready</span>
+              <span class="badge badge-emerald" style="font-size:10px; padding:0.2rem 0.5rem; flex-shrink:0;">Production Ready</span>
             </div>
-            <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:0.75rem; padding-top:0.5rem;">
-              <div style="padding:0.75rem; background:#f8fafc; border-radius:8px; border:1px solid #f1f5f9; text-align:center;">
-                <div style="font-family:'Hanken Grotesk',sans-serif; font-size:1.25rem; font-weight:700; color:#047857;">99</div>
-                <div style="font-family:'JetBrains Mono',monospace; font-size:10px; color:#64748b; text-transform:uppercase;">Performance</div>
+            <div class="mockup-stats-grid-3">
+              <div class="mockup-stat-box">
+                <div class="mockup-stat-val">99</div>
+                <div class="mockup-stat-lbl">Performance</div>
               </div>
-              <div style="padding:0.75rem; background:#f8fafc; border-radius:8px; border:1px solid #f1f5f9; text-align:center;">
-                <div style="font-family:'Hanken Grotesk',sans-serif; font-size:1.25rem; font-weight:700; color:#047857;">0.6s</div>
-                <div style="font-family:'JetBrains Mono',monospace; font-size:10px; color:#64748b; text-transform:uppercase;">LCP Speed</div>
+              <div class="mockup-stat-box">
+                <div class="mockup-stat-val">0.6s</div>
+                <div class="mockup-stat-lbl">LCP Speed</div>
               </div>
-              <div style="padding:0.75rem; background:#f8fafc; border-radius:8px; border:1px solid #f1f5f9; text-align:center;">
-                <div style="font-family:'Hanken Grotesk',sans-serif; font-size:1.25rem; font-weight:700; color:#0f172a;">100</div>
-                <div style="font-family:'JetBrains Mono',monospace; font-size:10px; color:#64748b; text-transform:uppercase;">SEO Score</div>
+              <div class="mockup-stat-box">
+                <div class="mockup-stat-val" style="color:#0f172a;">100</div>
+                <div class="mockup-stat-lbl">SEO Score</div>
               </div>
             </div>
           </div>
-          <div style="padding:1rem; border-radius:12px; background:#ffffff; border:1px solid #e2e8f0; box-shadow:0 1px 2px rgba(0,0,0,0.04);">
-            <div style="display:flex; align-items:center; justify-content:space-between; font-size:12px; font-family:'JetBrains Mono',monospace; color:#64748b; margin-bottom:0.5rem;">
+          <div class="mockup-footer-card">
+            <div class="mockup-row-between">
               <span>Standar Rekayasa</span>
-              <span style="color:#047857; font-weight:600;">Next.js App Router + TailwindCSS</span>
+              <span style="color:#047857; font-weight:600;">Next.js + TailwindCSS</span>
             </div>
-            <div style="width:100%; background:#f1f5f9; height:8px; border-radius:9999px; overflow:hidden;">
+            <div style="width:100%; background:#f1f5f9; height:6px; border-radius:9999px; overflow:hidden;">
               <div style="background:#047857; height:100%; width:94%; border-radius:9999px;"></div>
             </div>
           </div>
@@ -84,40 +84,42 @@ const NafaData = {
       url: 'https://erp.nafateknologi.co.id/workspace',
       status: 'SYSTEM HEALTHY 99.9%',
       mockup: `
-        <div style="display:flex; flex-direction:column; gap:1rem;">
-          <div style="background:#ffffff; border-radius:12px; border:1px solid #e2e8f0; padding:1.25rem; box-shadow:0 1px 2px rgba(0,0,0,0.04);">
-            <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:1rem;">
-              <div style="display:flex; align-items:center; gap:0.75rem;">
-                <div style="width:36px; height:36px; border-radius:8px; background:#ecfdf5; border:1px solid #a7f3d0; display:flex; align-items:center; justify-content:center; color:#047857;">
-                  <span class="material-symbols-outlined" style="font-size:20px;">hub</span>
+        <div style="display:flex; flex-direction:column; gap:0.75rem;">
+          <div class="mockup-inner-card">
+            <div class="mockup-header-row">
+              <div style="display:flex; align-items:center; gap:0.625rem; min-width:0;">
+                <div style="width:34px; height:34px; border-radius:8px; background:#ecfdf5; border:1px solid #a7f3d0; display:flex; align-items:center; justify-content:center; color:#047857; flex-shrink:0;">
+                  <span class="material-symbols-outlined" style="font-size:18px;">hub</span>
                 </div>
-                <div>
-                  <h4 style="font-family:'Hanken Grotesk',sans-serif; font-size:14px; font-weight:600; color:#0f172a; margin:0;">Modul Operasional & Inventori</h4>
-                  <p style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#64748b; margin:2px 0 0 0;">Pusat Data Logistik & Verifikasi SOP</p>
+                <div style="min-width:0;">
+                  <h4 class="mockup-header-title">Modul Operasional &amp; Inventori</h4>
+                  <p class="mockup-header-sub">Pusat Data Logistik &amp; Verifikasi SOP</p>
                 </div>
               </div>
-              <span class="badge badge-emerald">Tersinkronisasi</span>
+              <span class="badge badge-emerald" style="font-size:10px; padding:0.2rem 0.5rem; flex-shrink:0;">Tersinkronisasi</span>
             </div>
-            <div style="display:flex; flex-direction:column; gap:0.625rem;">
-              <div style="padding:0.75rem; background:#f8fafc; border-radius:8px; border:1px solid #f1f5f9; display:flex; align-items:center; justify-content:space-between;">
-                <div style="display:flex; align-items:center; gap:0.625rem;">
-                  <span class="material-symbols-outlined" style="color:#047857; font-size:18px;">inventory_2</span>
-                  <span style="font-size:12px; font-weight:500; color:#0f172a;">Manajemen Pengadaan & Stok</span>
+            <div style="display:flex; flex-direction:column; gap:0.5rem;">
+              <div style="padding:0.625rem 0.75rem; background:#f8fafc; border-radius:8px; border:1px solid #f1f5f9; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:0.375rem;">
+                <div style="display:flex; align-items:center; gap:0.5rem;">
+                  <span class="material-symbols-outlined" style="color:#047857; font-size:16px;">inventory_2</span>
+                  <span style="font-size:11px; font-weight:500; color:#0f172a;">Manajemen Pengadaan &amp; Stok</span>
                 </div>
-                <span style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#047857; font-weight:700;">Terverifikasi</span>
+                <span style="font-family:'JetBrains Mono',monospace; font-size:10px; color:#047857; font-weight:700;">Terverifikasi</span>
               </div>
-              <div style="padding:0.75rem; background:#f8fafc; border-radius:8px; border:1px solid #f1f5f9; display:flex; align-items:center; justify-content:space-between;">
-                <div style="display:flex; align-items:center; gap:0.625rem;">
-                  <span class="material-symbols-outlined" style="color:#047857; font-size:18px;">approval</span>
-                  <span style="font-size:12px; font-weight:500; color:#0f172a;">Alur Persetujuan Bertingkat</span>
+              <div style="padding:0.625rem 0.75rem; background:#f8fafc; border-radius:8px; border:1px solid #f1f5f9; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:0.375rem;">
+                <div style="display:flex; align-items:center; gap:0.5rem;">
+                  <span class="material-symbols-outlined" style="color:#047857; font-size:16px;">approval</span>
+                  <span style="font-size:11px; font-weight:500; color:#0f172a;">Alur Persetujuan Bertingkat</span>
                 </div>
-                <span style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#047857; font-weight:700;">Otomatis</span>
+                <span style="font-family:'JetBrains Mono',monospace; font-size:10px; color:#047857; font-weight:700;">Otomatis</span>
               </div>
             </div>
           </div>
-          <div style="padding:1rem; border-radius:12px; background:#ffffff; border:1px solid #e2e8f0; box-shadow:0 1px 2px rgba(0,0,0,0.04); display:flex; align-items:center; justify-content:space-between;">
-            <span style="font-family:'JetBrains Mono',monospace; font-size:12px; color:#64748b;">Integritas Basis Data</span>
-            <span style="font-family:'JetBrains Mono',monospace; font-size:12px; color:#047857; font-weight:700;">Enkripsi AES-256 & Audit Trail</span>
+          <div class="mockup-footer-card">
+            <div class="mockup-row-between" style="margin-bottom:0;">
+              <span>Integritas Basis Data</span>
+              <span style="color:#047857; font-weight:700;">Enkripsi AES-256</span>
+            </div>
           </div>
         </div>
       `
@@ -132,39 +134,39 @@ const NafaData = {
       url: 'https://analytics.nafateknologi.co.id/insights',
       status: 'DATA INGESTED: 4.8M RECS',
       mockup: `
-        <div style="display:flex; flex-direction:column; gap:1rem;">
-          <div style="background:#ffffff; border-radius:12px; border:1px solid #e2e8f0; padding:1.25rem; box-shadow:0 1px 2px rgba(0,0,0,0.04);">
-            <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:1rem;">
-              <div style="display:flex; align-items:center; gap:0.75rem;">
-                <div style="width:36px; height:36px; border-radius:8px; background:#ecfdf5; border:1px solid #a7f3d0; display:flex; align-items:center; justify-content:center; color:#047857;">
-                  <span class="material-symbols-outlined" style="font-size:20px;">query_stats</span>
+        <div style="display:flex; flex-direction:column; gap:0.75rem;">
+          <div class="mockup-inner-card">
+            <div class="mockup-header-row">
+              <div style="display:flex; align-items:center; gap:0.625rem; min-width:0;">
+                <div style="width:34px; height:34px; border-radius:8px; background:#ecfdf5; border:1px solid #a7f3d0; display:flex; align-items:center; justify-content:center; color:#047857; flex-shrink:0;">
+                  <span class="material-symbols-outlined" style="font-size:18px;">query_stats</span>
                 </div>
-                <div>
-                  <h4 style="font-family:'Hanken Grotesk',sans-serif; font-size:14px; font-weight:600; color:#0f172a; margin:0;">Metrik KPI & Pertumbuhan</h4>
-                  <p style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#64748b; margin:2px 0 0 0;">Agregasi Data Penjualan & Konversi</p>
+                <div style="min-width:0;">
+                  <h4 class="mockup-header-title">Metrik KPI &amp; Pertumbuhan</h4>
+                  <p class="mockup-header-sub">Agregasi Data Penjualan &amp; Konversi</p>
                 </div>
               </div>
-              <span class="badge badge-emerald">Real-Time Data</span>
+              <span class="badge badge-emerald" style="font-size:10px; padding:0.2rem 0.5rem; flex-shrink:0;">Real-Time Data</span>
             </div>
-            <div style="display:grid; grid-template-columns:repeat(2,1fr); gap:0.75rem; margin-bottom:0.75rem;">
-              <div style="padding:0.75rem; background:#f8fafc; border-radius:8px; border:1px solid #f1f5f9;">
-                <div style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#64748b;">Omzet Periode</div>
-                <div style="font-family:'Hanken Grotesk',sans-serif; font-size:1.1875rem; font-weight:700; color:#0f172a; margin-top:2px;">Rp 842.5 M</div>
+            <div class="mockup-stats-grid-2">
+              <div style="padding:0.625rem 0.75rem; background:#f8fafc; border-radius:8px; border:1px solid #f1f5f9; min-width:0;">
+                <div style="font-family:'JetBrains Mono',monospace; font-size:10px; color:#64748b;">Omzet Periode</div>
+                <div style="font-family:'Hanken Grotesk',sans-serif; font-size:1.1rem; font-weight:700; color:#0f172a; margin-top:2px;">Rp 842.5 M</div>
                 <span style="font-family:'JetBrains Mono',monospace; font-size:10px; color:#047857;">+24.6% YoY</span>
               </div>
-              <div style="padding:0.75rem; background:#f8fafc; border-radius:8px; border:1px solid #f1f5f9;">
-                <div style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#64748b;">Tingkat Retensi</div>
-                <div style="font-family:'Hanken Grotesk',sans-serif; font-size:1.1875rem; font-weight:700; color:#0f172a; margin-top:2px;">94.2%</div>
+              <div style="padding:0.625rem 0.75rem; background:#f8fafc; border-radius:8px; border:1px solid #f1f5f9; min-width:0;">
+                <div style="font-family:'JetBrains Mono',monospace; font-size:10px; color:#64748b;">Tingkat Retensi</div>
+                <div style="font-family:'Hanken Grotesk',sans-serif; font-size:1.1rem; font-weight:700; color:#0f172a; margin-top:2px;">94.2%</div>
                 <span style="font-family:'JetBrains Mono',monospace; font-size:10px; color:#047857;">Stabil</span>
               </div>
             </div>
-            <div style="display:flex; align-items:flex-end; gap:6px; height:60px; padding-top:0.5rem; border-top:1px solid #f1f5f9;">
-              <div style="flex:1; background:#e2e8f0; height:40%; border-top-left-radius:4px; border-top-right-radius:4px;"></div>
-              <div style="flex:1; background:#e2e8f0; height:65%; border-top-left-radius:4px; border-top-right-radius:4px;"></div>
-              <div style="flex:1; background:#e2e8f0; height:50%; border-top-left-radius:4px; border-top-right-radius:4px;"></div>
-              <div style="flex:1; background:#e2e8f0; height:75%; border-top-left-radius:4px; border-top-right-radius:4px;"></div>
-              <div style="flex:1; background:#e2e8f0; height:60%; border-top-left-radius:4px; border-top-right-radius:4px;"></div>
-              <div style="flex:1; background:#047857; height:90%; border-top-left-radius:4px; border-top-right-radius:4px;"></div>
+            <div style="display:flex; align-items:flex-end; gap:6px; height:50px; padding-top:0.375rem; border-top:1px solid #f1f5f9;">
+              <div style="flex:1; background:#e2e8f0; height:40%; border-top-left-radius:3px; border-top-right-radius:3px;"></div>
+              <div style="flex:1; background:#e2e8f0; height:65%; border-top-left-radius:3px; border-top-right-radius:3px;"></div>
+              <div style="flex:1; background:#e2e8f0; height:50%; border-top-left-radius:3px; border-top-right-radius:3px;"></div>
+              <div style="flex:1; background:#e2e8f0; height:75%; border-top-left-radius:3px; border-top-right-radius:3px;"></div>
+              <div style="flex:1; background:#e2e8f0; height:60%; border-top-left-radius:3px; border-top-right-radius:3px;"></div>
+              <div style="flex:1; background:#047857; height:90%; border-top-left-radius:3px; border-top-right-radius:3px;"></div>
             </div>
           </div>
         </div>
@@ -180,41 +182,43 @@ const NafaData = {
       url: 'https://infra.nafateknologi.co.id/cluster-01',
       status: 'UPTIME 99.98% / 365 DAYS',
       mockup: `
-        <div style="display:flex; flex-direction:column; gap:1rem;">
-          <div style="background:#ffffff; border-radius:12px; border:1px solid #e2e8f0; padding:1.25rem; box-shadow:0 1px 2px rgba(0,0,0,0.04);">
-            <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:1rem;">
-              <div style="display:flex; align-items:center; gap:0.75rem;">
-                <div style="width:36px; height:36px; border-radius:8px; background:#ecfdf5; border:1px solid #a7f3d0; display:flex; align-items:center; justify-content:center; color:#047857;">
-                  <span class="material-symbols-outlined" style="font-size:20px;">dns</span>
+        <div style="display:flex; flex-direction:column; gap:0.75rem;">
+          <div class="mockup-inner-card">
+            <div class="mockup-header-row">
+              <div style="display:flex; align-items:center; gap:0.625rem; min-width:0;">
+                <div style="width:34px; height:34px; border-radius:8px; background:#ecfdf5; border:1px solid #a7f3d0; display:flex; align-items:center; justify-content:center; color:#047857; flex-shrink:0;">
+                  <span class="material-symbols-outlined" style="font-size:18px;">dns</span>
                 </div>
-                <div>
-                  <h4 style="font-family:'Hanken Grotesk',sans-serif; font-size:14px; font-weight:600; color:#0f172a; margin:0;">Status Sistem & Node Cluster</h4>
-                  <p style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#64748b; margin:2px 0 0 0;">Data Center Jakarta - Multi-Zona</p>
+                <div style="min-width:0;">
+                  <h4 class="mockup-header-title">Status Sistem &amp; Cluster</h4>
+                  <p class="mockup-header-sub">Data Center Multi-Zona</p>
                 </div>
               </div>
-              <span class="badge badge-emerald">Online</span>
+              <span class="badge badge-emerald" style="font-size:10px; padding:0.2rem 0.5rem; flex-shrink:0;">Online</span>
             </div>
-            <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:0.625rem;">
-              <div style="padding:0.75rem; background:#f8fafc; border-radius:8px; border:1px solid #f1f5f9; text-align:center;">
-                <div style="font-family:'JetBrains Mono',monospace; font-size:10px; color:#64748b;">Server Uptime</div>
-                <div style="font-family:'Hanken Grotesk',sans-serif; font-size:1rem; font-weight:700; color:#047857; margin-top:2px;">99.98%</div>
+            <div class="mockup-stats-grid-3">
+              <div class="mockup-stat-box">
+                <div class="mockup-stat-lbl">Uptime</div>
+                <div class="mockup-stat-val">99.98%</div>
               </div>
-              <div style="padding:0.75rem; background:#f8fafc; border-radius:8px; border:1px solid #f1f5f9; text-align:center;">
-                <div style="font-family:'JetBrains Mono',monospace; font-size:10px; color:#64748b;">Beban Node</div>
-                <div style="font-family:'Hanken Grotesk',sans-serif; font-size:1rem; font-weight:700; color:#0f172a; margin-top:2px;">24.8%</div>
+              <div class="mockup-stat-box">
+                <div class="mockup-stat-lbl">Beban</div>
+                <div class="mockup-stat-val" style="color:#0f172a;">24.8%</div>
               </div>
-              <div style="padding:0.75rem; background:#f8fafc; border-radius:8px; border:1px solid #f1f5f9; text-align:center;">
-                <div style="font-family:'JetBrains Mono',monospace; font-size:10px; color:#64748b;">Enkripsi</div>
-                <div style="font-family:'Hanken Grotesk',sans-serif; font-size:1rem; font-weight:700; color:#047857; margin-top:2px;">TLS 1.3</div>
+              <div class="mockup-stat-box">
+                <div class="mockup-stat-lbl">Enkripsi</div>
+                <div class="mockup-stat-val">TLS 1.3</div>
               </div>
             </div>
           </div>
-          <div style="padding:1rem; border-radius:12px; background:#ffffff; border:1px solid #e2e8f0; box-shadow:0 1px 2px rgba(0,0,0,0.04); display:flex; align-items:center; justify-content:space-between;">
-            <div style="display:flex; align-items:center; gap:0.5rem;">
-              <span style="width:8px; height:8px; border-radius:50%; background:#047857;"></span>
-              <span style="font-family:'JetBrains Mono',monospace; font-size:12px; color:#0f172a; font-weight:500;">Backup Harian Terjadwal Aktif</span>
+          <div class="mockup-footer-card">
+            <div class="mockup-row-between" style="margin-bottom:0;">
+              <div style="display:flex; align-items:center; gap:0.5rem;">
+                <span style="width:8px; height:8px; border-radius:50%; background:#047857; flex-shrink:0;"></span>
+                <span style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#0f172a; font-weight:500;">Backup Harian Terjadwal</span>
+              </div>
+              <span style="font-family:'JetBrains Mono',monospace; font-size:10px; color:#047857; font-weight:600;">SLA OK</span>
             </div>
-            <span style="font-family:'JetBrains Mono',monospace; font-size:12px; color:#64748b;">SLA Terpenuhi</span>
           </div>
         </div>
       `
@@ -230,33 +234,33 @@ const NafaData = {
       status: 'AGENT ONLINE (24/7)',
       mockup: `
         <div style="display:flex; flex-direction:column; gap:0.75rem;">
-          <div style="background:#ffffff; border-radius:12px; border:1px solid #e2e8f0; padding:1.25rem; box-shadow:0 1px 2px rgba(0,0,0,0.04);">
-            <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:1rem;">
-              <div style="display:flex; align-items:center; gap:0.75rem;">
-                <div style="width:36px; height:36px; border-radius:8px; background:#ecfdf5; border:1px solid #a7f3d0; display:flex; align-items:center; justify-content:center; color:#047857;">
-                  <span class="material-symbols-outlined" style="font-size:20px;">chat</span>
+          <div class="mockup-inner-card">
+            <div class="mockup-header-row">
+              <div style="display:flex; align-items:center; gap:0.625rem; min-width:0;">
+                <div style="width:34px; height:34px; border-radius:8px; background:#ecfdf5; border:1px solid #a7f3d0; display:flex; align-items:center; justify-content:center; color:#047857; flex-shrink:0;">
+                  <span class="material-symbols-outlined" style="font-size:18px;">chat</span>
                 </div>
-                <div>
-                  <h4 style="font-family:'Hanken Grotesk',sans-serif; font-size:14px; font-weight:600; color:#0f172a; margin:0;">Simulasi Interaksi Konsultasi</h4>
-                  <p style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#64748b; margin:2px 0 0 0;">Kanal Web & WhatsApp Bisnis Resmi</p>
+                <div style="min-width:0;">
+                  <h4 class="mockup-header-title">Simulasi Konsultasi AI</h4>
+                  <p class="mockup-header-sub">Kanal Web &amp; WhatsApp Resmi</p>
                 </div>
               </div>
-              <span class="badge badge-emerald">Aktif 24/7</span>
+              <span class="badge badge-emerald" style="font-size:10px; padding:0.2rem 0.5rem; flex-shrink:0;">Aktif 24/7</span>
             </div>
-            <div style="display:flex; flex-direction:column; gap:0.75rem;">
-              <div style="display:flex; align-items:flex-start; gap:0.625rem; justify-content:flex-end;">
-                <div style="background:#f1f5f9; color:#0f172a; padding:0.75rem; border-radius:16px; border-top-right-radius:0; max-width:82%; font-size:12px; line-height:1.4;">
-                  Halo tim Nafa, apakah modul sistem gudang bisa dihubungkan ke sistem POS toko kami?
+            <div style="display:flex; flex-direction:column; gap:0.625rem;">
+              <div style="display:flex; align-items:flex-start; gap:0.5rem; justify-content:flex-end;">
+                <div style="background:#f1f5f9; color:#0f172a; padding:0.625rem 0.75rem; border-radius:14px; border-top-right-radius:0; max-width:85%; font-size:11px; line-height:1.4;">
+                  Halo tim Nafa, apakah sistem gudang bisa sinkron ke POS toko?
                 </div>
-                <div style="width:26px; height:26px; border-radius:50%; background:#cbd5e1; display:flex; align-items:center; justify-content:center; font-size:10px; font-weight:700; color:#334155;">CS</div>
+                <div style="width:24px; height:24px; border-radius:50%; background:#cbd5e1; display:flex; align-items:center; justify-content:center; font-size:9px; font-weight:700; color:#334155; flex-shrink:0;">CS</div>
               </div>
-              <div style="display:flex; align-items:flex-start; gap:0.625rem;">
-                <div style="width:26px; height:26px; border-radius:50%; background:#d1fae5; display:flex; align-items:center; justify-content:center; color:#047857;">
+              <div style="display:flex; align-items:flex-start; gap:0.5rem;">
+                <div style="width:24px; height:24px; border-radius:50%; background:#d1fae5; display:flex; align-items:center; justify-content:center; color:#047857; flex-shrink:0;">
                   <span class="material-symbols-outlined" style="font-size:14px;">smart_toy</span>
                 </div>
-                <div style="background:#ecfdf5; border:1px solid #a7f3d0; color:#0f172a; padding:0.75rem; border-radius:16px; border-top-left-radius:0; max-width:85%; font-size:12px; line-height:1.4;">
-                  Bisa, sistem mendukung integrasi API POS dengan sinkronisasi inventori berkala.
-                  <span style="display:block; margin-top:6px; font-family:'JetBrains Mono',monospace; font-size:10px; color:#047857; font-weight:600;">Respons sistem: &lt; 1 detik</span>
+                <div style="background:#ecfdf5; border:1px solid #a7f3d0; color:#0f172a; padding:0.625rem 0.75rem; border-radius:14px; border-top-left-radius:0; max-width:85%; font-size:11px; line-height:1.4;">
+                  Bisa, sistem mendukung integrasi API POS dengan sinkronisasi inventori real-time.
+                  <span style="display:block; margin-top:4px; font-family:'JetBrains Mono',monospace; font-size:9px; color:#047857; font-weight:600;">Respons sistem: &lt; 1 detik</span>
                 </div>
               </div>
             </div>
