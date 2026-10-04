@@ -26,7 +26,7 @@ const NafaData = {
   services: {
     'web-profile': {
       title: 'Web Profile & Portal',
-      desc: 'Pengembangan website perusahaan dengan standar performa tinggi, navigasi intuitif, dan struktur kode yang mudah dipelihara.',
+      desc: 'Jasa pembuatan website profil perusahaan, landing page promosi, dan portal bisnis di Sidoarjo & Surabaya dengan arsitektur SEO-ready, performa cepat, dan desain responsif.',
       specs: ['Next.js & SSR', 'Optimasi Kecepatan', 'Integrasi CMS', 'Desain Responsif'],
       timeline: 'Estimasi: 1 - 2 Minggu',
       ctaText: 'Konsultasikan Web Profile',
@@ -77,7 +77,7 @@ const NafaData = {
 
     'sistem-informasi-ai': {
       title: 'Sistem Informasi & ERP',
-      desc: 'Digitalisasi alur kerja operasional, pencatatan data terpusat, dan integrasi modul bisnis spesifik sesuai proses internal Anda.',
+      desc: 'Rancang bangun sistem informasi kustom, aplikasi web operasional bisnis, ERP, CRM, dan inventori terintegrasi untuk otomatisasi alur kerja perusahaan.',
       specs: ['Modul Kustom', 'Sinkronisasi Multi-Divisi', 'Hak Akses Berjenjang', 'API Integrasi'],
       timeline: 'Estimasi: 3 - 5 Minggu',
       ctaText: 'Rancang Sistem Informasi',
@@ -127,7 +127,7 @@ const NafaData = {
 
     'data-analytics': {
       title: 'Dashboard Interaktif',
-      desc: 'Visualisasi performa metrik bisnis secara langsung untuk pengambilan keputusan yang lebih cepat dan terukur.',
+      desc: 'Pengembangan dasbor business intelligence (BI) dan visualisasi data analitik interaktif untuk pemantauan performa penjualan dan operasional secara real-time.',
       specs: ['Pemantauan Real-time', 'Visualisasi Dinamis', 'Ekspor Laporan Otomatis', 'Keamanan Akses'],
       timeline: 'Estimasi: 2 - 3 Minggu',
       ctaText: 'Bangun Dashboard Analytics',
@@ -175,7 +175,7 @@ const NafaData = {
 
     'cloud-server': {
       title: 'Infrastruktur & Cloud',
-      desc: 'Penyiapan dan pemeliharaan server dengan jaminan ketersediaan tinggi, pencadangan otomatis, dan keamanan berlapis.',
+      desc: 'Setup server cloud VPS (AWS, Google Cloud, DigitalOcean), konfigurasi SSL, containerization Docker, dan otomatisasi CI/CD dengan pemantauan server 24/7.',
       specs: ['Arsitektur Scalable', 'Monitoring 24/7', 'Backup Otomatis', 'Sertifikasi Keamanan'],
       timeline: 'Estimasi: 1 - 2 Minggu',
       ctaText: 'Kelola Infrastruktur Cloud',
