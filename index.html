@@ -10,6 +10,31 @@
   <meta name="author" content="PT Nafa Teknologi Indonesia">
   <meta name="theme-color" content="#047857">
   <meta name="robots" content="index, follow">
+
+  <!--
+    Fallback anchor lama (era single-page). Fragmen "#..." tidak pernah dikirim ke
+    server sehingga tidak bisa di-301, jadi pemetaan ini dijalankan di sisi klien.
+    Skrip sengaja inline & blocking agar berjalan sebelum halaman ter-render
+    (tidak ada kedipan beranda sebelum pindah).
+  -->
+  <script>
+    (function () {
+      var legacy = {
+        '#filosofi': '/tentang-kami/',
+        '#tim': '/tentang-kami/#tim',
+        '#karir': '/tentang-kami/#karir',
+        '#biaya': '/layanan/#biaya',
+        '#faq': '/kontak/#faq',
+        '#kontak': '/kontak/'
+      };
+      var dest = legacy[(window.location.hash || '').toLowerCase()];
+      if (!dest) return;
+      var split = dest.indexOf('#');
+      var fragment = split === -1 ? '' : dest.slice(split);
+      if (split !== -1) dest = dest.slice(0, split);
+      window.location.replace(dest + window.location.search + fragment);
+    })();
+  </script>
   <link rel="canonical" href="https://nafateknologi.web.id/">
 
   <!-- Open Graph / Meta Medsos (WhatsApp, LinkedIn, FB) -->
@@ -68,64 +93,6 @@
   }
   </script>
 
-  <!-- Structured Data: FAQPage (Google Rich Results) -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "Bagaimana alur proyek dan skema pembayarannya?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Proyek diawali konsultasi kebutuhan teknis. Pembayaran bertahap berbasis termin pengerjaan, dimulai uang muka (DP) saat kick-off hingga pelunasan setelah serah terima tuntas."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Bagaimana penanganan biaya server dan hosting?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Server dapat dikelola mandiri atau didelegasikan kepada kami dengan biaya bulanan transparan yang disepakati di awal tanpa biaya tambahan."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Apakah source code sepenuhnya milik klien?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Ya, mutlak 100%. Kode sumber (Git), database, dan akses server diserahkan seutuhnya kepada Anda tanpa keterikatan vendor (zero vendor lock-in)."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Bagaimana garansi sistem dan perbaikan bug?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Setiap proyek mendapatkan garansi perbaikan bug gratis selama 1–3 bulan paska rilis, ditambah opsi kontrak pemeliharaan sistem berkala jangka panjang."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Apakah bisa integrasi dengan sistem yang ada?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Tentu. Sistem baru dapat dihubungkan ke database eksisting, POS, ERP internal, maupun payment gateway via integrasi API yang aman dan terstandarisasi."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Apakah melayani konsultasi tatap muka langsung?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Ya, kami melayani pertemuan tatap muka untuk area Sidoarjo, Surabaya, Gresik, Pasuruan, dan Malang. Klien di luar wilayah tersebut dilayani via Zoom."
-        }
-      }
-    ]
-  }
-  </script>
-
   <!-- Preconnect & High-Performance Async Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -161,12 +128,12 @@
 <body>
 
   <!-- ==========================================================================
-       SITE HEADER & NAVIGATION
+       SITE HEADER & NAVIGATION (shared component)
        ========================================================================== -->
   <header class="site-header">
     <div class="container">
       <!-- Brand Logo -->
-      <a href="#" class="brand-logo" aria-label="Nafa Teknologi Indonesia">
+      <a href="/" class="brand-logo" aria-label="Nafa Teknologi Indonesia">
         <img src="assets/logo.webp" alt="Nafa Teknologi Logo" class="logo-icon-img" width="36" height="36"
           decoding="async">
         <div class="brand-text">
@@ -177,19 +144,16 @@
 
       <!-- Desktop Navigation Links -->
       <nav class="desktop-nav" aria-label="Navigasi Utama">
-        <a href="#filosofi" class="nav-link">Filosofi</a>
-        <a href="#layanan" class="nav-link">Layanan</a>
-        <a href="#portofolio" class="nav-link">Portofolio</a>
-        <a href="#biaya" class="nav-link">Biaya</a>
-        <a href="#tim" class="nav-link">Tim</a>
-        <a href="#karir" class="nav-link">Karir</a>
-        <a href="#faq" class="nav-link">FAQ</a>
-        <a href="#kontak" class="nav-link">Kontak</a>
+        <a href="/" class="nav-link active" aria-current="page">Beranda</a>
+        <a href="/layanan/" class="nav-link">Layanan</a>
+        <a href="/portofolio/" class="nav-link">Portofolio</a>
+        <a href="/tentang-kami/" class="nav-link">Tentang Kami</a>
+        <a href="/kontak/" class="nav-link">Kontak</a>
       </nav>
 
       <!-- Header Action CTAs -->
       <div class="header-actions">
-        <a href="#kontak" class="btn btn-primary header-cta-btn">Konsultasi</a>
+        <a href="/kontak/" class="btn btn-primary header-cta-btn">Konsultasi</a>
         <button id="mobile-menu-open-btn" class="mobile-menu-btn" aria-label="Buka Menu">
           <span class="material-symbols-outlined">menu</span>
         </button>
@@ -214,17 +178,14 @@
       </button>
     </div>
     <nav class="mobile-nav-links">
-      <a href="#filosofi" class="mobile-nav-link">Filosofi</a>
-      <a href="#layanan" class="mobile-nav-link">Layanan</a>
-      <a href="#portofolio" class="mobile-nav-link">Portofolio</a>
-      <a href="#biaya" class="mobile-nav-link">Biaya Solusi</a>
-      <a href="#tim" class="mobile-nav-link">Tim</a>
-      <a href="#karir" class="mobile-nav-link">Karir</a>
-      <a href="#faq" class="mobile-nav-link">FAQ</a>
-      <a href="#kontak" class="mobile-nav-link">Kontak &amp; Konsultasi</a>
+      <a href="/" class="mobile-nav-link text-primary" aria-current="page">Beranda</a>
+      <a href="/layanan/" class="mobile-nav-link">Layanan</a>
+      <a href="/portofolio/" class="mobile-nav-link">Portofolio</a>
+      <a href="/tentang-kami/" class="mobile-nav-link">Tentang Kami</a>
+      <a href="/kontak/" class="mobile-nav-link">Kontak &amp; Konsultasi</a>
     </nav>
     <div style="margin-top:auto; padding-top:1.5rem; border-top:1px solid var(--color-border);">
-      <a href="#kontak" class="btn btn-primary btn-block">Mulai Diskusi</a>
+      <a href="/kontak/" class="btn btn-primary btn-block">Mulai Diskusi</a>
     </div>
   </aside>
 
@@ -232,7 +193,7 @@
   <main>
 
     <!-- ==========================================================================
-         1. HERO SECTION & ORGANIC CANVAS INTERACTIVE (#canvas)
+         1. HERO CANVAS (#canvas)
          ========================================================================== -->
     <section id="canvas" class="section-canvas">
       <div class="container">
@@ -289,8 +250,8 @@
           </svg>
 
           <!-- 4 Left Floating Engineering Nodes -->
-          <div class="canvas-node anchor-right node-pos-1 float-card-1" data-node-index="1"
-            data-target-service="web-profile" title="Klik untuk lihat detail Web Profile">
+          <a class="canvas-node anchor-right node-pos-1 float-card-1" data-node-index="1"
+            data-target-service="web-profile" title="Klik untuk lihat detail Web Profile" href="/layanan/?layanan=web-profile">
             <div class="node-icon-box">
               <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                 <circle cx="12" cy="12" r="10" />
@@ -303,10 +264,10 @@
               <p class="node-desc">Kredibilitas &amp; Identitas</p>
             </div>
             <div class="node-anchor-dot"></div>
-          </div>
+          </a>
 
-          <div class="canvas-node anchor-right node-pos-2 float-card-2" data-node-index="2"
-            data-target-service="data-analytics" title="Klik untuk lihat detail Data Analytics">
+          <a class="canvas-node anchor-right node-pos-2 float-card-2" data-node-index="2"
+            data-target-service="data-analytics" title="Klik untuk lihat detail Data Analytics" href="/layanan/?layanan=data-analytics">
             <div class="node-icon-box">
               <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                 <line x1="18" x2="18" y1="20" y2="10" />
@@ -319,10 +280,10 @@
               <p class="node-desc">Analisis Prediktif &amp; Pipeline</p>
             </div>
             <div class="node-anchor-dot"></div>
-          </div>
+          </a>
 
-          <div class="canvas-node anchor-right node-pos-3 float-card-3" data-node-index="3"
-            data-target-service="web-profile" title="Klik untuk lihat optimasi visibilitas">
+          <a class="canvas-node anchor-right node-pos-3 float-card-3" data-node-index="3"
+            data-target-service="web-profile" title="Klik untuk lihat optimasi visibilitas" href="/layanan/?layanan=web-profile">
             <div class="node-icon-box">
               <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                 <circle cx="11" cy="11" r="8" />
@@ -335,10 +296,10 @@
               <p class="node-desc">Optimalisasi Visibilitas</p>
             </div>
             <div class="node-anchor-dot"></div>
-          </div>
+          </a>
 
-          <div class="canvas-node anchor-right node-pos-4 float-card-4" data-node-index="4"
-            data-target-service="cloud-server" title="Klik untuk lihat Cloud & Server">
+          <a class="canvas-node anchor-right node-pos-4 float-card-4" data-node-index="4"
+            data-target-service="cloud-server" title="Klik untuk lihat Cloud & Server" href="/layanan/?layanan=cloud-server">
             <div class="node-icon-box">
               <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                 <rect height="8" rx="2" width="20" x="2" y="2" />
@@ -352,11 +313,11 @@
               <p class="node-desc">Infrastruktur &amp; Keandalan</p>
             </div>
             <div class="node-anchor-dot"></div>
-          </div>
+          </a>
 
           <!-- 4 Right Floating Engineering Nodes -->
-          <div class="canvas-node anchor-left node-pos-5 float-card-5" data-node-index="5"
-            data-target-service="chatbot-ai" title="Klik untuk lihat Chatbot AI">
+          <a class="canvas-node anchor-left node-pos-5 float-card-5" data-node-index="5"
+            data-target-service="chatbot-ai" title="Klik untuk lihat Chatbot AI" href="/layanan/?layanan=chatbot-ai">
             <div class="node-anchor-dot"></div>
             <div class="node-icon-box">
               <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
@@ -372,10 +333,10 @@
               <span class="node-title">Chatbot AI</span>
               <p class="node-desc">Asisten Interaksi Otomatis</p>
             </div>
-          </div>
+          </a>
 
-          <div class="canvas-node anchor-left node-pos-6 float-card-6" data-node-index="6"
-            data-target-service="sistem-informasi-ai" title="Klik untuk lihat Sistem Informasi AI">
+          <a class="canvas-node anchor-left node-pos-6 float-card-6" data-node-index="6"
+            data-target-service="sistem-informasi-ai" title="Klik untuk lihat Sistem Informasi AI" href="/layanan/?layanan=sistem-informasi-ai">
             <div class="node-anchor-dot"></div>
             <div class="node-icon-box">
               <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
@@ -388,10 +349,10 @@
               <span class="node-title">Sistem Informasi AI</span>
               <p class="node-desc">Tata Kelola ERP &amp; Bisnis</p>
             </div>
-          </div>
+          </a>
 
-          <div class="canvas-node anchor-left node-pos-7 float-card-7" data-node-index="7"
-            data-target-service="sistem-informasi-ai" title="Klik untuk lihat AI Automation">
+          <a class="canvas-node anchor-left node-pos-7 float-card-7" data-node-index="7"
+            data-target-service="sistem-informasi-ai" title="Klik untuk lihat AI Automation" href="/layanan/?layanan=sistem-informasi-ai">
             <div class="node-anchor-dot"></div>
             <div class="node-icon-box">
               <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
@@ -402,10 +363,10 @@
               <span class="node-title">AI Agent Automation</span>
               <p class="node-desc">Efisiensi Alur Kerja</p>
             </div>
-          </div>
+          </a>
 
-          <div class="canvas-node anchor-left node-pos-8 float-card-8" data-node-index="8"
-            data-target-service="data-analytics" title="Klik untuk lihat Computer Vision">
+          <a class="canvas-node anchor-left node-pos-8 float-card-8" data-node-index="8"
+            data-target-service="data-analytics" title="Klik untuk lihat Computer Vision" href="/layanan/?layanan=data-analytics">
             <div class="node-anchor-dot"></div>
             <div class="node-icon-box">
               <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
@@ -417,7 +378,7 @@
               <span class="node-title">Computer Vision</span>
               <p class="node-desc">Pemrosesan Visual &amp; Citra</p>
             </div>
-          </div>
+          </a>
 
           <!-- Hero Core Headline & CTA -->
           <div class="hero-content">
@@ -431,37 +392,37 @@
               Anda.
             </p>
             <div class="hero-cta-group">
-              <a href="#kontak" class="btn btn-primary btn-lg">Konsultasi Gratis</a>
-              <a href="#layanan" class="btn btn-secondary btn-lg">Lihat Layanan</a>
+              <a href="/kontak/" class="btn btn-primary btn-lg">Konsultasi Gratis</a>
+              <a href="/layanan/" class="btn btn-secondary btn-lg">Lihat Layanan</a>
             </div>
           </div>
 
           <!-- Mobile Nodes Grid (Screens < 1024px) -->
           <div class="mobile-nodes-grid">
-            <div class="mobile-node-chip" data-chip-index="1" data-target-service="web-profile">
+            <a class="mobile-node-chip" data-chip-index="1" data-target-service="web-profile" href="/layanan/?layanan=web-profile">
               <span class="material-symbols-outlined text-primary" style="font-size:18px;">language</span>
               <span>Web Profile</span>
-            </div>
-            <div class="mobile-node-chip" data-chip-index="2" data-target-service="sistem-informasi-ai">
+            </a>
+            <a class="mobile-node-chip" data-chip-index="2" data-target-service="sistem-informasi-ai" href="/layanan/?layanan=sistem-informasi-ai">
               <span class="material-symbols-outlined text-primary" style="font-size:18px;">hub</span>
               <span>Sistem Info AI</span>
-            </div>
-            <div class="mobile-node-chip" data-chip-index="3" data-target-service="data-analytics">
+            </a>
+            <a class="mobile-node-chip" data-chip-index="3" data-target-service="data-analytics" href="/layanan/?layanan=data-analytics">
               <span class="material-symbols-outlined text-primary" style="font-size:18px;">query_stats</span>
               <span>Data Analytics</span>
-            </div>
-            <div class="mobile-node-chip" data-chip-index="4" data-target-service="cloud-server">
+            </a>
+            <a class="mobile-node-chip" data-chip-index="4" data-target-service="cloud-server" href="/layanan/?layanan=cloud-server">
               <span class="material-symbols-outlined text-primary" style="font-size:18px;">dns</span>
               <span>Cloud &amp; Server</span>
-            </div>
-            <div class="mobile-node-chip" data-chip-index="5" data-target-service="chatbot-ai">
+            </a>
+            <a class="mobile-node-chip" data-chip-index="5" data-target-service="chatbot-ai" href="/layanan/?layanan=chatbot-ai">
               <span class="material-symbols-outlined text-primary" style="font-size:18px;">smart_toy</span>
               <span>Chatbot AI</span>
-            </div>
-            <div class="mobile-node-chip" data-chip-index="6" data-target-service="web-profile">
+            </a>
+            <a class="mobile-node-chip" data-chip-index="6" data-target-service="web-profile" href="/layanan/?layanan=web-profile">
               <span class="material-symbols-outlined text-primary" style="font-size:18px;">search_insights</span>
               <span>SEO Engine</span>
-            </div>
+            </a>
           </div>
 
         </div>
@@ -469,215 +430,112 @@
     </section>
 
     <!-- ==========================================================================
-         2. FILOSOFI BRAND (#filosofi)
-         ========================================================================== -->
-    <section id="filosofi" class="section-filosofi">
-      <div class="container">
-        <div class="filosofi-header">
-          <div class="filosofi-title-wrap">
-            <h2 class="filosofi-title-main">Nafa'a</h2>
-            <span class="filosofi-separator">—</span>
-            <span class="filosofi-italic">Memberi Manfaat</span>
-          </div>
-          <p class="filosofi-quote">
-            “Teknologi terbaik bukan yang paling rumit, melainkan yang paling presisi menjawab masalah dan memberi
-            dampak nyata.”
-          </p>
-        </div>
-
-        <div class="filosofi-grid">
-          <!-- Card 1 -->
-          <div class="filosofi-card float-filosofi-1">
-            <h3 class="filosofi-card-title">Bagi Ekosistem Bisnis</h3>
-            <p>
-              Mengembangkan infrastruktur perangkat lunak yang andal, aman, dan tepat sasaran untuk meningkatkan
-              efisiensi operasional skala industri secara berkelanjutan.
-            </p>
-          </div>
-
-          <!-- Card 2 -->
-          <div class="filosofi-card float-filosofi-2">
-            <h3 class="filosofi-card-title">Bagi Talenta IT &amp; Sosial</h3>
-            <p>
-              Membangun ruang kolaborasi inklusif bagi siswa, mahasiswa, freshgraduate, hingga
-              profesional untuk mengasah kompetensi dan
-              karakter di industri digital.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ==========================================================================
-         3. LAYANAN INTI & RENCANA INOVASI (#layanan)
+         2. OVERVIEW LAYANAN (#layanan)
          ========================================================================== -->
     <section id="layanan" class="section-layanan">
       <div class="container">
 
-        <!-- Section Header -->
         <div class="section-title-wrap">
           <h2 class="section-title">Solusi Rekayasa Digital</h2>
+          <p style="font-size:1.0625rem; color:var(--color-text-body); max-width:760px; margin-top:0.75rem;">
+            Lima pilar layanan yang kami kerjakan sehari-hari &mdash; dari website korporasi hingga sistem informasi
+            terintegrasi AI. Pilih salah satu untuk melihat spesifikasi lengkap, estimasi waktu, dan rincian biayanya.
+          </p>
         </div>
 
-        <!-- 5 Interactive Service Tabs -->
-        <div class="service-tabs-wrapper">
-          <div class="service-tabs-nav" id="layanan-tabs" role="tablist">
-            <button type="button" class="service-tab-btn active" data-service="web-profile" role="tab"
-              aria-selected="true">
-              <span class="material-symbols-outlined" style="font-size:18px;">language</span>
-              <span>Web Profile</span>
-              <span class="tab-active-bar"></span>
-            </button>
-            <button type="button" class="service-tab-btn" data-service="sistem-informasi-ai" role="tab"
-              aria-selected="false">
-              <span class="material-symbols-outlined" style="font-size:18px;">hub</span>
-              <span>Sistem Informasi AI</span>
-              <span class="tab-active-bar"></span>
-            </button>
-            <button type="button" class="service-tab-btn" data-service="data-analytics" role="tab"
-              aria-selected="false">
-              <span class="material-symbols-outlined" style="font-size:18px;">query_stats</span>
-              <span>Data Analytics</span>
-              <span class="tab-active-bar"></span>
-            </button>
-            <button type="button" class="service-tab-btn" data-service="cloud-server" role="tab" aria-selected="false">
-              <span class="material-symbols-outlined" style="font-size:18px;">dns</span>
-              <span>Cloud &amp; Server</span>
-              <span class="tab-active-bar"></span>
-            </button>
-            <button type="button" class="service-tab-btn" data-service="chatbot-ai" role="tab" aria-selected="false">
-              <span class="material-symbols-outlined" style="font-size:18px;">smart_toy</span>
-              <span>Chatbot AI</span>
-              <span class="tab-active-bar"></span>
-            </button>
-          </div>
-        </div>
-
-        <!-- Dynamic Service Showcase Box -->
-        <div class="service-showcase-card">
-          <div class="service-showcase-grid">
-
-            <!-- Left Column: Dynamic Service Description & Specs -->
-            <div class="service-details">
-              <div>
-                <h3 id="service-title" class="service-title">Web Profile</h3>
-                <p id="service-desc" class="service-desc">
-                  Jasa pembuatan website profil perusahaan, landing page promosi, dan portal bisnis di Sidoarjo &amp; Surabaya dengan arsitektur SEO-ready, performa cepat, dan desain responsif.
-                </p>
-                <div class="service-specs-list" id="service-specs">
-                  <!-- Dynamically populated from js/data.js -->
-                </div>
-              </div>
-              <div class="service-footer">
-                <a href="#kontak" class="btn btn-primary btn-lg" id="service-cta-btn">
-                  <span id="service-cta-text">Konsultasikan Kebutuhan</span>
-                  <span class="material-symbols-outlined" style="font-size:18px;">arrow_forward</span>
-                </a>
-              </div>
+        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:1.25rem;">
+          <a href="/layanan/?layanan=web-profile" class="card card-hover"
+            style="display:flex; flex-direction:column; gap:0.75rem; padding:1.5rem;">
+            <div class="node-icon-box">
+              <span class="material-symbols-outlined" style="font-size:20px;">language</span>
             </div>
-
-            <!-- Right Column: Simulated Interactive Browser Mockup -->
-            <div>
-              <div class="browser-mockup">
-                <div class="browser-bar">
-                  <div class="browser-bar-left">
-                    <div class="traffic-lights">
-                      <span class="traffic-light traffic-red"></span>
-                      <span class="traffic-light traffic-yellow"></span>
-                      <span class="traffic-light traffic-green"></span>
-                    </div>
-                    <span id="preview-browser-url" class="browser-url">https://company.nafateknologi.co.id</span>
-                  </div>
-                  <div class="browser-bar-right">
-                    <span class="material-symbols-outlined browser-lock-icon">lock</span>
-                    <span id="preview-status-pill" class="badge badge-emerald browser-status-badge">ACTIVE 200 OK</span>
-                  </div>
-                </div>
-                <div class="browser-body" id="service-mockup-container">
-                  <!-- Dynamically injected mockup HTML from js/data.js -->
-                </div>
-              </div>
-            </div>
-
-          </div>
-        </div>
-
-        <!-- Rencana Inovasi (R&D Roadmap) -->
-        <div style="margin-top:2rem;">
-          <div class="section-title-wrap" style="margin-bottom:1.5rem;">
             <h3
-              style="font-family:var(--font-headline); font-size:1.75rem; font-weight:700; color:var(--color-text-headline);">
-              Rencana Inovasi
+              style="font-family:var(--font-headline); font-size:1.0625rem; font-weight:700; color:var(--color-text-headline);">
+              Web Profile &amp; Portal
             </h3>
-          </div>
-          <div class="inovasi-grid">
-            <!-- Inovasi 1 -->
-            <div class="inovasi-card">
-              <div>
-                <div class="inovasi-header">
-                  <div class="node-icon-box">
-                    <span class="material-symbols-outlined" style="font-size:20px;">visibility</span>
-                  </div>
-                  <span class="badge badge-neutral">Dalam Riset</span>
-                </div>
-                <h4 class="inovasi-title">Computer Vision &amp; Pengolahan Citra</h4>
-                <p class="inovasi-desc">
-                  Deteksi objek otomatis, inspeksi visual proses industri, dan OCR pengenalan dokumen.
-                </p>
-              </div>
-              <div class="inovasi-footer">
-                <span>Fase Eksplorasi</span>
-                <span style="color:var(--color-primary); font-weight:600;">Pipeline QC &amp; OCR</span>
-              </div>
+            <p style="font-size:0.9375rem; color:var(--color-text-body);">
+              Website profil perusahaan, landing page promosi, dan portal bisnis yang cepat, SEO-ready, dan responsif.
+            </p>
+            <span class="font-mono"
+              style="margin-top:auto; padding-top:0.5rem; font-size:11px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:var(--color-primary);">
+              Lihat Layanan &rarr;
+            </span>
+          </a>
+          <a href="/layanan/?layanan=sistem-informasi-ai" class="card card-hover"
+            style="display:flex; flex-direction:column; gap:0.75rem; padding:1.5rem;">
+            <div class="node-icon-box">
+              <span class="material-symbols-outlined" style="font-size:20px;">hub</span>
             </div>
-
-            <!-- Inovasi 2 -->
-            <div class="inovasi-card">
-              <div>
-                <div class="inovasi-header">
-                  <div class="node-icon-box">
-                    <span class="material-symbols-outlined" style="font-size:20px;">search_insights</span>
-                  </div>
-                  <span class="badge badge-neutral">Dalam Riset</span>
-                </div>
-                <h4 class="inovasi-title">SEO Engine &amp; Optimasi Visibilitas</h4>
-                <p class="inovasi-desc">
-                  Riset algoritma perayapan mesin pencari dan otomatisasi struktur data indexing.
-                </p>
-              </div>
-              <div class="inovasi-footer">
-                <span>Fase Eksplorasi</span>
-                <span style="color:var(--color-primary); font-weight:600;">Crawl &amp; Structured Data</span>
-              </div>
+            <h3
+              style="font-family:var(--font-headline); font-size:1.0625rem; font-weight:700; color:var(--color-text-headline);">
+              Sistem Informasi &amp; ERP
+            </h3>
+            <p style="font-size:0.9375rem; color:var(--color-text-body);">
+              Sistem informasi kustom, ERP, CRM, dan inventori untuk otomatisasi alur kerja perusahaan.
+            </p>
+            <span class="font-mono"
+              style="margin-top:auto; padding-top:0.5rem; font-size:11px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:var(--color-primary);">
+              Lihat Layanan &rarr;
+            </span>
+          </a>
+          <a href="/layanan/?layanan=data-analytics" class="card card-hover"
+            style="display:flex; flex-direction:column; gap:0.75rem; padding:1.5rem;">
+            <div class="node-icon-box">
+              <span class="material-symbols-outlined" style="font-size:20px;">query_stats</span>
             </div>
-
-            <!-- Inovasi 3 -->
-            <div class="inovasi-card">
-              <div>
-                <div class="inovasi-header">
-                  <div class="node-icon-box">
-                    <span class="material-symbols-outlined" style="font-size:20px;">flowsheet</span>
-                  </div>
-                  <span class="badge badge-emerald">R&amp;D</span>
-                </div>
-                <h4 class="inovasi-title">AI Agent &amp; Automation</h4>
-                <p class="inovasi-desc">
-                  Orkestrasi alur kerja tanpa hambatan antar-aplikasi bisnis dengan pipeline pemrosesan otomatis.
-                </p>
-              </div>
-              <div class="inovasi-footer">
-                <span>Fase Eksplorasi</span>
-                <span style="color:var(--color-primary); font-weight:600;">Event-Driven Automation</span>
-              </div>
+            <h3
+              style="font-family:var(--font-headline); font-size:1.0625rem; font-weight:700; color:var(--color-text-headline);">
+              Data Analytics &amp; Dashboard
+            </h3>
+            <p style="font-size:0.9375rem; color:var(--color-text-body);">
+              Dasbor business intelligence interaktif untuk memantau performa penjualan dan operasional secara real-time.
+            </p>
+            <span class="font-mono"
+              style="margin-top:auto; padding-top:0.5rem; font-size:11px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:var(--color-primary);">
+              Lihat Layanan &rarr;
+            </span>
+          </a>
+          <a href="/layanan/?layanan=cloud-server" class="card card-hover"
+            style="display:flex; flex-direction:column; gap:0.75rem; padding:1.5rem;">
+            <div class="node-icon-box">
+              <span class="material-symbols-outlined" style="font-size:20px;">dns</span>
             </div>
-          </div>
+            <h3
+              style="font-family:var(--font-headline); font-size:1.0625rem; font-weight:700; color:var(--color-text-headline);">
+              Cloud &amp; Server
+            </h3>
+            <p style="font-size:0.9375rem; color:var(--color-text-body);">
+              Setup server cloud, SSL, Docker, dan pipeline CI/CD dengan pemantauan serta pencadangan otomatis.
+            </p>
+            <span class="font-mono"
+              style="margin-top:auto; padding-top:0.5rem; font-size:11px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:var(--color-primary);">
+              Lihat Layanan &rarr;
+            </span>
+          </a>
+          <a href="/layanan/?layanan=chatbot-ai" class="card card-hover"
+            style="display:flex; flex-direction:column; gap:0.75rem; padding:1.5rem;">
+            <div class="node-icon-box">
+              <span class="material-symbols-outlined" style="font-size:20px;">smart_toy</span>
+            </div>
+            <h3
+              style="font-family:var(--font-headline); font-size:1.0625rem; font-weight:700; color:var(--color-text-headline);">
+              Chatbot AI &amp; Automation
+            </h3>
+            <p style="font-size:0.9375rem; color:var(--color-text-body);">
+              Asisten AI untuk layanan pelanggan WhatsApp dan web dengan pemahaman konteks yang natural.
+            </p>
+            <span class="font-mono"
+              style="margin-top:auto; padding-top:0.5rem; font-size:11px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:var(--color-primary);">
+              Lihat Layanan &rarr;
+            </span>
+          </a>
         </div>
 
       </div>
     </section>
 
     <!-- ==========================================================================
-         4. PORTOFOLIO (#portofolio)
+         3. PORTOFOLIO PILIHAN (#portofolio)
          ========================================================================== -->
     <section id="portofolio" class="section-portofolio">
       <!-- Architectural Precision Blueprint Grid Background -->
@@ -687,52 +545,11 @@
 
         <!-- Section Header -->
         <div class="portofolio-header">
-          <h2 class="section-title" style="margin-bottom:0.75rem;">Portofolio</h2>
+          <h2 class="section-title" style="margin-bottom:0.75rem;">Portofolio Pilihan</h2>
           <p class="portofolio-subtitle">
-            Kumpulan proyek aplikasi web, sistem informasi manajemen, portal bisnis, dan solusi AI yang kami kembangkan untuk klien di Sidoarjo, Surabaya, dan sekitarnya.
+            Tiga proyek yang paling mewakili cara kami bekerja: katalog web, produk berbasis AI, dan dasbor analitik
+            data. Seluruhnya sudah live dan bisa Anda coba langsung.
           </p>
-        </div>
-
-        <!-- 5 Category Tabs (Aligned with Section Layanan) -->
-        <div class="service-tabs-wrapper portofolio-tabs-wrapper">
-          <div class="service-tabs-nav" id="portofolio-tabs" role="tablist">
-            <button type="button" class="service-tab-btn portofolio-filter-btn active" data-filter="all" role="tab"
-              aria-selected="true">
-              <span class="material-symbols-outlined" style="font-size:18px;">grid_view</span>
-              <span>Semua Proyek</span>
-              <span class="tab-active-bar"></span>
-            </button>
-            <button type="button" class="service-tab-btn portofolio-filter-btn" data-filter="web-profile" role="tab"
-              aria-selected="false">
-              <span class="material-symbols-outlined" style="font-size:18px;">language</span>
-              <span>Web Profile</span>
-              <span class="tab-active-bar"></span>
-            </button>
-            <button type="button" class="service-tab-btn portofolio-filter-btn" data-filter="sistem-informasi-ai"
-              role="tab" aria-selected="false">
-              <span class="material-symbols-outlined" style="font-size:18px;">hub</span>
-              <span>Sistem Informasi AI</span>
-              <span class="tab-active-bar"></span>
-            </button>
-            <button type="button" class="service-tab-btn portofolio-filter-btn" data-filter="data-analytics" role="tab"
-              aria-selected="false">
-              <span class="material-symbols-outlined" style="font-size:18px;">query_stats</span>
-              <span>Data Analytics</span>
-              <span class="tab-active-bar"></span>
-            </button>
-            <button type="button" class="service-tab-btn portofolio-filter-btn" data-filter="cloud-server" role="tab"
-              aria-selected="false">
-              <span class="material-symbols-outlined" style="font-size:18px;">dns</span>
-              <span>Cloud &amp; Server</span>
-              <span class="tab-active-bar"></span>
-            </button>
-            <button type="button" class="service-tab-btn portofolio-filter-btn" data-filter="chatbot-ai" role="tab"
-              aria-selected="false">
-              <span class="material-symbols-outlined" style="font-size:18px;">smart_toy</span>
-              <span>Chatbot AI</span>
-              <span class="tab-active-bar"></span>
-            </button>
-          </div>
         </div>
 
         <!-- Horizontal Slider Wrap with Prev/Next Navigation -->
@@ -797,30 +614,6 @@
               </div>
             </div>
 
-            <!-- Card 3: AI Solution - TemanHR (Live) -->
-            <div class="portofolio-card" data-category="sistem-informasi-ai chatbot-ai">
-              <div>
-                <div class="portofolio-img-wrap">
-                  <img src="assets/portfolio/teman-hr-ai.webp" alt="Preview TemanHR - Screening CV Kandidat Berbasis AI"
-                    class="portofolio-card-img" loading="lazy" decoding="async">
-                </div>
-                <span class="portofolio-cat-tag">Sistem Informasi AI</span>
-                <h3 class="portofolio-title">TemanHR — Screening CV Kandidat AI</h3>
-                <p class="portofolio-desc">
-                  Sistem automasi talent acquisition bertenaga AI untuk menyaring dan menganalisis berkas CV kandidat
-                  secara instan, perankingan kecocokan profil, dan rekomendasi rekrutmen.
-                </p>
-              </div>
-
-              <div>
-                <a href="https://temanhr.vercel.app/" target="_blank" rel="noopener noreferrer"
-                  class="btn btn-primary btn-block portofolio-demo-btn" data-service="sistem-informasi-ai">
-                  <span>Demo</span>
-                  <span class="material-symbols-outlined" style="font-size:16px;">open_in_new</span>
-                </a>
-              </div>
-            </div>
-
             <!-- Card 4: Data Analytics - Warmindo (Live Tableau) -->
             <div class="portofolio-card" data-category="data-analytics">
               <div>
@@ -847,952 +640,52 @@
               </div>
             </div>
 
-            <!-- Card 5: Data Analytics - Perkebunan Rakyat Jabar (Live Tableau) -->
-            <div class="portofolio-card" data-category="data-analytics">
-              <div>
-                <div class="portofolio-img-wrap">
-                  <img src="assets/portfolio/perkebunan-jabar-analytics.webp"
-                    alt="Preview Data Analytics - Produksi Perkebunan Rakyat Tahunan Jawa Barat by Muhammad Rifal Alfarizy"
-                    class="portofolio-card-img" loading="lazy" decoding="async">
-                </div>
-                <span class="portofolio-cat-tag">Data Analytics</span>
-                <h3 class="portofolio-title">Produksi Perkebunan Rakyat Jabar</h3>
-                <p class="portofolio-desc">
-                  Visualisasi geospasial Tableau Public sebaran komoditas perkebunan rakyat tahunan Jawa Barat,
-                  memetakan produktivitas wilayah per komoditas dan tren distribusi hasil panen.
-                </p>
-              </div>
-
-              <div>
-                <a href="https://public.tableau.com/app/profile/muhammad.rifal.alfarizy/viz/SebaranProduksiPerkebunanRakyatTahunanJawaBarat/Dashboard3"
-                  target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-block portofolio-demo-btn"
-                  data-service="data-analytics">
-                  <span>Demo</span>
-                  <span class="material-symbols-outlined" style="font-size:16px;">open_in_new</span>
-                </a>
-              </div>
-            </div>
-
-            <!-- Card 6: Web Profile - Portal Korporasi -->
-            <div class="portofolio-card" data-category="web-profile">
-              <div>
-                <div class="portofolio-img-wrap">
-                  <img src="assets/portfolio/web-profile.webp"
-                    alt="Preview Web Profile - Portal Korporasi & Katalog Global" class="portofolio-card-img"
-                    loading="lazy" decoding="async">
-                </div>
-                <span class="portofolio-cat-tag">Web Profile</span>
-                <h3 class="portofolio-title">Portal Korporasi &amp; Katalog Global</h3>
-                <p class="portofolio-desc">
-                  Website korporasi modern dengan performa tinggi, navigasi intuitif, arsitektur SEO terstruktur, dan
-                  Core Web Vitals optimal.
-                </p>
-              </div>
-
-              <div>
-                <a href="#kontak" class="btn btn-primary btn-block portofolio-demo-btn" data-service="web-profile">
-                  <span>Demo</span>
-                  <span class="material-symbols-outlined" style="font-size:16px;">arrow_forward</span>
-                </a>
-              </div>
-            </div>
-
-            <!-- Card 7: Sistem Informasi AI - SupplyChain OS -->
-            <div class="portofolio-card" data-category="sistem-informasi-ai">
-              <div>
-                <div class="portofolio-img-wrap">
-                  <img src="assets/portfolio/sistem-informasi.webp"
-                    alt="Preview Sistem Informasi AI - SupplyChain OS & Logistik Cerdas" class="portofolio-card-img"
-                    loading="lazy" decoding="async">
-                </div>
-                <span class="portofolio-cat-tag">Sistem Informasi AI</span>
-                <h3 class="portofolio-title">SupplyChain OS &amp; Logistik Cerdas</h3>
-                <p class="portofolio-desc">
-                  Platform manajemen gudang terpadu dengan pemindaian barcode real-time, kontrol inventaris
-                  multi-cabang, dan otomatisasi alur stok.
-                </p>
-              </div>
-
-              <div>
-                <a href="#kontak" class="btn btn-primary btn-block portofolio-demo-btn"
-                  data-service="sistem-informasi-ai">
-                  <span>Demo</span>
-                  <span class="material-symbols-outlined" style="font-size:16px;">arrow_forward</span>
-                </a>
-              </div>
-            </div>
-
-            <!-- Card 8: Cloud & Server - Kluster Kubernetes -->
-            <div class="portofolio-card" data-category="cloud-server">
-              <div>
-                <div class="portofolio-img-wrap">
-                  <img src="assets/portfolio/cloud-server.webp"
-                    alt="Preview Cloud & Server - Kluster Kubernetes High-Availability" class="portofolio-card-img"
-                    loading="lazy" decoding="async">
-                </div>
-                <span class="portofolio-cat-tag">Cloud &amp; Server</span>
-                <h3 class="portofolio-title">Infrastruktur Kluster Kubernetes High-Availability</h3>
-                <p class="portofolio-desc">
-                  Arsitektur cloud tangguh multi-node dengan failover otomatis, pemantauan metrik server kontinu, dan
-                  snapshot backup terenkripsi.
-                </p>
-              </div>
-
-              <div>
-                <a href="#kontak" class="btn btn-primary btn-block portofolio-demo-btn" data-service="cloud-server">
-                  <span>Demo</span>
-                  <span class="material-symbols-outlined" style="font-size:16px;">arrow_forward</span>
-                </a>
-              </div>
-            </div>
-
-            <!-- Card 9: Chatbot AI - Asisten AI WhatsApp -->
-            <div class="portofolio-card" data-category="chatbot-ai">
-              <div>
-                <div class="portofolio-img-wrap">
-                  <img src="assets/portfolio/chatbot-ai.webp" alt="Preview Chatbot AI - Asisten AI WhatsApp Bisnis"
-                    class="portofolio-card-img" loading="lazy" decoding="async">
-                </div>
-                <span class="portofolio-cat-tag">Chatbot AI</span>
-                <h3 class="portofolio-title">Asisten AI Pelanggan &amp; WhatsApp Bisnis</h3>
-                <p class="portofolio-desc">
-                  Agen cerdas kecerdasan artifisial terintegrasi WhatsApp untuk melayani katalog produk, pengecekan
-                  pesanan, dan reservasi otomatis 24/7.
-                </p>
-              </div>
-
-              <div>
-                <a href="#kontak" class="btn btn-primary btn-block portofolio-demo-btn" data-service="chatbot-ai">
-                  <span>Demo</span>
-                  <span class="material-symbols-outlined" style="font-size:16px;">arrow_forward</span>
-                </a>
-              </div>
-            </div>
-
           </div>
+        </div>
+
+        <!-- CTA ke halaman portofolio lengkap -->
+        <div class="text-center" style="margin-top:2rem;">
+          <a href="/portofolio/" class="btn btn-secondary btn-lg">
+            <span>Lihat Semua Portofolio</span>
+            <span class="material-symbols-outlined" style="font-size:20px;">arrow_forward</span>
+          </a>
         </div>
 
       </div>
     </section>
 
     <!-- ==========================================================================
-         5. BIAYA SOLUSI REKAYASA (#biaya)
+         4. CALL TO ACTION
          ========================================================================== -->
-    <section id="biaya" class="section-biaya">
+    <section class="section-layanan">
       <div class="container">
 
         <div class="biaya-header">
-          <h2 class="section-title" style="margin-bottom:0.75rem;">Biaya Jasa</h2>
+          <h2 class="section-title">Siap Membangun Sistem yang Tepat?</h2>
           <p style="font-size:1.0625rem; color:var(--color-text-body); max-width:620px; margin:0 auto;">
-            Struktur biaya transparan dan terukur, dirancang sesuai ruang lingkup kebutuhan serta target pengembangan
-            sistem bisnis Anda.
+            Ceritakan tantangan operasional Anda. Kami bantu petakan solusi, ruang lingkup pekerjaan, dan estimasi
+            biaya pada sesi konsultasi awal tanpa biaya.
           </p>
         </div>
 
-        <div class="biaya-slider-wrap">
-          <!-- Slider Navigation Arrows -->
-          <button id="pricing-prev-btn" class="slider-nav-btn slider-prev-btn" aria-label="Geser Kiri">
-            <span class="material-symbols-outlined" style="font-size:20px;">chevron_left</span>
-          </button>
-          <button id="pricing-next-btn" class="slider-nav-btn slider-next-btn" aria-label="Geser Kanan">
-            <span class="material-symbols-outlined" style="font-size:20px;">chevron_right</span>
-          </button>
-
-          <!-- Horizontal Pricing Slider -->
-          <div id="pricing-slider" class="pricing-slider">
-
-            <!-- Tier 1: Web Profile -->
-            <div class="pricing-card">
-              <div>
-                <h3 class="pricing-card-title">Web Profile</h3>
-                <p class="pricing-card-desc">
-                  Pembuatan website company profile, landing page promosi, atau katalog produk yang responsif dan cepat.
-                </p>
-                <span class="pricing-specs-heading">Spesifikasi Layanan</span>
-                <ul class="pricing-specs-list">
-                  <li class="pricing-spec-item">
-                    <span class="material-symbols-outlined check-icon">check</span>
-                    <span>Desain modern &amp; responsif semua perangkat</span>
-                  </li>
-                  <li class="pricing-spec-item">
-                    <span class="material-symbols-outlined check-icon">check</span>
-                    <span>Audit Core Web Vitals tinggi &amp; SEO Google</span>
-                  </li>
-                  <li class="pricing-spec-item">
-                    <span class="material-symbols-outlined check-icon">check</span>
-                    <span>Integrasi formulir pesan &amp; CTA WhatsApp</span>
-                  </li>
-                  <li class="pricing-spec-item">
-                    <span class="material-symbols-outlined check-icon">check</span>
-                    <span>Setup panel kelola konten (CMS) mandiri</span>
-                  </li>
-                </ul>
-              </div>
-              <div>
-                <div class="pricing-price-wrap">
-                  <div class="pricing-amount">Mulai Rp800.000</div>
-                  <p class="pricing-footnote">* Belum termasuk domain dan hosting tahunan</p>
-                </div>
-                <a href="#kontak" class="btn btn-primary btn-block pricing-consult-btn"
-                  data-package="web-profile">Konsultasi</a>
-              </div>
-            </div>
-
-            <!-- Tier 2: Sistem Informasi AI -->
-            <div class="pricing-card">
-              <div>
-                <h3 class="pricing-card-title">Sistem Informasi AI</h3>
-                <p class="pricing-card-desc">
-                  Digitalisasi operasional bisnis kustom seperti sistem inventaris, kasir POS, dan administrasi
-                  internal.
-                </p>
-                <span class="pricing-specs-heading">Spesifikasi Layanan</span>
-                <ul class="pricing-specs-list">
-                  <li class="pricing-spec-item">
-                    <span class="material-symbols-outlined check-icon">check</span>
-                    <span>Modul kustom sesuai standar alur kerja (SOP)</span>
-                  </li>
-                  <li class="pricing-spec-item">
-                    <span class="material-symbols-outlined check-icon">check</span>
-                    <span>Manajemen hak akses bertingkat multi-peran</span>
-                  </li>
-                  <li class="pricing-spec-item">
-                    <span class="material-symbols-outlined check-icon">check</span>
-                    <span>Otomasi kalkulasi data &amp; rekap laporan instan</span>
-                  </li>
-                  <li class="pricing-spec-item">
-                    <span class="material-symbols-outlined check-icon">check</span>
-                    <span>Penyerahan full source code &amp; training tim</span>
-                  </li>
-                </ul>
-              </div>
-              <div>
-                <div class="pricing-price-wrap">
-                  <div class="pricing-amount">Mulai Rp5.000.000</div>
-                  <p class="pricing-footnote">* Belum termasuk biaya server dan API pihak ketiga</p>
-                </div>
-                <a href="#kontak" class="btn btn-primary btn-block pricing-consult-btn"
-                  data-package="sistem-informasi-ai">Konsultasi</a>
-              </div>
-            </div>
-
-            <!-- Tier 3: Data Analytics -->
-            <div class="pricing-card">
-              <div>
-                <h3 class="pricing-card-title">Data Analytics</h3>
-                <p class="pricing-card-desc">
-                  Transformasi data bisnis menjadi dasbor visual interaktif untuk memantau performa penjualan dan
-                  operasional.
-                </p>
-                <span class="pricing-specs-heading">Spesifikasi Layanan</span>
-                <ul class="pricing-specs-list">
-                  <li class="pricing-spec-item">
-                    <span class="material-symbols-outlined check-icon">check</span>
-                    <span>Pilihan Tableau atau Custom Web Dashboard</span>
-                  </li>
-                  <li class="pricing-spec-item">
-                    <span class="material-symbols-outlined check-icon">check</span>
-                    <span>Pembersihan &amp; pemodelan data (Excel/CSV/SQL)</span>
-                  </li>
-                  <li class="pricing-spec-item">
-                    <span class="material-symbols-outlined check-icon">check</span>
-                    <span>Visualisasi grafik tren &amp; performa KPI bisnis</span>
-                  </li>
-                  <li class="pricing-spec-item">
-                    <span class="material-symbols-outlined check-icon">check</span>
-                    <span>Fitur filter dinamis &amp; ekspor laporan PDF/Excel</span>
-                  </li>
-                </ul>
-              </div>
-              <div>
-                <div class="pricing-price-wrap">
-                  <div class="pricing-amount">Mulai Rp1.500.000</div>
-                  <p class="pricing-footnote">* Belum termasuk lisensi berbayar software Tableau</p>
-                </div>
-                <a href="#kontak" class="btn btn-primary btn-block pricing-consult-btn"
-                  data-package="data-analytics">Konsultasi</a>
-              </div>
-            </div>
-
-            <!-- Tier 4: Cloud & Server -->
-            <div class="pricing-card">
-              <div>
-                <h3 class="pricing-card-title">Cloud &amp; Server</h3>
-                <p class="pricing-card-desc">
-                  Infrastruktur cloud AWS, otomatisasi konfigurasi berbasis kode, serta shared hosting tugas mahasiswa.
-                </p>
-                <span class="pricing-specs-heading">Spesifikasi Layanan</span>
-                <ul class="pricing-specs-list">
-                  <li class="pricing-spec-item">
-                    <span class="material-symbols-outlined check-icon">check</span>
-                    <span>Perancangan solusi arsitektur AWS &amp; audit server</span>
-                  </li>
-                  <li class="pricing-spec-item">
-                    <span class="material-symbols-outlined check-icon">check</span>
-                    <span>Otomatisasi IaC (Terraform) &amp; Ansible config</span>
-                  </li>
-                  <li class="pricing-spec-item">
-                    <span class="material-symbols-outlined check-icon">check</span>
-                    <span>Setup CI/CD pipeline &amp; kontainerisasi Docker</span>
-                  </li>
-                  <li class="pricing-spec-item">
-                    <span class="material-symbols-outlined check-icon">check</span>
-                    <span>Deploy tugas kuliah &amp; shared hosting server Nafa</span>
-                  </li>
-                </ul>
-              </div>
-              <div>
-                <div class="pricing-price-wrap">
-                  <div class="pricing-amount">Mulai Rp50.000</div>
-                  <p class="pricing-footnote">* Belum termasuk domain (tarif 30rb untuk hosting tugas)</p>
-                </div>
-                <a href="#kontak" class="btn btn-primary btn-block pricing-consult-btn"
-                  data-package="cloud-server">Konsultasi</a>
-              </div>
-            </div>
-
-            <!-- Tier 5: Chatbot AI -->
-            <div class="pricing-card">
-              <div>
-                <h3 class="pricing-card-title">Chatbot AI</h3>
-                <p class="pricing-card-desc">
-                  Asisten AI cerdas berbasis LangChain untuk layanan tanya jawab pelanggan 24/7 di WhatsApp maupun
-                  website.
-                </p>
-                <span class="pricing-specs-heading">Spesifikasi Layanan</span>
-                <ul class="pricing-specs-list">
-                  <li class="pricing-spec-item">
-                    <span class="material-symbols-outlined check-icon">check</span>
-                    <span>Engine cerdas berbasis framework LangChain</span>
-                  </li>
-                  <li class="pricing-spec-item">
-                    <span class="material-symbols-outlined check-icon">check</span>
-                    <span>Integrasi Web Chat Widget atau WhatsApp resmi</span>
-                  </li>
-                  <li class="pricing-spec-item">
-                    <span class="material-symbols-outlined check-icon">check</span>
-                    <span>Pelatihan data dokumen PDF, FAQ, &amp; SOP bisnis</span>
-                  </li>
-                  <li class="pricing-spec-item">
-                    <span class="material-symbols-outlined check-icon">check</span>
-                    <span>Fitur serah terima (handoff) otomatis ke CS</span>
-                  </li>
-                </ul>
-              </div>
-              <div>
-                <div class="pricing-price-wrap">
-                  <div class="pricing-amount">Mulai Rp2.000.000</div>
-                  <p class="pricing-footnote">* Belum termasuk token API AI dan nomor WhatsApp Meta</p>
-                </div>
-                <a href="#kontak" class="btn btn-primary btn-block pricing-consult-btn"
-                  data-package="chatbot-ai">Konsultasi</a>
-              </div>
-            </div>
-
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ==========================================================================
-         6. TIM REKAYASA & KARIR (#tim)
-         Inspired by Untitled UI "We are the people who make up Untitled UI"
-         ========================================================================== -->
-    <section id="tim" class="section-tim">
-      <!-- Architectural Precision Blueprint Grid Background -->
-      <div class="team-blueprint-grid" aria-hidden="true"></div>
-
-      <div class="container">
-
-        <!-- Header: Centered with refined copywriting matching Untitled UI -->
-        <div class="team-header">
-          <h2 class="team-headline">Tim Nafa Teknologi</h2>
-          <p class="team-subtitle">
-            Sebaik-baiknya manusia adalah yang paling bermanfaat bagi yang lainnya.
-            <br>Kami saling berbagi ilmu, membantu, dan bertumbuh bersama.
-          </p>
-        </div>
-
-        <!-- Horizontal Team Slider with Prev/Next Controls -->
-        <div class="team-slider-wrap">
-          <button id="team-prev-btn" class="slider-nav-btn slider-prev-btn" aria-label="Geser Tim ke Kiri">
-            <span class="material-symbols-outlined" style="font-size:20px;">chevron_left</span>
-          </button>
-          <button id="team-next-btn" class="slider-nav-btn slider-next-btn" aria-label="Geser Tim ke Kanan">
-            <span class="material-symbols-outlined" style="font-size:20px;">chevron_right</span>
-          </button>
-
-          <!-- Slider Track -->
-          <div id="team-slider" class="team-slider">
-
-            <!-- Card 1: Founder -->
-            <div class="team-card">
-              <div class="team-avatar-box">
-                <img src="assets/team/rifal-founder.webp" alt="Muhammad Rifal Alfarizy - Founder" class="team-photo-img"
-                  loading="lazy" decoding="async">
-              </div>
-              <div class="team-info">
-                <h3 class="team-name">Muhammad Rifal Alfarizy</h3>
-                <div class="team-role">Founder</div>
-                <p class="team-bio">
-                  Solution Architect di NAFA.
-                  <br>4 Tahun pengalaman di bidang Cloud AWS, DevOps & AI Engineer.
-                </p>
-              </div>
-            </div>
-
-            <!-- Card 2: Project Manager -->
-            <div class="team-card">
-              <div class="team-avatar-box avatar-placeholder">
-                <svg class="team-human-silhouette" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <circle cx="32" cy="22" r="11" stroke="currentColor" stroke-width="2.5" fill="none" />
-                  <path d="M14 54C14 42 22 38 32 38C42 38 50 42 50 54" stroke="currentColor" stroke-width="2.5"
-                    stroke-linecap="round" />
-                </svg>
-              </div>
-              <div class="team-info">
-                <h3 class="team-name">Segera</h3>
-                <div class="team-role">Project Manager</div>
-                <p class="team-bio">
-                  Tata kelola sprint agile, manajemen timeline, dan orkestrasi delivery sistem.
-                </p>
-              </div>
-            </div>
-
-            <!-- Card 3: Fullstack Engineer (1) -->
-            <div class="team-card">
-              <div class="team-avatar-box avatar-placeholder">
-                <svg class="team-human-silhouette" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <circle cx="32" cy="22" r="11" stroke="currentColor" stroke-width="2.5" fill="none" />
-                  <path d="M14 54C14 42 22 38 32 38C42 38 50 42 50 54" stroke="currentColor" stroke-width="2.5"
-                    stroke-linecap="round" />
-                </svg>
-              </div>
-              <div class="team-info">
-                <h3 class="team-name">Segera</h3>
-                <div class="team-role">Fullstack Engineer</div>
-                <p class="team-bio">
-                  Rekayasa backend scalable, arsitektur database, dan integrasi API performa tinggi.
-                </p>
-              </div>
-            </div>
-
-            <!-- Card 4: AI Engineer -->
-            <div class="team-card">
-              <div class="team-avatar-box avatar-placeholder">
-                <svg class="team-human-silhouette" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <circle cx="32" cy="22" r="11" stroke="currentColor" stroke-width="2.5" fill="none" />
-                  <path d="M14 54C14 42 22 38 32 38C42 38 50 42 50 54" stroke="currentColor" stroke-width="2.5"
-                    stroke-linecap="round" />
-                </svg>
-              </div>
-              <div class="team-info">
-                <h3 class="team-name">Segera</h3>
-                <div class="team-role">AI Engineer</div>
-                <p class="team-bio">
-                  Implementasi model LLM, alur kerja LangChain, dan solusi RAG terintegrasi.
-                </p>
-              </div>
-            </div>
-
-            <!-- Card 5: Infrastructure Engineer -->
-            <div class="team-card">
-              <div class="team-avatar-box avatar-placeholder">
-                <svg class="team-human-silhouette" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <circle cx="32" cy="22" r="11" stroke="currentColor" stroke-width="2.5" fill="none" />
-                  <path d="M14 54C14 42 22 38 32 38C42 38 50 42 50 54" stroke="currentColor" stroke-width="2.5"
-                    stroke-linecap="round" />
-                </svg>
-              </div>
-              <div class="team-info">
-                <h3 class="team-name">Segera</h3>
-                <div class="team-role">Infrastructure Engineer</div>
-                <p class="team-bio">
-                  Orkestrasi cloud AWS/VPS, pipeline CI/CD otomatis, dan konfigurasi server.
-                </p>
-              </div>
-            </div>
-
-            <!-- Card 6: Data Analyst -->
-            <div class="team-card">
-              <div class="team-avatar-box avatar-placeholder">
-                <svg class="team-human-silhouette" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <circle cx="32" cy="22" r="11" stroke="currentColor" stroke-width="2.5" fill="none" />
-                  <path d="M14 54C14 42 22 38 32 38C42 38 50 42 50 54" stroke="currentColor" stroke-width="2.5"
-                    stroke-linecap="round" />
-                </svg>
-              </div>
-              <div class="team-info">
-                <h3 class="team-name">Segera</h3>
-                <div class="team-role">Data Analyst</div>
-                <p class="team-bio">
-                  Pemodelan pipeline data, analitik bisnis prediktif, dan visualisasi dasbor Tableau.
-                </p>
-              </div>
-            </div>
-
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ==========================================================================
-         7. KARIR & REKRUTMEN (#karir)
-         ========================================================================== -->
-    <section id="karir" class="section-karir">
-      <div class="container">
-
-        <div class="karir-header">
-          <h2 class="section-title">Peluang Karir &amp; Magang</h2>
-          <p class="karir-header-subtitle">
-            Bergabunglah bersama kami dengan tim yang terus bertumbuh dalam membangun ekosistem perangkat lunak yang
-            tangguh dan memiliki dampak nyata.
-          </p>
-        </div>
-
-        <div class="karir-list">
-
-          <!-- Position 1: Intern Fullstack Engineer (Remote) -->
-          <div class="karir-card">
-            <div class="karir-card-header">
-              <h3 class="karir-role-title">Intern Fullstack Engineer (Remote)</h3>
-              <a href="https://wa.me/6288805626297?text=Halo%20NAFA%20Teknologi,%20saya%20tertarik%20melamar%20posisi%20Intern%20Fullstack%20Engineer%20(Remote)."
-                target="_blank" rel="noopener noreferrer" class="karir-apply-link">
-                <span>Apply</span>
-                <span class="material-symbols-outlined" style="font-size:16px;">north_east</span>
-              </a>
-            </div>
-            <p class="karir-card-desc">
-              Membangun fitur antarmuka modern, integrasi API, serta optimasi performa aplikasi web end-to-end.
-            </p>
-          </div>
-
-          <!-- Position 2: Intern AI Engineer (Remote) -->
-          <div class="karir-card">
-            <div class="karir-card-header">
-              <h3 class="karir-role-title">Intern AI Engineer (Remote)</h3>
-              <a href="https://wa.me/6288805626297?text=Halo%20NAFA%20Teknologi,%20saya%20tertarik%20melamar%20posisi%20Intern%20AI%20Engineer%20(Remote)."
-                target="_blank" rel="noopener noreferrer" class="karir-apply-link">
-                <span>Apply</span>
-                <span class="material-symbols-outlined" style="font-size:16px;">north_east</span>
-              </a>
-            </div>
-            <p class="karir-card-desc">
-              Mengeksplorasi integrasi model LLM, alur kerja LangChain, dan optimasi retrieval pada sistem RAG.
-            </p>
-          </div>
-
-          <!-- Position 3: Intern Infrastructure Engineer (Remote) -->
-          <div class="karir-card">
-            <div class="karir-card-header">
-              <h3 class="karir-role-title">Intern Infrastructure Engineer (Remote)</h3>
-              <a href="https://wa.me/6288805626297?text=Halo%20NAFA%20Teknologi,%20saya%20tertarik%20melamar%20posisi%20Intern%20Infrastructure%20Engineer%20(Remote)."
-                target="_blank" rel="noopener noreferrer" class="karir-apply-link">
-                <span>Apply</span>
-                <span class="material-symbols-outlined" style="font-size:16px;">north_east</span>
-              </a>
-            </div>
-            <p class="karir-card-desc">
-              Membantu otomatisasi pipeline CI/CD, deployment container Docker, dan pemeliharaan server cloud.
-            </p>
-          </div>
-
-          <!-- Position 4: Data Analyst (Remote) -->
-          <div class="karir-card">
-            <div class="karir-card-header">
-              <h3 class="karir-role-title">Freelance Data Analyst (Remote)</h3>
-              <a href="https://wa.me/6288805626297?text=Halo%20NAFA%20Teknologi,%20saya%20tertarik%20melamar%20posisi%20Data%20Analyst%20(Remote)."
-                target="_blank" rel="noopener noreferrer" class="karir-apply-link">
-                <span>Apply</span>
-                <span class="material-symbols-outlined" style="font-size:16px;">north_east</span>
-              </a>
-            </div>
-            <p class="karir-card-desc">
-              Merancang pipeline data analitik, visualisasi dasbor interaktif, serta interpretasi metrik bisnis
-              strategis.
-            </p>
-          </div>
-
-          <!-- Position 5: Software Quality Analyst (Remote) -->
-          <div class="karir-card">
-            <div class="karir-card-header">
-              <h3 class="karir-role-title">Freelance Software Quality Analyst (Remote)</h3>
-              <a href="https://wa.me/6288805626297?text=Halo%20NAFA%20Teknologi,%20saya%20tertarik%20melamar%20posisi%20Software%20Quality%20Analyst%20(Remote)."
-                target="_blank" rel="noopener noreferrer" class="karir-apply-link">
-                <span>Apply</span>
-                <span class="material-symbols-outlined" style="font-size:16px;">north_east</span>
-              </a>
-            </div>
-            <p class="karir-card-desc">
-              Menyusun skenario automated testing end-to-end, uji performa beban, dan audit mutu perangkat lunak.
-            </p>
-          </div>
-
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ==========================================================================
-         8. PERTANYAAN UMUM / FAQ (#faq)
-         ========================================================================== -->
-    <section id="faq" class="section-faq">
-      <div class="faq-blueprint-grid" aria-hidden="true"></div>
-
-      <div class="container">
-        <!-- Centered Header -->
-        <div class="faq-header">
-          <h2 class="faq-headline">Pertanyaan Umum</h2>
-          <p class="faq-subtitle">
-            Informasi seputar kapabilitas rekayasa perangkat lunak, estimasi pengerjaan, kepemilikan kode sumber, dan
-            garansi pemeliharaan sistem kami.
-          </p>
-        </div>
-
-        <!-- 2-column FAQ Grid: 2 kanan-kiri, 3 kebawah (6 items) -->
-        <div class="faq-grid">
-
-          <!-- Item 1: Alur & Skema Pembayaran (DP) -->
-          <div class="faq-item active">
-            <h3 class="faq-question">
-              <button class="faq-trigger" id="faq-q1" aria-expanded="true" aria-controls="faq-a1">
-                <span>Bagaimana alur proyek dan skema pembayarannya?</span>
-                <svg class="faq-chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"
-                  aria-hidden="true">
-                  <path d="M5 7.5l5 5 5-5" stroke-linecap="round" stroke-linejoin="round" />
-                </svg>
-              </button>
-            </h3>
-            <div class="faq-content" id="faq-a1" role="region" aria-labelledby="faq-q1">
-              <div class="faq-body">
-                <div class="faq-answer">
-                  <p>Proyek diawali konsultasi kebutuhan teknis. Pembayaran bertahap berbasis termin pengerjaan, dimulai
-                    uang muka (DP) saat kick-off hingga pelunasan setelah serah terima tuntas.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Item 2: Biaya Infrastruktur & Server -->
-          <div class="faq-item">
-            <h3 class="faq-question">
-              <button class="faq-trigger" id="faq-q2" aria-expanded="false" aria-controls="faq-a2">
-                <span>Bagaimana penanganan biaya server dan hosting?</span>
-                <svg class="faq-chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"
-                  aria-hidden="true">
-                  <path d="M5 7.5l5 5 5-5" stroke-linecap="round" stroke-linejoin="round" />
-                </svg>
-              </button>
-            </h3>
-            <div class="faq-content" id="faq-a2" role="region" aria-labelledby="faq-q2">
-              <div class="faq-body">
-                <div class="faq-answer">
-                  <p>Server dapat dikelola mandiri atau didelegasikan kepada kami dengan biaya bulanan transparan yang
-                    disepakati di awal tanpa biaya tambahan.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Item 3: Hak Cipta & Source Code -->
-          <div class="faq-item">
-            <h3 class="faq-question">
-              <button class="faq-trigger" id="faq-q3" aria-expanded="false" aria-controls="faq-a3">
-                <span>Apakah source code sepenuhnya milik klien?</span>
-                <svg class="faq-chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"
-                  aria-hidden="true">
-                  <path d="M5 7.5l5 5 5-5" stroke-linecap="round" stroke-linejoin="round" />
-                </svg>
-              </button>
-            </h3>
-            <div class="faq-content" id="faq-a3" role="region" aria-labelledby="faq-q3">
-              <div class="faq-body">
-                <div class="faq-answer">
-                  <p>Ya, mutlak 100%. Kode sumber (Git), database, dan akses server diserahkan seutuhnya kepada Anda
-                    tanpa keterikatan vendor (zero vendor lock-in).</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Item 4: Garansi & Bug-Fixing -->
-          <div class="faq-item">
-            <h3 class="faq-question">
-              <button class="faq-trigger" id="faq-q4" aria-expanded="false" aria-controls="faq-a4">
-                <span>Bagaimana garansi sistem dan perbaikan bug?</span>
-                <svg class="faq-chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"
-                  aria-hidden="true">
-                  <path d="M5 7.5l5 5 5-5" stroke-linecap="round" stroke-linejoin="round" />
-                </svg>
-              </button>
-            </h3>
-            <div class="faq-content" id="faq-a4" role="region" aria-labelledby="faq-q4">
-              <div class="faq-body">
-                <div class="faq-answer">
-                  <p>Setiap proyek mendapatkan garansi perbaikan bug gratis selama 1–3 bulan paska rilis, ditambah opsi
-                    kontrak pemeliharaan sistem berkala jangka panjang.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Item 5: Integrasi Sistem Eksisting & API -->
-          <div class="faq-item">
-            <h3 class="faq-question">
-              <button class="faq-trigger" id="faq-q5" aria-expanded="false" aria-controls="faq-a5">
-                <span>Apakah bisa integrasi dengan sistem yang ada?</span>
-                <svg class="faq-chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"
-                  aria-hidden="true">
-                  <path d="M5 7.5l5 5 5-5" stroke-linecap="round" stroke-linejoin="round" />
-                </svg>
-              </button>
-            </h3>
-            <div class="faq-content" id="faq-a5" role="region" aria-labelledby="faq-q5">
-              <div class="faq-body">
-                <div class="faq-answer">
-                  <p>Tentu. Sistem baru dapat dihubungkan ke database eksisting, POS, ERP internal, maupun payment
-                    gateway via integrasi API yang aman dan terstandarisasi.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Item 6: Coverage Area & Konsultasi Tatap Muka -->
-          <div class="faq-item">
-            <h3 class="faq-question">
-              <button class="faq-trigger" id="faq-q6" aria-expanded="false" aria-controls="faq-a6">
-                <span>Apakah melayani konsultasi tatap muka langsung?</span>
-                <svg class="faq-chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"
-                  aria-hidden="true">
-                  <path d="M5 7.5l5 5 5-5" stroke-linecap="round" stroke-linejoin="round" />
-                </svg>
-              </button>
-            </h3>
-            <div class="faq-content" id="faq-a6" role="region" aria-labelledby="faq-q6">
-              <div class="faq-body">
-                <div class="faq-answer">
-                  <p>Ya, kami melayani pertemuan tatap muka untuk area Sidoarjo, Surabaya, Gresik, Pasuruan, dan Malang.
-                    Klien di luar wilayah tersebut dilayani via Zoom.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-        <!-- Bottom Centered CTA Button -->
-        <div class="faq-bottom-cta">
-          <a href="https://wa.me/6289630096698?text=Halo%20Nafa%20Teknologi,%20saya%20ingin%20berkonsultasi%20mengenai%20kebutuhan%20perangkat%20lunak%20kami."
-            target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-lg" id="faq-bottom-wa-btn">
+        <div class="text-center" style="display:flex; flex-wrap:wrap; gap:0.75rem; justify-content:center;">
+          <a href="/kontak/" class="btn btn-primary btn-lg">
+            <span class="material-symbols-outlined" style="font-size:20px;">mail</span>
+            <span>Konsultasi Gratis</span>
+          </a>
+          <a href="https://wa.me/6289630096698?text=Halo%20Nafa%20Teknologi,%20saya%20ingin%20berkonsultasi%20mengenai%20kebutuhan%20perangkat%20lunak%20kami." target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-lg">
             <span class="material-symbols-outlined" style="font-size:20px;">chat</span>
-            <span>Bertanya via WhatsApp</span>
+            <span>WhatsApp Langsung</span>
           </a>
         </div>
-      </div>
-    </section>
 
-    <!-- ==========================================================================
-         9. KONTAK & KONSULTASI (#kontak)
-         ========================================================================== -->
-    <section id="kontak" class="section-kontak">
-      <div class="container">
-        <div class="kontak-grid">
-
-          <!-- Left Column: Form & Direct Contact -->
-          <div class="contact-form-card">
-            <div class="contact-form-header">
-              <h2
-                style="font-family:var(--font-headline); font-size:2rem; font-weight:700; color:var(--color-text-headline); margin-bottom:0.5rem;">
-                Diskusikan Kebutuhan Sistem Anda
-              </h2>
-              <p style="font-size:0.9375rem; color:var(--color-text-body);">
-                Isi formulir di bawah ini untuk konsultasi arsitektur perangkat lunak awal tanpa biaya bersama tim
-                rekayasa kami.
-              </p>
-            </div>
-
-            <!-- Feedback Alert placeholder -->
-            <div id="form-feedback" style="display:none;"></div>
-
-            <form id="consultation-form" novalidate>
-              <div class="form-group">
-                <label for="contact-name" class="form-label">Nama Lengkap</label>
-                <input type="text" id="contact-name" class="form-input" placeholder="Nama Anda / Perusahaan" required>
-              </div>
-
-              <div style="display:grid; grid-template-columns:1fr; gap:1rem; margin-bottom:1.25rem;">
-                <div class="form-group" style="margin-bottom:0;">
-                  <label for="contact-email" class="form-label">Email Bisnis</label>
-                  <input type="email" id="contact-email" class="form-input" placeholder="nama@perusahaan.com" required>
-                </div>
-                <div class="form-group" style="margin-bottom:0;">
-                  <label for="contact-phone" class="form-label">Nomor Telepon / WhatsApp</label>
-                  <input type="tel" id="contact-phone" class="form-input" placeholder="+62 8xx xxxx xxxx" required>
-                </div>
-              </div>
-
-              <div class="form-group">
-                <label for="contact-service" class="form-label">Solusi yang Diminati</label>
-                <select id="contact-service" class="form-select">
-                  <option value="web-profile">Web Profile &amp; Portal Korporasi</option>
-                  <option value="sistem-informasi-ai">Sistem Informasi AI &amp; ERP</option>
-                  <option value="data-analytics">Data Analytics &amp; Dashboard</option>
-                  <option value="cloud-server">Cloud Infrastructure &amp; DevOps</option>
-                  <option value="chatbot-ai">Chatbot AI &amp; Virtual Assistant</option>
-                  <option value="konsultasi-umum">Konsultasi Rekayasa Umum</option>
-                </select>
-              </div>
-
-              <div class="form-group">
-                <label for="contact-message" class="form-label">Detail Kebutuhan / Tantangan</label>
-                <textarea id="contact-message" class="form-textarea"
-                  placeholder="Ceritakan kebutuhan sistem, website, atau automasi yang ingin dikembangkan..."></textarea>
-              </div>
-
-              <div class="form-group">
-                <label class="form-checkbox-label">
-                  <input type="checkbox" id="terms-agreement" class="form-checkbox" required>
-                  <span>Saya menyetujui data ini digunakan untuk penjadwalan sesi konsultasi awal bersama tim Nafa
-                    Teknologi.</span>
-                </label>
-              </div>
-
-              <button type="submit" class="btn btn-primary btn-block btn-lg" style="margin-top:0.5rem;">
-                <span>Kirim Jadwal Konsultasi</span>
-                <span class="material-symbols-outlined" style="font-size:18px;">send</span>
-              </button>
-            </form>
-
-
-          </div>
-
-          <!-- Right Column: Location, Map & Key Benefits -->
-          <div>
-
-            <!-- Stylized HQ Map Card -->
-            <div class="hq-card">
-              <div class="hq-card-header">
-                <div>
-                  <span class="font-mono"
-                    style="font-size:11px; font-weight:600; text-transform:uppercase; color:var(--color-primary); display:block;">Lokasi
-                    &amp; Studio Rekayasa</span>
-                  <h3
-                    style="font-family:var(--font-headline); font-size:1rem; font-weight:700; color:var(--color-text-headline); margin-top:2px;">
-                    PT Nafa Teknologi Indonesia</h3>
-                </div>
-              </div>
-
-              <!-- Vector Map Graphic with Animated Radar Ping -->
-              <div class="vector-map-preview">
-                <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"
-                  style="position:absolute; inset:0; opacity:0.65;">
-                  <defs>
-                    <pattern id="contact-map-grid" width="24" height="24" patternUnits="userSpaceOnUse">
-                      <path d="M 24 0 L 0 0 0 24" fill="none" stroke="#cbd5e1" stroke-width="0.6" />
-                      <circle cx="2" cy="2" r="1" fill="#94a3b8" opacity="0.4" />
-                    </pattern>
-                  </defs>
-                  <rect width="100%" height="100%" fill="url(#contact-map-grid)" />
-                  <!-- Stylized Arterial Roads -->
-                  <path d="M -10 120 C 60 110, 120 150, 200 130 S 320 80, 450 90" fill="none" stroke="#e2e8f0"
-                    stroke-width="6" />
-                  <path d="M -10 120 C 60 110, 120 150, 200 130 S 320 80, 450 90" fill="none" stroke="#ffffff"
-                    stroke-width="3" />
-                  <path d="M 140 -10 C 150 60, 160 130, 240 210" fill="none" stroke="#e2e8f0" stroke-width="5" />
-                  <path d="M 140 -10 C 150 60, 160 130, 240 210" fill="none" stroke="#ffffff" stroke-width="2.5" />
-                </svg>
-
-                <!-- Center Radar Ping -->
-                <div style="position:relative; z-index:10; display:flex; align-items:center; justify-content:center;">
-                  <span class="animate-ping"
-                    style="position:absolute; width:64px; height:64px; border-radius:50%; background-color:rgba(52, 211, 153, 0.25);"></span>
-                  <span
-                    style="position:absolute; width:40px; height:40px; border-radius:50%; background-color:rgba(4, 120, 87, 0.2);"></span>
-                  <div
-                    style="position:relative; z-index:20; width:34px; height:34px; border-radius:50%; background-color:var(--color-primary); border:2px solid #ffffff; box-shadow:var(--shadow-sm); display:flex; align-items:center; justify-content:center; color:#ffffff;">
-                    <span class="material-symbols-outlined" style="font-size:18px;">location_on</span>
-                  </div>
-                </div>
-
-                <div class="hq-coordinates-badge">
-                  7.4726° S, 112.6675° E • Sidoarjo
-                </div>
-              </div>
-
-              <!-- Office Details -->
-              <div class="hq-details-list">
-                <div class="hq-detail-item">
-                  <span class="material-symbols-outlined item-icon">business</span>
-                  <div>
-                    <span class="font-mono"
-                      style="font-size:11px; text-transform:uppercase; color:var(--color-text-light); font-weight:600; display:block;">Kantor
-                      Operasional</span>
-                    <p style="font-size:13px; font-weight:500; color:var(--color-text-headline); margin:0;">Sidoarjo,
-                      Jawa Timur, Indonesia</p>
-                  </div>
-                </div>
-
-                <div class="hq-detail-item">
-                  <span class="material-symbols-outlined item-icon">schedule</span>
-                  <div>
-                    <span class="font-mono"
-                      style="font-size:11px; text-transform:uppercase; color:var(--color-text-light); font-weight:600; display:block;">Jam
-                      Kerja</span>
-                    <p style="font-size:13px; font-weight:500; color:var(--color-text-headline); margin:0;">Senin –
-                      Jumat, 09:00 – 17:00 WIB</p>
-                  </div>
-                </div>
-
-                <div class="hq-detail-item">
-                  <span class="material-symbols-outlined item-icon">bolt</span>
-                  <div>
-                    <span class="font-mono"
-                      style="font-size:11px; text-transform:uppercase; color:var(--color-text-light); font-weight:600; display:block;">Waktu
-                      Respon Cepat</span>
-                    <p style="font-size:13px; font-weight:500; color:var(--color-text-headline); margin:0;">Dalam 24 Jam
-                      Kerja</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Key Benefits Box -->
-            <div class="benefits-card">
-              <span class="font-mono"
-                style="font-size:11px; font-weight:600; text-transform:uppercase; color:var(--color-primary); display:block; margin-bottom:1rem;">
-                Keuntungan Konsultasi Bersama Nafa
-              </span>
-              <ul class="benefits-list">
-                <li class="benefits-item">
-                  <span class="material-symbols-outlined check-icon">check_circle</span>
-                  <span><strong>Analisis Kebutuhan Sistem &amp; Gap Analysis Gratis:</strong> Pemetaan komprehensif atas
-                    alur bisnis dan titik inefisiensi.</span>
-                </li>
-                <li class="benefits-item">
-                  <span class="material-symbols-outlined check-icon">check_circle</span>
-                  <span><strong>Estimasi Arsitektur &amp; Rekomendasi Terarah:</strong> Rekomendasi stack teknologi
-                    handal dan ramah biaya pemeliharaan.</span>
-                </li>
-                <li class="benefits-item">
-                  <span class="material-symbols-outlined check-icon">check_circle</span>
-                  <span><strong>Tanpa Biaya Komitmen Awal:</strong> Transparansi penuh sebelum kesepakatan kontrak kerja
-                    sama rekayasa.</span>
-                </li>
-              </ul>
-            </div>
-
-          </div>
-
-        </div>
       </div>
     </section>
 
   </main>
 
   <!-- ==========================================================================
-       SITE FOOTER
+       SITE FOOTER (shared component)
        ========================================================================== -->
   <footer class="site-footer">
     <div class="container">
@@ -1804,7 +697,7 @@
           <!-- Brand Info & Address -->
           <div class="footer-brand-side">
             <div>
-              <a href="#" class="brand-logo" style="margin-bottom:1rem;">
+              <a href="/" class="brand-logo" style="margin-bottom:1rem;">
                 <img src="assets/logo.webp" alt="Nafa Teknologi Logo" class="logo-icon-img" width="36" height="36"
                   decoding="async">
                 <div class="brand-text">
@@ -1866,11 +759,11 @@
             <div>
               <h4 class="footer-nav-heading">Layanan</h4>
               <ul class="footer-nav-list">
-                <li><a href="#layanan" class="footer-nav-link">Web Profile</a></li>
-                <li><a href="#layanan" class="footer-nav-link">Sistem Informasi AI</a></li>
-                <li><a href="#layanan" class="footer-nav-link">Data Analytics</a></li>
-                <li><a href="#layanan" class="footer-nav-link">Cloud &amp; Server</a></li>
-                <li><a href="#layanan" class="footer-nav-link">Chatbot AI</a></li>
+                <li><a href="/layanan/" class="footer-nav-link">Web Profile</a></li>
+                <li><a href="/layanan/" class="footer-nav-link">Sistem Informasi AI</a></li>
+                <li><a href="/layanan/" class="footer-nav-link">Data Analytics</a></li>
+                <li><a href="/layanan/" class="footer-nav-link">Cloud &amp; Server</a></li>
+                <li><a href="/layanan/" class="footer-nav-link">Chatbot AI</a></li>
               </ul>
             </div>
 
@@ -1878,13 +771,13 @@
             <div>
               <h4 class="footer-nav-heading">Perusahaan</h4>
               <ul class="footer-nav-list">
-                <li><a href="#filosofi" class="footer-nav-link">Akar Filosofi</a></li>
-                <li><a href="#layanan" class="footer-nav-link">Rencana Inovasi</a></li>
-                <li><a href="#portofolio" class="footer-nav-link">Portofolio Sistem</a></li>
-                <li><a href="#biaya" class="footer-nav-link">Biaya Solusi</a></li>
-                <li><a href="#tim" class="footer-nav-link">Tim Rekayasa</a></li>
-                <li><a href="#karir" class="footer-nav-link">Karir &amp; Talenta</a></li>
-                <li><a href="#faq" class="footer-nav-link">Pertanyaan Umum (FAQ)</a></li>
+                <li><a href="/tentang-kami/" class="footer-nav-link">Akar Filosofi</a></li>
+                <li><a href="/layanan/#inovasi" class="footer-nav-link">Rencana Inovasi</a></li>
+                <li><a href="/portofolio/" class="footer-nav-link">Portofolio Sistem</a></li>
+                <li><a href="/layanan/#biaya" class="footer-nav-link">Biaya Solusi</a></li>
+                <li><a href="/tentang-kami/#tim" class="footer-nav-link">Tim Rekayasa</a></li>
+                <li><a href="/tentang-kami/#karir" class="footer-nav-link">Karir &amp; Talenta</a></li>
+                <li><a href="/kontak/#faq" class="footer-nav-link">Pertanyaan Umum (FAQ)</a></li>
               </ul>
             </div>
 
@@ -1923,16 +816,10 @@
     </div>
   </footer>
 
-  <!-- Modular Scripts with Defer for High Performance -->
-  <script defer src="js/data.js?v=4"></script>
-  <script defer src="js/navigation.js?v=2"></script>
-  <script defer src="js/services.js?v=2"></script>
-  <script defer src="js/canvas.js?v=5"></script>
+  <!-- Page-Relevant Modular Scripts (defer) -->
+  <script defer src="js/navigation.js?v=3"></script>
+  <script defer src="js/canvas.js?v=6"></script>
   <script defer src="js/portfolio.js?v=2"></script>
-  <script defer src="js/slider.js?v=2"></script>
-  <script defer src="js/contact.js?v=2"></script>
-  <script defer src="js/team.js?v=4"></script>
-  <script defer src="js/faq.js?v=2"></script>
   <script defer src="js/app.js?v=3"></script>
 
 </body>

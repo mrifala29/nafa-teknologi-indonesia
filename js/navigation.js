@@ -91,6 +91,11 @@ const NavigationModule = (function () {
 
     if (!sections.length || !navLinks.length) return;
 
+    // Hanya tautan anchor (#...) yang dikelola di sini. Tautan antar halaman
+    // memakai penanda "active" statis dari masing-masing halaman.
+    const anchorLinks = Array.from(navLinks).filter(link => (link.getAttribute('href') || '').startsWith('#'));
+    if (!anchorLinks.length) return;
+
     window.addEventListener('scroll', () => {
       let currentSectionId = '';
       const scrollPosition = window.scrollY + 120;
@@ -103,7 +108,7 @@ const NavigationModule = (function () {
         }
       });
 
-      navLinks.forEach(link => {
+      anchorLinks.forEach(link => {
         link.classList.remove('active');
         if (link.getAttribute('href') === `#${currentSectionId}`) {
           link.classList.add('active');
