@@ -15,9 +15,10 @@ const NafaData = {
     address: 'Jalan Sedati Agung 1 No 44 RT 05 RW 02, Kecamatan Sedati, Kabupaten Sidoarjo',
     city: 'Sidoarjo, Jawa Timur, Indonesia',
     coordinates: '7.4726° S, 112.6675° E • Sidoarjo',
+    mapsUrl: 'https://maps.app.goo.gl/EcdvjyzbMxfQCZof8',
     email: 'hello@nafateknologi.co.id',
-    whatsapp: '+62 822-4567-8910',
-    whatsappRaw: '6282245678910',
+    whatsapp: '+62 896-3009-6698',
+    whatsappRaw: '6289630096698',
     hours: 'Senin – Jumat, 09:00 – 17:00 WIB',
     responseSLA: 'Dalam 24 Jam Kerja'
   },

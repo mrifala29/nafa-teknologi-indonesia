@@ -53,38 +53,46 @@ const ContactModule = (function () {
       return;
     }
 
-    const payload = {
-      name: nameInput.value.trim(),
-      email: emailInput.value.trim(),
-      phone: phoneInput.value.trim(),
-      service: serviceInput ? serviceInput.value : 'Umum',
-      message: messageInput ? messageInput.value.trim() : ''
-    };
+    const categoryOption = serviceInput && serviceInput.selectedIndex >= 0 ? serviceInput.options[serviceInput.selectedIndex] : null;
+    const categoryName = categoryOption ? categoryOption.text.trim() : (serviceInput ? serviceInput.value : 'Lainnya');
+    const name = nameInput.value.trim();
+    const email = emailInput.value.trim();
+    const phone = phoneInput.value.trim();
+    const message = messageInput && messageInput.value.trim() ? messageInput.value.trim() : '-';
 
-    // Show loading state
-    const submitBtn = formEl.querySelector('button[type="submit"]');
-    const originalText = submitBtn ? submitBtn.innerHTML : '';
-    if (submitBtn) {
-      submitBtn.disabled = true;
-      submitBtn.innerHTML = `
-        <span>Memproses...</span>
-        <span class="material-symbols-outlined" style="animation: spin 1s linear infinite;">sync</span>
+    const waText = [
+      'Halo Nafa Teknologi, saya ingin berkonsultasi mengenai kebutuhan sistem.',
+      '',
+      `*Nama Lengkap:* ${name}`,
+      `*Email Bisnis:* ${email}`,
+      `*No. Telepon / WhatsApp:* ${phone}`,
+      `*Kategori:* ${categoryName}`,
+      `*Detail Kebutuhan:*`,
+      `${message}`
+    ].join('\n');
+
+    const waNumber = (window.NafaData && window.NafaData.company && window.NafaData.company.whatsappRaw)
+      ? window.NafaData.company.whatsappRaw
+      : '6289630096698';
+
+    const waUrl = `https://wa.me/${waNumber}?text=${encodeURIComponent(waText)}`;
+
+    // Open WhatsApp
+    window.open(waUrl, '_blank');
+
+    showFeedback(`Mengarahkan Anda ke WhatsApp... Jika jendela obrolan tidak terbuka otomatis, silakan klik tautan di bawah ini:`, 'success');
+
+    if (feedbackEl) {
+      const waPrompt = document.createElement('div');
+      waPrompt.style.marginTop = '0.75rem';
+      waPrompt.innerHTML = `
+        <a href="${waUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm" style="display:inline-flex; align-items:center; gap:0.5rem; text-decoration:none;">
+          <span>Buka Chat WhatsApp Sekarang</span>
+          <span class="material-symbols-outlined" style="font-size:16px;">chat</span>
+        </a>
       `;
+      feedbackEl.appendChild(waPrompt);
     }
-
-    // Simulate reliable dispatch
-    setTimeout(() => {
-      if (submitBtn) {
-        submitBtn.disabled = false;
-        submitBtn.innerHTML = originalText;
-      }
-
-      showFeedback(`Terima kasih, Bapak/Ibu ${payload.name}! Tim rekayasa kami akan segera menghubungi Anda dalam 24 jam kerja.`, 'success');
-      formEl.reset();
-
-      // Offer quick WhatsApp opening
-      showWhatsAppRedirectOption(payload);
-    }, 600);
   }
 
   function validateEmail(email) {
@@ -114,26 +122,6 @@ const ContactModule = (function () {
     feedbackEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
   }
 
-  function showWhatsAppRedirectOption(payload) {
-    const waNumber = window.NafaData ? window.NafaData.company.whatsappRaw : '6282245678910';
-    const text = encodeURIComponent(
-      `Halo Tim Nafa Teknologi,\n\nSaya ingin konsultasi mengenai sistem.\nNama: ${payload.name}\nEmail: ${payload.email}\nNo HP: ${payload.phone}\nLayanan: ${payload.service}\nCatatan: ${payload.message}`
-    );
-    const waUrl = `https://wa.me/${waNumber}?text=${text}`;
-
-    if (feedbackEl) {
-      const waPrompt = document.createElement('div');
-      waPrompt.style.marginTop = '0.75rem';
-      waPrompt.innerHTML = `
-        <a href="${waUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm" style="display:inline-flex; align-items:center; gap:0.5rem; text-decoration:none;">
-          <span>Lanjutkan Obrolan Langsung ke WhatsApp</span>
-          <span class="material-symbols-outlined" style="font-size:16px;">chat</span>
-        </a>
-      `;
-      feedbackEl.appendChild(waPrompt);
-    }
-  }
-
   function selectPackage(packageId) {
     const serviceInput = document.getElementById('contact-service');
     if (serviceInput) {
@@ -146,7 +134,8 @@ const ContactModule = (function () {
         'sistem-informasi-ai': 'Sistem Informasi AI & ERP Bisnis',
         'data-analytics': 'Data Analytics & Interactive Dashboard',
         'cloud-server': 'Cloud Server & Devops Infrastructure',
-        'chatbot-ai': 'Chatbot AI & Asisten Virtual Cerdas'
+        'chatbot-ai': 'Chatbot AI & Asisten Virtual Cerdas',
+        'lainnya': 'Lainnya'
       };
       messageInput.value = `Saya tertarik dengan paket solusi ${titles[packageId] || packageId}. Mohon jadwal konsultasi lebih lanjut.`;
     }

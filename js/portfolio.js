@@ -98,14 +98,38 @@ const PortfolioModule = (function () {
         this.setAttribute('aria-selected', 'true');
 
         // Filter cards in slider
+        let visibleCount = 0;
         cards.forEach(card => {
           const categories = (card.getAttribute('data-category') || '').split(' ');
           if (filter === 'all' || categories.includes(filter)) {
             card.style.display = 'flex';
+            visibleCount++;
           } else {
             card.style.display = 'none';
           }
         });
+
+        // Show/hide empty state message
+        let emptyState = sliderEl.querySelector('.portofolio-empty-state');
+        if (visibleCount === 0) {
+          if (!emptyState) {
+            emptyState = document.createElement('div');
+            emptyState.className = 'portofolio-empty-state';
+            sliderEl.appendChild(emptyState);
+          }
+          emptyState.innerHTML = `
+            <div style="padding:2.5rem 1.5rem; text-align:center; width:100%; border:1px dashed var(--color-border); border-radius:var(--radius-xl); background:var(--color-surface-alt); margin:auto;">
+              <span class="material-symbols-outlined" style="font-size:36px; color:var(--color-primary); margin-bottom:0.5rem; display:block;">construction</span>
+              <h4 style="font-size:1rem; font-weight:600; color:var(--color-text-headline); margin-bottom:0.25rem;">Proyek Sedang Disiapkan</h4>
+              <p style="font-size:0.875rem; color:var(--color-text-body); max-width:420px; margin:0 auto;">
+                Studi kasus real project untuk kategori ini sedang dalam tahap kurasi dan segera ditampilkan.
+              </p>
+            </div>
+          `;
+          emptyState.style.display = 'flex';
+        } else if (emptyState) {
+          emptyState.style.display = 'none';
+        }
 
         // Smooth scroll slider track back to 0
         sliderEl.scrollTo({
