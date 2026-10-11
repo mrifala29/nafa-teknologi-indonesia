@@ -1,0 +1,209 @@
+    <!-- ==========================================================================
+         9. KONTAK & KONSULTASI (#kontak)
+         ========================================================================== -->
+    <section id="kontak" class="section-kontak">
+      <div class="container">
+        <div class="kontak-grid">
+
+          <!-- Left Column: Form & Direct Contact -->
+          <div class="contact-form-card">
+            <div class="contact-form-header">
+              <h2
+                style="font-family:var(--font-headline); font-size:2rem; font-weight:700; color:var(--color-text-headline); margin-bottom:0.5rem;">
+                Diskusikan Kebutuhan Sistem Anda
+              </h2>
+              <p style="font-size:0.9375rem; color:var(--color-text-body);">
+                Isi formulir di bawah ini untuk konsultasi arsitektur perangkat lunak awal tanpa biaya bersama tim
+                rekayasa kami.
+              </p>
+            </div>
+
+            <!-- Feedback Alert placeholder -->
+            <div id="form-feedback" style="display:none;"></div>
+
+            <form id="consultation-form" novalidate>
+              <div class="form-group">
+                <label for="contact-name" class="form-label">Nama Lengkap</label>
+                <input type="text" id="contact-name" class="form-input" placeholder="Nama Anda / Perusahaan" required>
+              </div>
+
+              <div style="display:grid; grid-template-columns:1fr; gap:1rem; margin-bottom:1.25rem;">
+                <div class="form-group" style="margin-bottom:0;">
+                  <label for="contact-email" class="form-label">Email Bisnis</label>
+                  <input type="email" id="contact-email" class="form-input" placeholder="nama@perusahaan.com" required>
+                </div>
+                <div class="form-group" style="margin-bottom:0;">
+                  <label for="contact-phone" class="form-label">Nomor Telepon / WhatsApp</label>
+                  <input type="tel" id="contact-phone" class="form-input" placeholder="+62 8xx xxxx xxxx" required>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="contact-service" class="form-label">Kategori</label>
+                <select id="contact-service" class="form-select">
+                  <option value="web-profile">Web Profile</option>
+                  <option value="sistem-informasi-ai">Sistem Informasi AI</option>
+                  <option value="data-analytics">Data Analytics</option>
+                  <option value="cloud-server">Cloud &amp; Server</option>
+                  <option value="chatbot-ai">Chatbot AI</option>
+                  <option value="lainnya">Lainnya</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="contact-message" class="form-label">Detail Kebutuhan / Tantangan</label>
+                <textarea id="contact-message" class="form-textarea"
+                  placeholder="Ceritakan kebutuhan sistem, website, atau automasi yang ingin dikembangkan..."></textarea>
+              </div>
+
+              <div class="form-group">
+                <label class="form-checkbox-label">
+                  <input type="checkbox" id="terms-agreement" class="form-checkbox" required>
+                  <span>Saya menyetujui data ini digunakan untuk konsultasi bersama tim Nafa
+                    Teknologi.</span>
+                </label>
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-block btn-lg" style="margin-top:0.5rem;" id="submit-consultation-btn">
+                <span>Konsultasi via WhatsApp</span>
+                <span class="material-symbols-outlined" style="font-size:18px;">chat</span>
+              </button>
+            </form>
+
+
+          </div>
+
+          <!-- Right Column: Location, Map & Key Benefits -->
+          <div>
+
+            <!-- Stylized HQ Map Card -->
+            <div class="hq-card">
+              <div class="hq-card-header">
+                <div>
+                  <span class="font-mono"
+                    style="font-size:11px; font-weight:600; text-transform:uppercase; color:var(--color-primary); display:block;">Lokasi
+                    &amp; Studio Rekayasa</span>
+                  <h3
+                    style="font-family:var(--font-headline); font-size:1rem; font-weight:700; color:var(--color-text-headline); margin-top:2px;">
+                    PT Nafa Teknologi Indonesia</h3>
+                </div>
+                <a href="https://maps.app.goo.gl/EcdvjyzbMxfQCZof8" target="_blank" rel="noopener noreferrer"
+                  class="hq-maps-btn" title="Buka di Google Maps">
+                  <span>Buka Maps</span>
+                  <span class="material-symbols-outlined" style="font-size:14px;">open_in_new</span>
+                </a>
+              </div>
+
+              <!-- Vector Map Graphic with Animated Radar Ping (Clickable to Google Maps) -->
+              <a href="https://maps.app.goo.gl/EcdvjyzbMxfQCZof8" target="_blank" rel="noopener noreferrer"
+                class="vector-map-preview" title="Buka lokasi di Google Maps">
+                <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"
+                  style="position:absolute; inset:0; opacity:0.65;">
+                  <defs>
+                    <pattern id="contact-map-grid" width="24" height="24" patternUnits="userSpaceOnUse">
+                      <path d="M 24 0 L 0 0 0 24" fill="none" stroke="#cbd5e1" stroke-width="0.6" />
+                      <circle cx="2" cy="2" r="1" fill="#94a3b8" opacity="0.4" />
+                    </pattern>
+                  </defs>
+                  <rect width="100%" height="100%" fill="url(#contact-map-grid)" />
+                  <!-- Stylized Arterial Roads -->
+                  <path d="M -10 120 C 60 110, 120 150, 200 130 S 320 80, 450 90" fill="none" stroke="#e2e8f0"
+                    stroke-width="6" />
+                  <path d="M -10 120 C 60 110, 120 150, 200 130 S 320 80, 450 90" fill="none" stroke="#ffffff"
+                    stroke-width="3" />
+                  <path d="M 140 -10 C 150 60, 160 130, 240 210" fill="none" stroke="#e2e8f0" stroke-width="5" />
+                  <path d="M 140 -10 C 150 60, 160 130, 240 210" fill="none" stroke="#ffffff" stroke-width="2.5" />
+                </svg>
+
+                <!-- Center Radar Ping -->
+                <div style="position:relative; z-index:10; display:flex; align-items:center; justify-content:center;">
+                  <span class="animate-ping"
+                    style="position:absolute; width:64px; height:64px; border-radius:50%; background-color:rgba(52, 211, 153, 0.25);"></span>
+                  <span
+                    style="position:absolute; width:40px; height:40px; border-radius:50%; background-color:rgba(4, 120, 87, 0.2);"></span>
+                  <div
+                    style="position:relative; z-index:20; width:34px; height:34px; border-radius:50%; background-color:var(--color-primary); border:2px solid #ffffff; box-shadow:var(--shadow-sm); display:flex; align-items:center; justify-content:center; color:#ffffff;">
+                    <span class="material-symbols-outlined" style="font-size:18px;">location_on</span>
+                  </div>
+                </div>
+
+                <div class="hq-coordinates-badge">
+                  7.4726° S, 112.6675° E • Sidoarjo
+                </div>
+
+                <div class="hq-map-hover-hint">
+                  <span>Buka di Google Maps</span>
+                  <span class="material-symbols-outlined" style="font-size:13px;">open_in_new</span>
+                </div>
+              </a>
+
+              <!-- Office Details -->
+              <div class="hq-details-list">
+                <a href="https://maps.app.goo.gl/EcdvjyzbMxfQCZof8" target="_blank" rel="noopener noreferrer"
+                  class="hq-detail-item hq-detail-link" title="Buka alamat di Google Maps">
+                  <span class="material-symbols-outlined item-icon">business</span>
+                  <div>
+                    <span class="font-mono"
+                      style="font-size:11px; text-transform:uppercase; color:var(--color-text-light); font-weight:600; display:block;">Kantor
+                      Operasional</span>
+                    <p style="font-size:13px; font-weight:500; color:var(--color-text-headline); margin:0;">Sidoarjo,
+                      Jawa Timur, Indonesia</p>
+                  </div>
+                  <span class="material-symbols-outlined" style="margin-left:auto; font-size:16px; color:var(--color-text-light); align-self:center;">open_in_new</span>
+                </a>
+
+                <div class="hq-detail-item">
+                  <span class="material-symbols-outlined item-icon">schedule</span>
+                  <div>
+                    <span class="font-mono"
+                      style="font-size:11px; text-transform:uppercase; color:var(--color-text-light); font-weight:600; display:block;">Jam
+                      Kerja</span>
+                    <p style="font-size:13px; font-weight:500; color:var(--color-text-headline); margin:0;">Senin –
+                      Jumat, 09:00 – 17:00 WIB</p>
+                  </div>
+                </div>
+
+                <div class="hq-detail-item">
+                  <span class="material-symbols-outlined item-icon">bolt</span>
+                  <div>
+                    <span class="font-mono"
+                      style="font-size:11px; text-transform:uppercase; color:var(--color-text-light); font-weight:600; display:block;">Waktu
+                      Respon Cepat</span>
+                    <p style="font-size:13px; font-weight:500; color:var(--color-text-headline); margin:0;">Dalam 24 Jam
+                      Kerja</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Key Benefits Box -->
+            <div class="benefits-card">
+              <span class="font-mono"
+                style="font-size:11px; font-weight:600; text-transform:uppercase; color:var(--color-primary); display:block; margin-bottom:1rem;">
+                Keuntungan Konsultasi Bersama Nafa
+              </span>
+              <ul class="benefits-list">
+                <li class="benefits-item">
+                  <span class="material-symbols-outlined check-icon">check_circle</span>
+                  <span><strong>Analisis Kebutuhan Sistem &amp; Gap Analysis Gratis:</strong> Pemetaan komprehensif atas
+                    alur bisnis dan titik inefisiensi.</span>
+                </li>
+                <li class="benefits-item">
+                  <span class="material-symbols-outlined check-icon">check_circle</span>
+                  <span><strong>Estimasi Arsitektur &amp; Rekomendasi Terarah:</strong> Rekomendasi stack teknologi
+                    handal dan ramah biaya pemeliharaan.</span>
+                </li>
+                <li class="benefits-item">
+                  <span class="material-symbols-outlined check-icon">check_circle</span>
+                  <span><strong>Tanpa Biaya Komitmen Awal:</strong> Transparansi penuh sebelum kesepakatan kontrak kerja
+                    sama rekayasa.</span>
+                </li>
+              </ul>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+

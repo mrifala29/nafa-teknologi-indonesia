@@ -1,0 +1,10 @@
+{
+  "name": "nafateknoid",
+  "version": "1.0.0",
+  "private": true,
+  "description": "PT Nafa Teknologi Indonesia Website",
+  "scripts": {
+    "build": "node build.js",
+    "dev": "node build.js --watch"
+  }
+}
